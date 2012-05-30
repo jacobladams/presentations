@@ -35,6 +35,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{F74E
 		Library\Microsoft.SharePoint.Client.Silverlight.Runtime.dll = Library\Microsoft.SharePoint.Client.Silverlight.Runtime.dll
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Registry", "Registry", "{95C979D6-D80A-4CFB-AF42-655C66E20C14}"
+	ProjectSection(SolutionItems) = preProject
+		Registry\EnableSilverlight5FullTrust.reg = Registry\EnableSilverlight5FullTrust.reg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
