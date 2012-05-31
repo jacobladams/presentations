@@ -21,49 +21,16 @@ namespace FileUpload
 
 		public MainPage()
 		{
-			InitializeComponent();
-
-			//ClientContext clientContext = new ClientContext("http://jakesharepointsaturday.sharepoint.com/TeamSite");
-			//_site = clientContext.Web;
-			//clientContext.Load(_site);
-			//_list = _site.Lists.GetByTitle("Important Documents");
-			//clientContext.Load(_list);
-			//clientContext.ExecuteQueryAsync(Callback, FailedCallback);		
-		}
-
-		private void Callback(object Sender, ClientRequestSucceededEventArgs e)
-		{
-			//Dispatcher.BeginInvoke(() => test.Text = _site.Title);
-			//Dispatcher.BeginInvoke(() => test.Text = _list.Title);
-			Dispatcher.BeginInvoke(() => message.Text = "done");
-		}
-
-		private void FailedCallback(object Sender, ClientRequestFailedEventArgs e)
-		{
-			//Dispatcher.BeginInvoke(() => test.Text = e.Message);
-			Dispatcher.BeginInvoke(() =>
-				{ 
-					message.Text = e.Message; 
-				});
-		}
-
-		private byte[] GetContentsOfFile(FileInfo file)
-		{
-			using (MemoryStream ms = new MemoryStream())
-			{
-				file.OpenRead().CopyTo(ms);
-				return ms.ToArray();
-			}
+			InitializeComponent();	
 		}
 
 		private void LayoutRoot_Drop(object sender, DragEventArgs e)
 		{
-			message.Text = "dropped";
+			message.Text = "Item Dropped!";
 			FileInfo[] droppedFiles = e.Data.GetData(DataFormats.FileDrop) as FileInfo[];
 
 			ClientContext clientContext = new ClientContext("http://jakesharepointsaturday.sharepoint.com/TeamSite");
 			_site = clientContext.Web;
-			clientContext.Load(_site);
 			_list = _site.Lists.GetByTitle("Important Documents");
 			
 			foreach (FileInfo file in droppedFiles)
@@ -76,8 +43,27 @@ namespace FileUpload
 
 				Microsoft.SharePoint.Client.File uploadFile = _list.RootFolder.Files.Add(newFile);
 				clientContext.Load(uploadFile);
-				clientContext.ExecuteQueryAsync(Callback, FailedCallback);
+				clientContext.ExecuteQueryAsync(SuccessCallback, FailedCallback);
 			}
+		}
+
+		private byte[] GetContentsOfFile(FileInfo file)
+		{
+			using (MemoryStream ms = new MemoryStream())
+			{
+				file.OpenRead().CopyTo(ms);
+				return ms.ToArray();
+			}
+		}
+
+		private void SuccessCallback(object Sender, ClientRequestSucceededEventArgs e)
+		{
+			Dispatcher.BeginInvoke(() => message.Text = "Done!");
+		}
+
+		private void FailedCallback(object Sender, ClientRequestFailedEventArgs e)
+		{
+			Dispatcher.BeginInvoke(() => message.Text = e.Message);
 		}
 	}
 }

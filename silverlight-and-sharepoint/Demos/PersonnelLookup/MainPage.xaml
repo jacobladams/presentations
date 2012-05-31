@@ -21,21 +21,28 @@
 				<RowDefinition Height="Auto"/>
 				<RowDefinition Height="Auto"/>
 				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="50"/>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 
-			<TextBlock Grid.Row="0" Grid.Column="0" Text="Name:"/>
-			<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Name}"/>
-			<TextBlock Grid.Row="1" Grid.Column="0" Text="Title:"/>
-			<ComboBox Grid.Row="1" Grid.Column="1" SelectedItem="{Binding Title}" ItemsSource="{Binding Titles}"/>
-			<TextBlock Grid.Row="2" Grid.Column="0" Text="Office:"/>
-			<ComboBox Grid.Row="2" Grid.Column="1" SelectedItem="{Binding Office}" ItemsSource="{Binding Offices}"/>
-			<TextBlock Grid.Row="4" Grid.Column="0" Text="Active:"/>
-			<CheckBox Grid.Row="4" Grid.Column="1" IsChecked="{Binding IsActive}"/>
-			<TextBlock Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Error}" Foreground="Red"/>
+			<TextBlock Grid.Row="0" Grid.Column="0" Text="Name:" Margin="0,0,0,5"/>
+			<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Name, Mode=TwoWay}" Margin="0,0,0,5"/>
+			
+			<TextBlock Grid.Row="1" Grid.Column="0" Text="Title:" Margin="0,0,0,5"/>
+			<ComboBox Grid.Row="1" Grid.Column="1" SelectedItem="{Binding Title, Mode=TwoWay}" ItemsSource="{Binding Titles}" DisplayMemberPath="Name" Margin="0,0,0,5"/>
+			
+			<TextBlock Grid.Row="2" Grid.Column="0" Text="Office:" Margin="0,0,0,5"/>
+			<ComboBox Grid.Row="2" Grid.Column="1" SelectedItem="{Binding Office, Mode=TwoWay}" ItemsSource="{Binding Offices}" DisplayMemberPath="Name" Margin="0,0,0,5"/>
+			
+			<TextBlock Grid.Row="4" Grid.Column="0" Text="Active:" Margin="0,0,0,5" />
+			<CheckBox Grid.Row="4" Grid.Column="1" IsChecked="{Binding IsActive, Mode=TwoWay}" Margin="0,0,0,5"/>
+			
+			<Button Grid.Row="5" Grid.Column="1" Content="Search" Width="75" HorizontalAlignment="Left" Margin="0,0,0,5" Command="{Binding Search}"/>
+			
+			<TextBlock Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Error}" Foreground="Red" Margin="0,0,0,5"/>
 		</Grid>
 
 		<data:DataGrid Grid.Row="1" Grid.Column="0" ItemsSource="{Binding SearchResults}" AutoGenerateColumns="False" CanUserReorderColumns="False" SelectedItem="{Binding SelectedPersonnel}">

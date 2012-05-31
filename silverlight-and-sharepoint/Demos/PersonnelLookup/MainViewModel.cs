@@ -14,6 +14,7 @@ using Microsoft.SharePoint.Client;
 using System.Linq;
 using System.Windows.Threading;
 using System.Windows.Media.Imaging;
+using GalaSoft.MvvmLight.Command;
 
 namespace PersonnelLookup
 {
@@ -25,8 +26,6 @@ namespace PersonnelLookup
 
 	public class MainViewModel : INotifyPropertyChanged
 	{
-
-
 		#region Properties
 
 		private string _name;
@@ -157,6 +156,8 @@ namespace PersonnelLookup
 			}
 		}
 
+		public ICommand Search { get; set; }
+
 		#endregion
 
 		private void NotifyPropertyChanged(string propertyName)
@@ -172,20 +173,37 @@ namespace PersonnelLookup
 		#endregion
 
 		private Web _site;
-		private List _list;
-		private ListItemCollection _items;
+		List _personnelList;
+		private ListItemCollection _personnel;
+		private ListItemCollection _officeSPItems;
+		private ListItemCollection _titlesSPItems;
 		private Dispatcher _dispatcher;
 
 		public MainViewModel(Dispatcher dispatcher)
 		{
 			_dispatcher = dispatcher;
+
+			Search = new RelayCommand(SearchHandler);
+
+
+
 			ClientContext clientContext = new ClientContext("http://jakesharepointsaturday.sharepoint.com/TeamSite");
 			_site = clientContext.Web;
-			clientContext.Load(_site);
-			_list = _site.Lists.GetByTitle("Personnel");
-			_items = _list.GetItems(new CamlQuery());
+			//clientContext.Load(_site);
+			_personnelList = _site.Lists.GetByTitle("Personnel");
+			_personnel = _personnelList.GetItems(new CamlQuery());
 			//_items.Include(item => item["Title"], item => item["First_x0020_Name"], item => item["Last_x0020_Name"], item => item["Fun_x0020_Fact"], item => item["Office"], item => item["PersonnelTitle"], item => item["Image"]);
-			clientContext.Load(_items);
+			clientContext.Load(_personnel);
+			//clientContext.ExecuteQueryAsync(SuccessCallback, FailedCallback);
+
+			List officeList = _site.Lists.GetByTitle("Office");
+			_officeSPItems = officeList.GetItems(new CamlQuery());
+			clientContext.Load(_officeSPItems);
+
+			List titleList = _site.Lists.GetByTitle("Titles");
+			_titlesSPItems = titleList.GetItems(new CamlQuery());
+			clientContext.Load(_titlesSPItems);
+
 			clientContext.ExecuteQueryAsync(SuccessCallback, FailedCallback);
 		}
 
@@ -200,53 +218,106 @@ namespace PersonnelLookup
 			//                 }).ToList();
 			_dispatcher.BeginInvoke(() =>
 				{
-					_allPersonnel = new List<PersonnelViewModel>();
+					PopulateOffices();
 
-					foreach (var personnelListItem in _items)
-					{
-						var personnel = new PersonnelViewModel
-						{
-							Name = Convert.ToString(personnelListItem["Title"]),
-							Email = Convert.ToString(personnelListItem["Email"]),
-							FirstName = Convert.ToString(personnelListItem["First_x0020_Name"]),
-							LastName = Convert.ToString(personnelListItem["Last_x0020_Name"]),
-							
-							FunFact = Convert.ToString(personnelListItem["Fun_x0020_Fact"]),
-							IsActive = Convert.ToBoolean(personnelListItem["Active"]),
-							ReasonForLeaving = Convert.ToString(personnelListItem["Reason_x0020_For_x0020_Leaving"]),
-						};
+					PopulateTitles();
 
-						FieldUrlValue imageFieldValue = personnelListItem["Image"] as FieldUrlValue;
-						personnel.Image = new BitmapImage(new Uri(imageFieldValue.Url, UriKind.Absolute));
-
-						FieldLookupValue officeLookupValue = personnelListItem["Office"] as FieldLookupValue;
-						personnel.Office = new Lookup
-						{
-							Id = officeLookupValue.LookupId,
-							Name = officeLookupValue.LookupValue
-						};
-
-						FieldLookupValue titleLookupValue = personnelListItem["PersonnelTitle"] as FieldLookupValue;
-						personnel.Title = new Lookup
-						{
-							Id = titleLookupValue.LookupId,
-							Name = titleLookupValue.LookupValue
-						};
-
-						_allPersonnel.Add(personnel);
-					}
-
-					SearchResults = _allPersonnel;
+					PopulatePersonnel();
 				});
 		}
 
 		private void FailedCallback(object Sender, ClientRequestFailedEventArgs e)
 		{
 			//Dispatcher.BeginInvoke(() => test.Text = e.Message);
-			//Dispatcher.BeginInvoke(() =>
-			//{
-			//    message.Text = e.Message;
-			//});
+			_dispatcher.BeginInvoke(() =>
+			{
+				Error = e.Message;
+			});
+		}
+
+		private void PopulateOffices()
+		{
+
+			List<Lookup> tempOffices = (from o in _officeSPItems.ToList()
+					   select new Lookup
+					   {
+						   Id = o.Id,
+						   Name = Convert.ToString(o["Title"])
+					   }).ToList();
+
+			tempOffices.Insert(0, new Lookup { Id = -1, Name = " " });
+
+			Offices = tempOffices;
+
+			Office = Offices.First();
+		}
+
+		private void PopulateTitles()
+		{
+			List<Lookup> tempTitles = (from t in _titlesSPItems.ToList()
+					  select new Lookup
+					  {
+						  Id = t.Id,
+						  Name = Convert.ToString(t["Title"])
+					  }).ToList();
+
+			tempTitles.Insert(0, new Lookup { Id = -1, Name = " " });
+
+			Titles = tempTitles;
+
+			Title = Titles.First();
+		}
+
+		private void PopulatePersonnel()
+		{
+			_allPersonnel = new List<PersonnelViewModel>();
+
+			foreach (var personnelListItem in _personnel)
+			{
+				var personnel = new PersonnelViewModel
+				{
+					Name = Convert.ToString(personnelListItem["Title"]),
+					Email =  Convert.ToString(personnelListItem["Email"]),
+					FirstName = Convert.ToString(personnelListItem["First_x0020_Name"]),
+					LastName = Convert.ToString(personnelListItem["Last_x0020_Name"]),
+
+					FunFact = Convert.ToString(personnelListItem["Fun_x0020_Fact"]),
+					IsActive = Convert.ToBoolean(personnelListItem["Active"]),
+					ReasonForLeaving = Convert.ToString(personnelListItem["Reason_x0020_For_x0020_Leaving"]),
+				};
+
+				FieldUrlValue imageFieldValue = personnelListItem["Image"] as FieldUrlValue;
+				personnel.Image = new BitmapImage(new Uri(imageFieldValue.Url, UriKind.Absolute));
+
+				FieldLookupValue officeLookupValue = personnelListItem["Office"] as FieldLookupValue;
+				personnel.Office = new Lookup
+				{
+					Id = officeLookupValue.LookupId,
+					Name = officeLookupValue.LookupValue
+				};
+
+				FieldLookupValue titleLookupValue = personnelListItem["PersonnelTitle"] as FieldLookupValue;
+				personnel.Title = new Lookup
+				{
+					Id = titleLookupValue.LookupId,
+					Name = titleLookupValue.LookupValue
+				};
+
+				_allPersonnel.Add(personnel);
+			}
+		}
+
+		private void SearchHandler()
+		{
+			//SearchResults = _allPersonnel;
+
+			SearchResults = (from p in _allPersonnel
+							 where (String.IsNullOrWhiteSpace(Name) || p.Name.ToLower().Contains(Name.ToLower()))
+							 && (Title.Id == -1 || p.Title.Id == Title.Id)
+							 && (Office.Id == -1 || p.Office.Id == Office.Id)
+							 && IsActive == p.IsActive
+							 select p).ToList();
+
 		}
 	}
 }
