@@ -24,7 +24,6 @@ namespace FullTrust
 			_list = site.Lists.GetByTitle("Important Documents");
 
 			_items = _list.GetItems(new CamlQuery());
-			_items.Include(item => item["Title"], item=>item.DisplayName);
 			_clientContext.Load(_items);
 			_clientContext.ExecuteQueryAsync(SuccessCallback, FailedCallback);
 		}

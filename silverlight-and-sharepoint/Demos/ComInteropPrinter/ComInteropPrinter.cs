@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Runtime.InteropServices;
 using System.IO;
+using System.Runtime.InteropServices;
 using Aspose.Words;
 using Aspose.Words.Rendering;
 
@@ -23,24 +20,6 @@ namespace ComInteropPrinter
 				printDocument.DocumentName = documentName;
 				printDocument.Print();
 			}
-			//var files = System.IO.Directory.GetFiles(folderPath, "*.png");
-
-			//var photoPage = new PhotoPage();
-			//var images = files.Select(f => new BitmapImage(new Uri(f))).ToList();
-			//photoPage.Image1.Source = images[0];
-			//photoPage.Image2.Source = images[1];
-			//photoPage.Image3.Source = images[2];
-			//photoPage.Image4.Source = images[3];
-			////photoPage.lstPhotos.ItemsSource = files.Select(f => new BitmapImage(new Uri(f))).ToList();
-
-			//photoPage.Show();
-			//photoPage.Hide();
-
-			//PrintDialog pd = new PrintDialog();
-			//pd.PrintVisual(photoPage.LayoutRoot, "Photobooth");
-			////pd.PrintVisual(photoPage.LayoutRoot, "Photobooth");
-			//fir
-
 		}
 	}
 }
