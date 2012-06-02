@@ -309,8 +309,6 @@ namespace PersonnelLookup
 
 		private void SearchHandler()
 		{
-			//SearchResults = _allPersonnel;
-
 			SearchResults = (from p in _allPersonnel
 							 where (String.IsNullOrWhiteSpace(Name) || p.Name.ToLower().Contains(Name.ToLower()))
 							 && (Title.Id == -1 || p.Title.Id == Title.Id)

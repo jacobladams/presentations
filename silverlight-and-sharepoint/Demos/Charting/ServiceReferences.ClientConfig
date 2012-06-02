@@ -1,0 +1,16 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="ListsSoap" maxBufferSize="2147483647" maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://jakesharepointsaturday.sharepoint.com/_vti_bin/Lists.asmx"
+                binding="basicHttpBinding" bindingConfiguration="ListsSoap"
+                contract="SharePointListService.ListsSoap" name="ListsSoap" />
+        </client>
+    </system.serviceModel>
+</configuration>
