@@ -1,20 +1,12 @@
 ﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using System.ComponentModel;
 using System.Collections.Generic;
-using Microsoft.SharePoint.Client;
+using System.ComponentModel;
 using System.Linq;
-using System.Windows.Threading;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 using GalaSoft.MvvmLight.Command;
+using Microsoft.SharePoint.Client;
 
 namespace PersonnelLookup
 {
@@ -185,11 +177,8 @@ namespace PersonnelLookup
 
 			Search = new RelayCommand(SearchHandler);
 
-
-
 			ClientContext clientContext = new ClientContext("http://jakesharepointsaturday.sharepoint.com/TeamSite");
 			_site = clientContext.Web;
-			//clientContext.Load(_site);
 			_personnelList = _site.Lists.GetByTitle("Personnel");
 			_personnel = _personnelList.GetItems(new CamlQuery());
 			//_items.Include(item => item["Title"], item => item["First_x0020_Name"], item => item["Last_x0020_Name"], item => item["Fun_x0020_Fact"], item => item["Office"], item => item["PersonnelTitle"], item => item["Image"]);
@@ -209,26 +198,16 @@ namespace PersonnelLookup
 
 		private void SuccessCallback(object Sender, ClientRequestSucceededEventArgs e)
 		{
-			//_allPersonnel = (from ListItem personnelListItem in _items
-			//                 select new PersonnelViewModel
-			//                 {
-			//                     Name = personnelListItem["Name"].ToString(),
-			//                     //FirstName = personnelListItem["First Name"].ToString(),
-			//                     //LastName = personnelListItem["Last Name"].ToString(),
-			//                 }).ToList();
 			_dispatcher.BeginInvoke(() =>
-				{
-					PopulateOffices();
-
-					PopulateTitles();
-
-					PopulatePersonnel();
-				});
+			{
+				PopulateOffices();
+				PopulateTitles();
+				PopulatePersonnel();
+			});
 		}
 
 		private void FailedCallback(object Sender, ClientRequestFailedEventArgs e)
 		{
-			//Dispatcher.BeginInvoke(() => test.Text = e.Message);
 			_dispatcher.BeginInvoke(() =>
 			{
 				Error = e.Message;

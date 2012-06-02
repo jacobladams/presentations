@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Microsoft.SharePoint.Client;
 using System.Xml.Linq;
+using Microsoft.SharePoint.Client;
 
 namespace Charting
 {
