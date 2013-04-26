@@ -1,6 +1,6 @@
 ///<reference path="../jquery.d.ts" />
 
-module JakesRaffleService {
+module RaffleJS {
     export class Prize {
         name: string;
 
@@ -99,7 +99,7 @@ module JakesRaffleService {
 }
 $(function () {
     $('#raffleButton').click(function () {
-        var raffleService = new JakesRaffleService.RaffleService();
+        var raffleService = new RaffleJS.RaffleService();
         raffleService.raffle();
 
     });
