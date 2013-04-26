@@ -23,8 +23,8 @@ module RaffleJS {
 
     export class RegularAttendee extends Attendee {
         getPrizeMessage(prize: Prize): string {
-            if (prize.name === 'Succeeding with Agile book') {
-                return 'Tough luck, ' + this.name + '! You won another copy of ' + prize.name;
+        	if (prize.name === 'Platic Water Bottle with Conference Logo') {
+                return 'Tough luck, ' + this.name + '! You won another ' + prize.name;
             } else {
                 return super.getPrizeMessage(prize);
             }
@@ -36,7 +36,7 @@ module RaffleJS {
 
     export class Organizer extends RegularAttendee {
         getPrizeMessage(prize: Prize): string {
-            if (prize.name === 'KCDC Ticket') {
+        	if (prize.name === 'Golden xBox 720 Ultimate RT Pro 8 Series - 64 bit') {
                 return 'WTF?, ' + this.name + ', you won a ' + prize.name + '! This seems suspect.';
             } else {
                 return super.getPrizeMessage(prize);
@@ -54,9 +54,9 @@ module RaffleJS {
         getPrizes(callback): void {
             setTimeout(function () {
                 callback([
-                    new Prize('Succeeding with Agile book'),
-                    new Prize('Pluralsight Subscription'),
-                    new Prize('KCDC Ticket')
+                    new Prize('Platic Water Bottle with Conference Logo'),
+                    new Prize('Signed Anders Hejlsberg Photo'),
+                    new Prize('Golden xBox 720 Ultimate RT Pro 8 Series - 64 bit')
                 ]);
             }, 1000);
         }
@@ -66,9 +66,9 @@ module RaffleJS {
                 callback([
                     new Attendee('Moe', 'moe@hotmail.com'),
                     new Attendee('Larry', 'larry@geocities.com'),
-                    new Attendee('Curly', 'curly@altavista.com'),
-                    new RegularAttendee('Jake', 'jake@gmail.com', 'Left Hand Haystack'),
-                    new Organizer('Nick', 'nick@github.com'),
+					new Attendee('Curly', 'curly@altavista.com'),
+					new RegularAttendee('Jake', 'jake@gmail.com', 'Boulevard Tank 7'),
+					new Organizer('Jonathan', 'jonathan@github.com')
                 ]);
             }, 1000);
         }

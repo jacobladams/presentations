@@ -32,8 +32,8 @@ var RaffleJS;
                 this.favoriteBeer = favoriteBeer;
             }
             RegularAttendee.prototype.getPrizeMessage = function (prize) {
-                if(prize.name === 'Succeeding with Agile book') {
-                    return 'Tough luck, ' + this.name + '! You won another copy of ' + prize.name;
+                if(prize.name === 'Platic Water Bottle with Conference Logo') {
+                    return 'Tough luck, ' + this.name + '! You won another ' + prize.name;
                 } else {
                     return _super.prototype.getPrizeMessage.call(this, prize);
                 }
@@ -48,7 +48,7 @@ var RaffleJS;
                 this.name = name;
             }
             Organizer.prototype.getPrizeMessage = function (prize) {
-                if(prize.name === 'KCDC Ticket') {
+                if(prize.name === 'Golden xBox 720 Ultimate RT Pro 8 Series - 64 bit') {
                     return 'WTF?, ' + this.name + ', you won a ' + prize.name + '! This seems suspect.';
                 } else {
                     return _super.prototype.getPrizeMessage.call(this, prize);

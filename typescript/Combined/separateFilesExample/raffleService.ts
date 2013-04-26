@@ -9,9 +9,9 @@ module RaffleJS.Services {
         getPrizes(callback): void {
             setTimeout(function () {
                 callback([
-                    new RaffleJS.Models.Prize('Succeeding with Agile book'),
-                    new RaffleJS.Models.Prize('Pluralsight Subscription'),
-                    new RaffleJS.Models.Prize('KCDC Ticket')
+					new RaffleJS.Models.Prize('Platic Water Bottle with Conference Logo'),
+					new RaffleJS.Models.Prize('Signed Anders Hejlsberg Photo'),
+					new RaffleJS.Models.Prize('Golden xBox 720 Ultimate RT Pro 8 Series - 64 bit')
                 ]);
             }, 1000);
         }
@@ -19,11 +19,11 @@ module RaffleJS.Services {
         getAttendees(callback): void {
             setTimeout(function () {
                 callback([
-                    new RaffleJS.Models.Attendee('Moe', 'moe@hotmail.com'),
-                    new RaffleJS.Models.Attendee('Larry', 'larry@geocities.com'),
-                    new RaffleJS.Models.Attendee('Curly', 'curly@altavista.com'),
-                    new RaffleJS.Models.RegularAttendee('Jake', 'jake@gmail.com', 'Left Hand Haystack'),
-                    new RaffleJS.Models.Organizer('Nick', 'nick@github.com'),
+					new RaffleJS.Models.Attendee('Moe', 'moe@hotmail.com'),
+					new RaffleJS.Models.Attendee('Larry', 'larry@geocities.com'),
+					new RaffleJS.Models.Attendee('Curly', 'curly@altavista.com'),
+					new RaffleJS.Models.RegularAttendee('Jake', 'jake@gmail.com', 'Boulevard Tank 7'),
+					new RaffleJS.Models.Organizer('Jonathan', 'jonathan@github.com')
                 ]);
             }, 1000);
         }

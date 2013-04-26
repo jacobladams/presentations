@@ -16,9 +16,9 @@ var Attendee = (function () {
 })();
 function getPrizes() {
     return [
-        new Prize('Succeeding with Agile book'), 
-        new Prize('Pluralsight Subscription'), 
-        new Prize('KCDC Ticket')
+        new Prize('Platic Water Bottle with Conference Logo'), 
+        new Prize('Signed Anders Hejlsberg Photo'), 
+        new Prize('Golden xBox 720 Ultimate RT Pro 8 Series - 64 bit')
     ];
 }
 function getAttendees() {
