@@ -58,12 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.html" />
-    <TypeScriptCompile Include="script.ts" />
-    <Content Include="script.js">
-      <DependentUpon>script.ts</DependentUpon>
+    <TypeScriptCompile Include="staticTyping.ts" />
+    <Content Include="staticTyping.js">
+      <DependentUpon>staticTyping.ts</DependentUpon>
     </Content>
-    <Content Include="script.min.js">
-      <DependentUpon>script.ts</DependentUpon>
+    <Content Include="staticTyping.min.js">
+      <DependentUpon>staticTyping.ts</DependentUpon>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>
@@ -71,9 +71,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="script.js.map">
-      <DependentUpon>script.ts</DependentUpon>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
