@@ -15,5 +15,4 @@ var Shapes;
 })(Shapes || (Shapes = {}));
 var p = new Shapes.Point(3, 4);
 var dist = p.getDist();
-alert('hello');
-//@ sourceMappingURL=script.js.map
+alert(dist.toString());
