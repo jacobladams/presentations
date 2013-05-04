@@ -6,7 +6,7 @@ var RaffleJS;
             RaffleService.prototype.getPrizes = function (callback) {
                 setTimeout(function () {
                     callback([
-                        new RaffleJS.Models.Prize('Platic Water Bottle with Conference Logo'), 
+                        new RaffleJS.Models.Prize('Water Bottle with Conference Logo'), 
                         new RaffleJS.Models.Prize('Signed Anders Hejlsberg Photo'), 
                         new RaffleJS.Models.Prize('Golden xBox 720 Ultimate RT Pro 8 Series - 64 bit')
                     ]);

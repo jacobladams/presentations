@@ -21,7 +21,7 @@ export class Attendee implements IAttendee {
 
 export class RegularAttendee extends Attendee {
     getPrizeMessage(prize: Prize): string {
-    	if (prize.name === 'Platic Water Bottle with Conference Logo') {
+    	if (prize.name === 'Water Bottle with Conference Logo') {
             return 'Tough luck, ' + this.name + '! You won another ' + prize.name;
         } else {
             return super.getPrizeMessage(prize);

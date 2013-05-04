@@ -23,7 +23,7 @@ class Attendee implements IAttendee {
 
 class RegularAttendee extends Attendee {
     getPrizeMessage(prize: Prize): string {
-        if (prize.name === 'Platic Water Bottle with Conference Logo') {
+        if (prize.name === 'Water Bottle with Conference Logo') {
             return 'Tough luck, ' + this.name + '! You won another ' + prize.name;
         } else {
             return super.getPrizeMessage(prize);
@@ -53,7 +53,7 @@ class RaffleService {
 
     getPrizes(): Prize[] {
         return [
-            new Prize('Platic Water Bottle with Conference Logo'),
+            new Prize('Water Bottle with Conference Logo'),
             new Prize('Signed Anders Hejlsberg Photo'),
             new Prize('Golden xBox 720 Ultimate RT Pro 8 Series - 64 bit')
         ]

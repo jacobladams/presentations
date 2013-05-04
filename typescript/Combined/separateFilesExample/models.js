@@ -32,7 +32,7 @@ var RaffleJS;
                 this.favoriteBeer = favoriteBeer;
             }
             RegularAttendee.prototype.getPrizeMessage = function (prize) {
-                if(prize.name === 'Platic Water Bottle with Conference Logo') {
+                if(prize.name === 'Water Bottle with Conference Logo') {
                     return 'Tough luck, ' + this.name + '! You won another ' + prize.name;
                 } else {
                     return _super.prototype.getPrizeMessage.call(this, prize);

@@ -31,7 +31,7 @@ var RaffleJS;
             this.favoriteBeer = favoriteBeer;
         }
         RegularAttendee.prototype.getPrizeMessage = function (prize) {
-            if(prize.name === 'Platic Water Bottle with Conference Logo') {
+            if(prize.name === 'Water Bottle with Conference Logo') {
                 return 'Tough luck, ' + this.name + '! You won another ' + prize.name;
             } else {
                 return _super.prototype.getPrizeMessage.call(this, prize);
@@ -61,7 +61,7 @@ var RaffleJS;
         RaffleService.prototype.getPrizes = function (callback) {
             setTimeout(function () {
                 callback([
-                    new Prize('Platic Water Bottle with Conference Logo'), 
+                    new Prize('Water Bottle with Conference Logo'), 
                     new Prize('Signed Anders Hejlsberg Photo'), 
                     new Prize('Golden xBox 720 Ultimate RT Pro 8 Series - 64 bit')
                 ]);
@@ -106,3 +106,4 @@ $(function () {
         raffleService.raffle();
     });
 });
+//@ sourceMappingURL=modules.js.map

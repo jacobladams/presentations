@@ -18,3 +18,4 @@ raffleButton.addEventListener('click', function () {
         results.innerHTML += "Attendee " + (winner + 1) + " wins prize " + (i + 1) + '<br/>';
     }
 });
+//@ sourceMappingURL=staticTyping.js.map
