@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -68,19 +69,7 @@
     <TypeScriptCompile Include="Models.ts" />
     <Content Include="jquery-2.0.3.min.js" />
     <Content Include="jquery.d.ts" />
-    <Content Include="Models.js">
-      <DependentUpon>Models.ts</DependentUpon>
-    </Content>
-    <Content Include="Models.min.js">
-      <DependentUpon>Models.ts</DependentUpon>
-    </Content>
     <TypeScriptCompile Include="RaffleService.ts" />
-    <Content Include="RaffleService.js">
-      <DependentUpon>RaffleService.ts</DependentUpon>
-    </Content>
-    <Content Include="RaffleService.min.js">
-      <DependentUpon>RaffleService.ts</DependentUpon>
-    </Content>
     <Content Include="require.d.ts" />
     <Content Include="require.min.js" />
     <Content Include="Web.config" />
@@ -89,12 +78,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models.js.map">
-      <DependentUpon>Models.ts</DependentUpon>
-    </Content>
-    <Content Include="RaffleService.js.map">
-      <DependentUpon>RaffleService.ts</DependentUpon>
-    </Content>
     <Content Include="app.js.map">
       <DependentUpon>app.ts</DependentUpon>
     </Content>
@@ -110,6 +93,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
