@@ -15,7 +15,7 @@ module RaffleJS.Models {
         getPrizeMessage(prize: Prize): string {
             return 'Congrats, ' + this.name + '! You won a ' + prize.name;
         }
-        constructor(private name: string, public email: string) {
+        constructor(public name: string, private email: string) {
         }
     }
 
@@ -27,7 +27,7 @@ module RaffleJS.Models {
                 return super.getPrizeMessage(prize);
             }
         }
-        constructor(private name: string, email: string, public favoriteBeer?: string) {
+        constructor(name: string, email: string, public favoriteBeer?: string) {
             super(name, email);
         }
     }
@@ -40,7 +40,7 @@ module RaffleJS.Models {
                 return super.getPrizeMessage(prize);
             }
         }
-        constructor(private name: string, email: string, favoriteBeer?: string) {
+        constructor(name: string, email: string, favoriteBeer?: string) {
             super(name, email, favoriteBeer);
         }
     }

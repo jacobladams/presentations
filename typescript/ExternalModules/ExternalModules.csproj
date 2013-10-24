@@ -65,9 +65,9 @@
       <DependentUpon>app.ts</DependentUpon>
     </Content>
     <Content Include="Default.html" />
-    <Content Include="jquery-1.9.1.min.js" />
-    <Content Include="jquery.d.ts" />
     <TypeScriptCompile Include="Models.ts" />
+    <Content Include="jquery-2.0.3.min.js" />
+    <Content Include="jquery.d.ts" />
     <Content Include="Models.js">
       <DependentUpon>Models.ts</DependentUpon>
     </Content>

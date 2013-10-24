@@ -13,7 +13,7 @@ class Attendee {
     getPrizeMessage(prize: Prize): string {
         return 'Congrats, ' + this.name + '! You won a ' + prize.name;
     }
-    constructor(private name: string, public email: string) {
+    constructor(public name: string, private email: string) {
     }
 }
 

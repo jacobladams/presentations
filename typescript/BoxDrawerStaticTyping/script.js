@@ -1,5 +1,6 @@
 function drawBox(title, height, width) {
     var box = document.createElement('div');
+
     box.style.width = width + 'px';
     box.style.height = height + 'px';
     box.innerText = title + ' (Area: ' + height * width + 'px)';
@@ -7,5 +8,6 @@ function drawBox(title, height, width) {
     document.body.appendChild(box);
 }
 ;
+
 drawBox('Hello World', '200px', '300px');
-//@ sourceMappingURL=script.js.map
+//# sourceMappingURL=script.js.map

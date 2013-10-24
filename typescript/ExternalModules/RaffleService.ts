@@ -1,6 +1,6 @@
 ///<reference path="jquery.d.ts" />
 
-import Models = module('Models');
+import Models = require('Models');
 
 export class RaffleService {
     _attendees: Models.IAttendee[];

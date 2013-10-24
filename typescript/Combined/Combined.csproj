@@ -124,13 +124,13 @@
     <Content Include="interfacesExample\interfaces.min.js">
       <DependentUpon>interfaces.ts</DependentUpon>
     </Content>
-    <Content Include="jquery-1.9.1.min.js" />
-    <Content Include="jquery.d.ts" />
     <CodeAnalysisDictionary Include="staticTypingExample\staticTyping.ts" />
     <CodeAnalysisDictionary Include="classesExample\classes.ts" />
     <CodeAnalysisDictionary Include="separateFilesExample\models.ts" />
     <CodeAnalysisDictionary Include="separateFilesExample\app.ts" />
     <CodeAnalysisDictionary Include="modulesExample\modules.ts" />
+    <Content Include="jquery-2.0.3.min.js" />
+    <Content Include="jquery.d.ts" />
     <Content Include="modulesExample\modules.js">
       <DependentUpon>modules.ts</DependentUpon>
     </Content>

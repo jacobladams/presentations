@@ -58,36 +58,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.html" />
-    <Content Include="jquery-1.9.1.min.js" />
+    <Content Include="jquery-2.0.3.min.js" />
     <Content Include="jquery.d.ts" />
-    <TypeScriptCompile Include="script.ts" />
-    <Content Include="script.js">
-      <DependentUpon>script.ts</DependentUpon>
-    </Content>
-    <Content Include="script.min.js">
-      <DependentUpon>script.ts</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="subclasses.ts" />
     <Content Include="subclasses.js">
+      <DependentUpon>subclasses.ts</DependentUpon>
+    </Content>
+    <Content Include="subclasses.js.map">
       <DependentUpon>subclasses.ts</DependentUpon>
     </Content>
     <Content Include="subclasses.min.js">
       <DependentUpon>subclasses.ts</DependentUpon>
     </Content>
     <Content Include="Web.config" />
+    <TypeScriptCompile Include="subclasses.ts" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="script.js.map">
-      <DependentUpon>script.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="subclasses.js.map">
-      <DependentUpon>subclasses.ts</DependentUpon>
-    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

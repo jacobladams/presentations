@@ -8,4 +8,4 @@ function drawBox(title, height, width) {
     document.body.appendChild(box);
 };
 
-drawBox('Hello World', '200px', '300px');
+drawBox('Hello World', '200px', '300px')

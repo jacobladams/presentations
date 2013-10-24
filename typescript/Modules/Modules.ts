@@ -17,7 +17,7 @@ module JakesRaffleService {
         getPrizeMessage(prize: Prize): string {
             return 'Congrats, ' + this.name + '! You won a ' + prize.name;
         }
-        constructor(private name: string, public email: string) {
+        constructor(public name: string, private email: string) {
         }
     }
 
@@ -29,7 +29,7 @@ module JakesRaffleService {
                 return super.getPrizeMessage(prize);
             }
         }
-        constructor(private name: string, email: string, public favoriteBeer?: string) {
+        constructor(name: string, email: string, public favoriteBeer?: string) {
             super(name, email);
         }
     }
@@ -42,7 +42,7 @@ module JakesRaffleService {
                 return super.getPrizeMessage(prize);
             }
         }
-        constructor(private name: string, email: string, favoriteBeer?: string) {
+        constructor(name: string, email: string, favoriteBeer?: string) {
             super(name, email, favoriteBeer);
         }
     }
