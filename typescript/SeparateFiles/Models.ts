@@ -34,7 +34,7 @@ module RaffleJS.Models {
 
     export class Organizer extends RegularAttendee {
         getPrizeMessage(prize: Prize): string {
-            if (prize.name === 'KCDC Ticket') {
+            if (prize.name === 'Days of .NET Ticket') {
                 return 'WTF?, ' + this.name + ', you won a ' + prize.name + '! This seems suspect.';
             } else {
                 return super.getPrizeMessage(prize);

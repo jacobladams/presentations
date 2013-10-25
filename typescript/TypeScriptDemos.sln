@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaticTyping", "StaticTyping\StaticTyping.csproj", "{F0F73038-E53C-429C-9B0D-F2682053DF12}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxDrawerStaticTyping", "BoxDrawerStaticTyping\BoxDrawerStaticTyping.csproj", "{C02FE033-5DC7-4E22-B91C-A3B44C7FD793}"
@@ -29,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CC6DCF
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqJsArrowFunctions", "LinqJsArrowFunctions\LinqJsArrowFunctions.csproj", "{F4508DA8-DD2D-4E6F-8AF1-4ABA1CAB7B19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generics", "Generics\Generics.csproj", "{1AE9363D-E106-414F-96FC-B8E145607107}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +84,10 @@ Global
 		{F4508DA8-DD2D-4E6F-8AF1-4ABA1CAB7B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4508DA8-DD2D-4E6F-8AF1-4ABA1CAB7B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4508DA8-DD2D-4E6F-8AF1-4ABA1CAB7B19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AE9363D-E106-414F-96FC-B8E145607107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AE9363D-E106-414F-96FC-B8E145607107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AE9363D-E106-414F-96FC-B8E145607107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AE9363D-E106-414F-96FC-B8E145607107}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

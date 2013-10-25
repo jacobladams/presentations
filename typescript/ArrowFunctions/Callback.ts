@@ -36,7 +36,7 @@ class RegularAttendee extends Attendee {
 
 class Organizer extends RegularAttendee {
     getPrizeMessage(prize: Prize): string {
-        if (prize.name === 'KCDC Ticket') {
+        if (prize.name === 'Days of .NET Ticket') {
             return 'WTF?, ' + this.name + ', you won a ' + prize.name + '! This seems suspect.';
         } else {
             return super.getPrizeMessage(prize);
@@ -56,7 +56,7 @@ class RaffleService {
             callback([
                 new Prize('Succeeding with Agile book'),
                 new Prize('Pluralsight Subscription'),
-                new Prize('KCDC Ticket')
+                new Prize('Days of .NET Ticket')
             ]);
         }, 1000);
     }

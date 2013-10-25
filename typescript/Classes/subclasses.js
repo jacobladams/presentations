@@ -47,7 +47,7 @@ var Organizer = (function (_super) {
         _super.call(this, name, email, favoriteBeer);
     }
     Organizer.prototype.getPrizeMessage = function (prize) {
-        if (prize.name === 'KCDC Ticket') {
+        if (prize.name === 'Days of .NET Ticket') {
             return 'WTF?, ' + this.name + ', You won a ' + prize.name + '! This seems suspect.';
         } else {
             return _super.prototype.getPrizeMessage.call(this, prize);
@@ -60,7 +60,7 @@ function getPrizes() {
     return [
         new Prize('Succeeding with Agile book'),
         new Prize('Pluralsight Subscription'),
-        new Prize('KCDC Ticket')
+        new Prize('Days of .NET Ticket')
     ];
 }
 

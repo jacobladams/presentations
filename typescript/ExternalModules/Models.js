@@ -48,7 +48,7 @@ define(["require", "exports"], function(require, exports) {
             _super.call(this, name, email, favoriteBeer);
         }
         Organizer.prototype.getPrizeMessage = function (prize) {
-            if (prize.name === 'KCDC Ticket') {
+            if (prize.name === 'Days of .NET Ticket') {
                 return 'WTF?, ' + this.name + ', you won a ' + prize.name + '! This seems suspect.';
             } else {
                 return _super.prototype.getPrizeMessage.call(this, prize);

@@ -23,7 +23,7 @@ class RegularAttendee extends Attendee {
             return 'Tough luck, ' + this.name + '! You won another copy of ' + prize.name;
         } else {
             return super.getPrizeMessage(prize);
-        } 
+        }
     }
     constructor(name: string, email: string, public favoriteBeer: string = 'bud light') {
         super(name, email);
@@ -61,6 +61,12 @@ function getAttendees(): Attendee[] {
     ]
 }
 
+function selectRandomItemAndRemove<T>(items: T[]): T {
+    var selectedIndex = Math.floor((Math.random() * items.length));
+    var selectedItem: T = items.splice(selectedIndex, 1)[0];
+    return selectedItem;
+}
+
 $(function () {
     $('#raffleButton').click(function () {
         var attendees: Attendee[] = getAttendees();
@@ -74,9 +80,12 @@ $(function () {
         var results = $('#results');
         results.html('');
         for (var i = 0; i < numberOfPrizes; i++) {
-            var winningIndex = Math.floor((Math.random() * attendees.length));
-            var winner: Attendee = attendees.splice(winningIndex, 1)[0];
+            //var winningIndex = Math.floor((Math.random() * attendees.length));
+            //var winner: Attendee = attendees.splice(winningIndex, 1)[0];
 
+            //results.append(winner.getPrizeMessage(prizes[i]) + '<br/>');
+
+            var winner = selectRandomItemAndRemove<Attendee>(attendees);
             results.append(winner.getPrizeMessage(prizes[i]) + '<br/>');
         }
 

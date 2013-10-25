@@ -11,7 +11,7 @@ export class RaffleService {
             callback([
                 new Models.Prize('Succeeding with Agile book'),
                 new Models.Prize('Pluralsight Subscription'),
-                new Models.Prize('KCDC Ticket')
+                new Models.Prize('Days of .NET Ticket')
             ]);
         }, 1000);
     }

@@ -11,7 +11,7 @@ module RaffleJS.Services {
                 callback([
                     new RaffleJS.Models.Prize('Succeeding with Agile book'),
                     new RaffleJS.Models.Prize('Pluralsight Subscription'),
-                    new RaffleJS.Models.Prize('KCDC Ticket')
+                    new RaffleJS.Models.Prize('Days of .NET Ticket')
                 ]);
             }, 1000);
         }
