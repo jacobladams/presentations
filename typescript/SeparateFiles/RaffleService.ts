@@ -9,9 +9,9 @@ module RaffleJS.Services {
         getPrizes(callback): void {
             setTimeout(function () {
                 callback([
-                    new RaffleJS.Models.Prize('Succeeding with Agile book'),
-                    new RaffleJS.Models.Prize('Pluralsight Subscription'),
-                    new RaffleJS.Models.Prize('Days of .NET Ticket')
+                    new RaffleJS.Models.Prize('Free 14 day trial of Office 2013'),
+                    new RaffleJS.Models.Prize('Pluralsight subscription'),
+                    new RaffleJS.Models.Prize('Days of .NET ticket')
                 ]);
             }, 1000);
         }

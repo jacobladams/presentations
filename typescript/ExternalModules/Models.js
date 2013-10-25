@@ -32,8 +32,8 @@ define(["require", "exports"], function(require, exports) {
             this.favoriteBeer = favoriteBeer;
         }
         RegularAttendee.prototype.getPrizeMessage = function (prize) {
-            if (prize.name === 'Succeeding with Agile book') {
-                return 'Tough luck, ' + this.name + '! You won another copy of ' + prize.name;
+            if (prize.name === 'Free 14 day trial of Office 2013') {
+                return 'Tough luck, ' + this.name + '! You won another  ' + prize.name;
             } else {
                 return _super.prototype.getPrizeMessage.call(this, prize);
             }
@@ -48,7 +48,7 @@ define(["require", "exports"], function(require, exports) {
             _super.call(this, name, email, favoriteBeer);
         }
         Organizer.prototype.getPrizeMessage = function (prize) {
-            if (prize.name === 'Days of .NET Ticket') {
+            if (prize.name === 'Days of .NET ticket') {
                 return 'WTF?, ' + this.name + ', you won a ' + prize.name + '! This seems suspect.';
             } else {
                 return _super.prototype.getPrizeMessage.call(this, prize);

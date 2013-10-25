@@ -32,8 +32,8 @@ var RegularAttendee = (function (_super) {
         this.favoriteBeer = favoriteBeer;
     }
     RegularAttendee.prototype.getPrizeMessage = function (prize) {
-        if (prize.name === 'Succeeding with Agile book') {
-            return 'Tough luck, ' + this.name + '! You won another copy of ' + prize.name;
+        if (prize.name === 'Free 14 day trial of Office 2013') {
+            return 'Tough luck, ' + this.name + '! You won another ' + prize.name;
         } else {
             return _super.prototype.getPrizeMessage.call(this, prize);
         }
@@ -47,7 +47,7 @@ var Organizer = (function (_super) {
         _super.call(this, name, email, favoriteBeer);
     }
     Organizer.prototype.getPrizeMessage = function (prize) {
-        if (prize.name === 'Days of .NET Ticket') {
+        if (prize.name === 'Days of .NET ticket') {
             return 'WTF?, ' + this.name + ', You won a ' + prize.name + '! This seems suspect.';
         } else {
             return _super.prototype.getPrizeMessage.call(this, prize);
@@ -58,9 +58,9 @@ var Organizer = (function (_super) {
 
 function getPrizes() {
     return [
-        new Prize('Succeeding with Agile book'),
-        new Prize('Pluralsight Subscription'),
-        new Prize('Days of .NET Ticket')
+        new Prize('Free 14 day trial of Office 2013'),
+        new Prize('Pluralsight subscription'),
+        new Prize('Days of .NET ticket')
     ];
 }
 

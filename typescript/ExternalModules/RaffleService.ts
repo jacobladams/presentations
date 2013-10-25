@@ -9,9 +9,9 @@ export class RaffleService {
     getPrizes(callback): void {
         setTimeout(function () {
             callback([
-                new Models.Prize('Succeeding with Agile book'),
-                new Models.Prize('Pluralsight Subscription'),
-                new Models.Prize('Days of .NET Ticket')
+                new Models.Prize('Free 14 day trial of Office 2013'),
+                new Models.Prize('Pluralsight subscription'),
+                new Models.Prize('Days of .NET ticket')
             ]);
         }, 1000);
     }

@@ -29,8 +29,8 @@ class Attendee implements IAttendee {
 
 class RegularAttendee extends Attendee {
     getPrizeMessage(prize: Prize): string {
-        if (prize.name === 'Succeeding with Agile book') {
-            return 'Tough luck, ' + this.name + '! You won another copy of ' + prize.name;
+        if (prize.name === 'Free 14 day trial of Office 2013') {
+            return 'Tough luck, ' + this.name + '! You won another ' + prize.name;
         } else {
             return super.getPrizeMessage(prize);
         }
@@ -42,7 +42,7 @@ class RegularAttendee extends Attendee {
 
 class Organizer extends RegularAttendee {
     getPrizeMessage(prize: Prize): string {
-        if (prize.name === 'Days of .NET Ticket') {
+        if (prize.name === 'Days of .NET ticket') {
             return 'WTF?, ' + this.name + ', you won a ' + prize.name + '! This seems suspect.';
         } else {
             return super.getPrizeMessage(prize);
@@ -55,9 +55,9 @@ class Organizer extends RegularAttendee {
 
 function getPrizes(): Prize[] {
     return [
-        new Prize('Succeeding with Agile book'),
-        new Prize('Pluralsight Subscription'),
-        new Prize('Days of .NET Ticket')
+        new Prize('Free 14 day trial of Office 2013'),
+        new Prize('Pluralsight subscription'),
+        new Prize('Days of .NET ticket')
     ]
 }
 
