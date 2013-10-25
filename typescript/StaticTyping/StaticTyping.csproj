@@ -58,7 +58,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Default.html" />
+    <Content Include="RaffleForm.html" />
     <TypeScriptCompile Include="staticTyping.ts" />
     <Content Include="Web.config" />
   </ItemGroup>
