@@ -15,7 +15,7 @@ export class Attendee implements IAttendee {
     getPrizeMessage(prize: Prize): string {
         return 'Congrats, ' + this.name + '! You won a ' + prize.name;
     }
-    constructor(private name: string, public email: string) {
+    constructor(public name: string, private email: string) {
     }
 }
 
@@ -27,7 +27,7 @@ export class RegularAttendee extends Attendee {
             return super.getPrizeMessage(prize);
         }
     }
-    constructor(private name: string, email: string, public favoriteBeer?: string) {
+	constructor(name: string, email: string, public favoriteSoda?: string) {
         super(name, email);
     }
 }
@@ -40,8 +40,8 @@ export class Organizer extends RegularAttendee {
             return super.getPrizeMessage(prize);
         }
     }
-    constructor(private name: string, email: string, favoriteBeer?: string) {
-        super(name, email, favoriteBeer);
+    constructor(name: string, email: string, favoriteSoda?: string) {
+        super(name, email, favoriteSoda);
     }
 }
 

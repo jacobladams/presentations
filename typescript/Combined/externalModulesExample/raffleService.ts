@@ -1,6 +1,6 @@
 ///<reference path="../jquery.d.ts" />
 
-import Models = module('models');
+import Models = require('models');
 
 export class RaffleService {
     _attendees: Models.IAttendee[];
@@ -9,11 +9,11 @@ export class RaffleService {
     getPrizes(callback): void {
         setTimeout(function () {
             callback([
-                new Models.Prize('Succeeding with Agile book'),
+                new Models.Prize('Free 14 day trial of Office 2013'),
                 new Models.Prize('Pluralsight Subscription'),
-                new Models.Prize('KCDC Ticket')
+                new Models.Prize('Days of .NET ticket')
             ]);
-        }, 1000);
+        }, 2000);
     }
 
     getAttendees(callback): void {
@@ -22,10 +22,10 @@ export class RaffleService {
 				new Models.Attendee('Moe', 'moe@hotmail.com'),
 				new Models.Attendee('Larry', 'larry@geocities.com'),
 				new Models.Attendee('Curly', 'curly@altavista.com'),
-				new Models.RegularAttendee('Jake', 'jake@gmail.com', 'Boulevard Tank 7'),
-				new Models.Organizer('Jonathan', 'jonathan@github.com')
+                new Models.RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
+                new Models.Organizer('Scott', 'scott@ms.com'),
             ]);
-        }, 1000);
+        }, 2000);
     }
 
     raffle() {
