@@ -13,7 +13,7 @@ export class RaffleService {
                 new Models.Prize('Pluralsight Subscription'),
                 new Models.Prize('Days of .NET ticket')
             ]);
-        }, 2000);
+        }, 1000);
     }
 
     getAttendees(callback): void {
@@ -25,7 +25,7 @@ export class RaffleService {
                 new Models.RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
                 new Models.Organizer('Scott', 'scott@ms.com'),
             ]);
-        }, 2000);
+        }, 1000);
     }
 
     raffle() {

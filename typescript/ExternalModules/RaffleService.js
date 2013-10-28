@@ -21,8 +21,8 @@ define(["require", "exports", 'Models'], function(require, exports, __Models__) 
                     new Models.Attendee('Moe', 'moe@hotmail.com'),
                     new Models.Attendee('Larry', 'larry@geocities.com'),
                     new Models.Attendee('Curly', 'curly@altavista.com'),
-                    new Models.RegularAttendee('Jake', 'jake@gmail.com', 'Left Hand Haystack'),
-                    new Models.Organizer('Nick', 'nick@github.com')
+                    new Models.RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
+                    new Models.Organizer('Scott', 'scott@ms.com')
                 ]);
             }, 1000);
         };

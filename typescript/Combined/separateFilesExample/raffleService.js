@@ -13,7 +13,7 @@ var RaffleJS;
                         new RaffleJS.Models.Prize('Pluralsight subscription'),
                         new RaffleJS.Models.Prize('Days of .NET ticket')
                     ]);
-                }, 2000);
+                }, 1000);
             };
 
             RaffleService.prototype.getAttendees = function (callback) {
@@ -25,7 +25,7 @@ var RaffleJS;
                         new RaffleJS.Models.RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
                         new RaffleJS.Models.Organizer('Scott', 'scott@ms.com')
                     ]);
-                }, 2000);
+                }, 1000);
             };
 
             RaffleService.prototype.raffle = function () {

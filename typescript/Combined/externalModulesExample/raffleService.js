@@ -12,7 +12,7 @@ define(["require", "exports", 'models'], function(require, exports, __Models__) 
                     new Models.Prize('Pluralsight Subscription'),
                     new Models.Prize('Days of .NET ticket')
                 ]);
-            }, 2000);
+            }, 1000);
         };
 
         RaffleService.prototype.getAttendees = function (callback) {
@@ -24,7 +24,7 @@ define(["require", "exports", 'models'], function(require, exports, __Models__) 
                     new Models.RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
                     new Models.Organizer('Scott', 'scott@ms.com')
                 ]);
-            }, 2000);
+            }, 1000);
         };
 
         RaffleService.prototype.raffle = function () {

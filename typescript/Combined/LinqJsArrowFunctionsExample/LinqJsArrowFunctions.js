@@ -46,6 +46,10 @@ var attendees = [
 
 var documentBody = document.getElementsByTagName('body')[0];
 
+//var registeredEmailAddresses = Enumerable.from(attendees)
+//	.where(function (a) {return a.isRegistered })
+//	.select(function (a) {return a.email });
+//registeredEmailAddresses.forEach(function (a) { document.write(a + '<br/>') });
 var registeredEmailAddresses = Enumerable.from(attendees).where(function (a) {
     return a.isRegistered;
 }).select(function (a) {
@@ -53,5 +57,6 @@ var registeredEmailAddresses = Enumerable.from(attendees).where(function (a) {
 });
 
 registeredEmailAddresses.forEach(function (a) {
-    document.write(a + '<br/>');
+    return document.write(a + '<br/>');
 });
+//# sourceMappingURL=LinqJsArrowFunctions.js.map

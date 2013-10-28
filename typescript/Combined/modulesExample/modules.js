@@ -1,19 +1,19 @@
-///<reference path="jquery.d.ts" />
+///<reference path="../jquery.d.ts" />
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-var JakesRaffleService;
-(function (JakesRaffleService) {
+var RaffleJS;
+(function (RaffleJS) {
     var Prize = (function () {
         function Prize(name) {
             this.name = name;
         }
         return Prize;
     })();
-    JakesRaffleService.Prize = Prize;
+    RaffleJS.Prize = Prize;
 
     var Attendee = (function () {
         function Attendee(name, email) {
@@ -25,7 +25,7 @@ var JakesRaffleService;
         };
         return Attendee;
     })();
-    JakesRaffleService.Attendee = Attendee;
+    RaffleJS.Attendee = Attendee;
 
     var RegularAttendee = (function (_super) {
         __extends(RegularAttendee, _super);
@@ -42,7 +42,7 @@ var JakesRaffleService;
         };
         return RegularAttendee;
     })(Attendee);
-    JakesRaffleService.RegularAttendee = RegularAttendee;
+    RaffleJS.RegularAttendee = RegularAttendee;
 
     var Organizer = (function (_super) {
         __extends(Organizer, _super);
@@ -58,7 +58,7 @@ var JakesRaffleService;
         };
         return Organizer;
     })(RegularAttendee);
-    JakesRaffleService.Organizer = Organizer;
+    RaffleJS.Organizer = Organizer;
 
     var RaffleService = (function () {
         function RaffleService() {
@@ -109,12 +109,12 @@ var JakesRaffleService;
         };
         return RaffleService;
     })();
-    JakesRaffleService.RaffleService = RaffleService;
-})(JakesRaffleService || (JakesRaffleService = {}));
+    RaffleJS.RaffleService = RaffleService;
+})(RaffleJS || (RaffleJS = {}));
 $(function () {
     $('#raffleButton').click(function () {
-        var raffleService = new JakesRaffleService.RaffleService();
+        var raffleService = new RaffleJS.RaffleService();
         raffleService.raffle();
     });
 });
-//# sourceMappingURL=Modules.js.map
+//# sourceMappingURL=modules.js.map

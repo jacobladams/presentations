@@ -104,3 +104,4 @@ $(function () {
         raffleService.raffle();
     });
 });
+//# sourceMappingURL=raffleInClass.js.map

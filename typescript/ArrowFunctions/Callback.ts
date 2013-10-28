@@ -58,7 +58,7 @@ class RaffleService {
                 new Prize('Pluralsight subscription'),
                 new Prize('Days of .NET ticket')
             ]);
-        }, 2000);
+        }, 1000);
     }
 
     getAttendees(callback): void {
@@ -70,7 +70,7 @@ class RaffleService {
                 new RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
                 new Organizer('Scott', 'scott@ms.com'),
             ]);
-        }, 2000);
+        }, 1000);
     }
 
     raffle() {

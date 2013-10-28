@@ -55,18 +55,18 @@ var attendees: IAttendee[] = [
 
 var documentBody = document.getElementsByTagName('body')[0];
 
-var registeredEmailAddresses = Enumerable.from(attendees)
-	.where(function (a) {return a.isRegistered })
-	.select(function (a) {return a.email });
-
-registeredEmailAddresses.forEach(function (a) { document.write(a + '<br/>') });
-
-
 //var registeredEmailAddresses = Enumerable.from(attendees)
-//	.where(a => a.isRegistered)
-//	.select(a => a.email);
+//	.where(function (a) {return a.isRegistered })
+//	.select(function (a) {return a.email });
 
-//registeredEmailAddresses.forEach(a => document.write(a + '<br/>'));
+//registeredEmailAddresses.forEach(function (a) { document.write(a + '<br/>') });
+
+
+var registeredEmailAddresses = Enumerable.from(attendees)
+	.where(a => a.isRegistered)
+	.select(a => a.email);
+
+registeredEmailAddresses.forEach(a => document.write(a + '<br/>'));
 
 
 

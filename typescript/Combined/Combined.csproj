@@ -60,6 +60,11 @@
   <ItemGroup>
     <Content Include="AutoRaffle.css" />
     <Content Include="AutoRaffle.html" />
+    <Content Include="externalModulesExample\app.js" />
+    <Content Include="externalModulesExample\app.js.map" />
+    <Content Include="externalModulesExample\models.js" />
+    <Content Include="externalModulesExample\models.js.map" />
+    <Content Include="externalModulesExample\require.min.js" />
     <Content Include="jquery-2.0.3.min.js" />
     <Content Include="jquery.d.ts" />
     <Content Include="RaffleForm.html" />
@@ -77,8 +82,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="staticTypingExample\staticTyping.ts" />
+    <TypeScriptCompile Include="externalModulesExample\app.ts" />
+    <TypeScriptCompile Include="externalModulesExample\models.ts" />
+    <TypeScriptCompile Include="externalModulesExample\raffleService.ts" />
+    <TypeScriptCompile Include="externalModulesExample\require.d.ts" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -26,9 +26,9 @@ var Attendee = (function () {
 
 var RegularAttendee = (function (_super) {
     __extends(RegularAttendee, _super);
-    function RegularAttendee(name, email, favoriteBeer) {
+    function RegularAttendee(name, email, favoriteSoda) {
         _super.call(this, name, email);
-        this.favoriteBeer = favoriteBeer;
+        this.favoriteSoda = favoriteSoda;
     }
     RegularAttendee.prototype.getPrizeMessage = function (prize) {
         if (prize.name === 'Free 14 day trial of Office 2013') {
@@ -42,8 +42,8 @@ var RegularAttendee = (function (_super) {
 
 var Organizer = (function (_super) {
     __extends(Organizer, _super);
-    function Organizer(name, email, favoriteBeer) {
-        _super.call(this, name, email, favoriteBeer);
+    function Organizer(name, email, favoriteSoda) {
+        _super.call(this, name, email, favoriteSoda);
     }
     Organizer.prototype.getPrizeMessage = function (prize) {
         if (prize.name === 'Days of .NET ticket') {
@@ -74,29 +74,28 @@ var RaffleService = (function () {
                 new Attendee('Moe', 'moe@hotmail.com'),
                 new Attendee('Larry', 'larry@geocities.com'),
                 new Attendee('Curly', 'curly@altavista.com'),
-                new RegularAttendee('Jake', 'jake@gmail.com', 'Left Hand Haystack'),
-                new Organizer('Nick', 'nick@github.com')
+                new RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
+                new Organizer('Scott', 'scott@ms.com')
             ]);
         }, 1000);
     };
 
     RaffleService.prototype.raffle = function () {
-        var _this = this;
         this.getPrizes(function (prizes) {
-            _this.getAttendees(function (attendees) {
-                _this._attendees = attendees;
-                _this._prizes = prizes;
-                var numberOfAttendees = _this._attendees.length;
+            this.getAttendees(function (attendees) {
+                this._attendees = attendees;
+                this._prizes = prizes;
+                var numberOfAttendees = this._attendees.length;
 
-                var numberOfPrizes = _this._prizes.length;
+                var numberOfPrizes = this._prizes.length;
 
                 var results = $('#results');
                 results.html('');
                 for (var i = 0; i < numberOfPrizes; i++) {
-                    var winningIndex = Math.floor((Math.random() * _this._attendees.length));
-                    var winner = _this._attendees.splice(winningIndex, 1)[0];
+                    var winningIndex = Math.floor((Math.random() * this._attendees.length));
+                    var winner = this._attendees.splice(winningIndex, 1)[0];
 
-                    results.append(winner.getPrizeMessage(_this._prizes[i]) + '<br/>');
+                    results.append(winner.getPrizeMessage(this._prizes[i]) + '<br/>');
                 }
             });
         });
