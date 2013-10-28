@@ -21,7 +21,7 @@ export class Attendee implements IAttendee {
 
 export class RegularAttendee extends Attendee {
     getPrizeMessage(prize: Prize): string {
-    	if (prize.name === 'Water Bottle with Conference Logo') {
+    	if (prize.name === 'Free 14 day trial of Office 2013') {
             return 'Tough luck, ' + this.name + '! You won another ' + prize.name;
         } else {
             return super.getPrizeMessage(prize);
@@ -34,7 +34,7 @@ export class RegularAttendee extends Attendee {
 
 export class Organizer extends RegularAttendee {
     getPrizeMessage(prize: Prize): string {
-    	if (prize.name === 'Golden xBox 720 Ultimate RT Pro 8 Series - 64 bit') {
+    	if (prize.name === 'Days of .NET ticket') {
             return 'WTF?, ' + this.name + ', you won a ' + prize.name + '! This seems suspect.';
         } else {
             return super.getPrizeMessage(prize);

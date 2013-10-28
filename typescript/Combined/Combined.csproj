@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -57,124 +58,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <CodeAnalysisDictionary Include="arrowFunctionsExample\callback.ts" />
-    <CodeAnalysisDictionary Include="ambientDeclarationsExample\ambientdeclarations.ts" />
-    <Content Include="ambientDeclarationsExample\ambientdeclarations.js">
-      <DependentUpon>ambientdeclarations.ts</DependentUpon>
-    </Content>
-    <Content Include="ambientDeclarationsExample\ambientdeclarations.min.js">
-      <DependentUpon>ambientdeclarations.ts</DependentUpon>
-    </Content>
-    <Content Include="ambientDeclarationsExample\jquery-1.9.1.min.js" />
-    <Content Include="ambientDeclarationsExample\jquery.d.ts" />
-    <CodeAnalysisDictionary Include="arrowFunctionsExample\raffleInClass.ts" />
-    <Content Include="arrowFunctionsExample\callback.js">
-      <DependentUpon>callback.ts</DependentUpon>
-    </Content>
-    <Content Include="arrowFunctionsExample\callback.min.js">
-      <DependentUpon>callback.ts</DependentUpon>
-    </Content>
-    <Content Include="arrowFunctionsExample\raffleInClass.js">
-      <DependentUpon>raffleInClass.ts</DependentUpon>
-    </Content>
-    <Content Include="arrowFunctionsExample\raffleInClass.min.js">
-      <DependentUpon>raffleInClass.ts</DependentUpon>
-    </Content>
     <Content Include="AutoRaffle.html" />
-    <CodeAnalysisDictionary Include="externalModulesExample\app.ts" />
-    <Content Include="classesExample\classes.js">
-      <DependentUpon>classes.ts</DependentUpon>
-    </Content>
-    <Content Include="classesExample\classes.min.js">
-      <DependentUpon>classes.ts</DependentUpon>
-    </Content>
-    <CodeAnalysisDictionary Include="classesExample\subclasses.ts" />
-    <Content Include="classesExample\subclasses.js">
-      <DependentUpon>subclasses.ts</DependentUpon>
-    </Content>
-    <Content Include="classesExample\subclasses.min.js">
-      <DependentUpon>subclasses.ts</DependentUpon>
-    </Content>
-    <Content Include="externalModulesExample\app.js">
-      <DependentUpon>app.ts</DependentUpon>
-    </Content>
-    <Content Include="externalModulesExample\app.min.js">
-      <DependentUpon>app.ts</DependentUpon>
-    </Content>
-    <CodeAnalysisDictionary Include="externalModulesExample\models.ts" />
-    <CodeAnalysisDictionary Include="externalModulesExample\raffleService.ts" />
-    <Content Include="externalModulesExample\models.js">
-      <DependentUpon>models.ts</DependentUpon>
-    </Content>
-    <Content Include="externalModulesExample\models.min.js">
-      <DependentUpon>models.ts</DependentUpon>
-    </Content>
-    <Content Include="externalModulesExample\raffleService.js">
-      <DependentUpon>raffleService.ts</DependentUpon>
-    </Content>
-    <Content Include="externalModulesExample\raffleService.min.js">
-      <DependentUpon>raffleService.ts</DependentUpon>
-    </Content>
-    <Content Include="externalModulesExample\require.d.ts" />
-    <Content Include="externalModulesExample\require.min.js" />
-    <CodeAnalysisDictionary Include="interfacesExample\interfaces.ts" />
-    <Content Include="interfacesExample\interfaces.js">
-      <DependentUpon>interfaces.ts</DependentUpon>
-    </Content>
-    <Content Include="interfacesExample\interfaces.min.js">
-      <DependentUpon>interfaces.ts</DependentUpon>
-    </Content>
-    <CodeAnalysisDictionary Include="staticTypingExample\staticTyping.ts" />
-    <CodeAnalysisDictionary Include="classesExample\classes.ts" />
-    <CodeAnalysisDictionary Include="separateFilesExample\models.ts" />
-    <CodeAnalysisDictionary Include="separateFilesExample\app.ts" />
-    <CodeAnalysisDictionary Include="modulesExample\modules.ts" />
-    <Content Include="jquery-2.0.3.min.js" />
-    <Content Include="jquery.d.ts" />
-    <Content Include="modulesExample\modules.js">
-      <DependentUpon>modules.ts</DependentUpon>
-    </Content>
-    <Content Include="modulesExample\modules.min.js">
-      <DependentUpon>modules.ts</DependentUpon>
-    </Content>
-    <Content Include="separateFilesExample\app.js">
-      <DependentUpon>app.ts</DependentUpon>
-    </Content>
-    <Content Include="separateFilesExample\app.min.js">
-      <DependentUpon>app.ts</DependentUpon>
-    </Content>
-    <CodeAnalysisDictionary Include="separateFilesExample\raffleService.ts" />
-    <Content Include="separateFilesExample\models.js">
-      <DependentUpon>models.ts</DependentUpon>
-    </Content>
-    <Content Include="separateFilesExample\models.min.js">
-      <DependentUpon>models.ts</DependentUpon>
-    </Content>
     <Content Include="RaffleForm.html" />
-    <Content Include="separateFilesExample\raffleService.js">
-      <DependentUpon>raffleService.ts</DependentUpon>
-    </Content>
-    <Content Include="separateFilesExample\raffleService.min.js">
-      <DependentUpon>raffleService.ts</DependentUpon>
-    </Content>
-    <Content Include="staticTypingExample\staticTyping.js">
-      <DependentUpon>staticTyping.ts</DependentUpon>
-    </Content>
-    <Content Include="staticTypingExample\staticTyping.min.js">
-      <DependentUpon>staticTyping.ts</DependentUpon>
-    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="externalModulesExample\app.js.map">
-      <DependentUpon>app.ts</DependentUpon>
-    </Content>
-    <Content Include="classesExample\subclasses.js.map">
-      <DependentUpon>subclasses.ts</DependentUpon>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -182,12 +73,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>

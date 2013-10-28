@@ -18,9 +18,9 @@ class Attendee {
 
 function getPrizes(): Prize[] {
     return [
-        new Prize('Water Bottle with Conference Logo'),
-        new Prize('Signed Anders Hejlsberg Photo'),
-        new Prize('Golden xBox 720 Ultimate RT Pro 8 Series - 64 bit')
+        new Prize('Free 14 day trial of Office 2013'),
+        new Prize('Pluralsight subscription'),
+        new Prize('Days of .NET ticket')
     ]
 }
 
@@ -47,7 +47,6 @@ $(function () {
         for (var i = 0; i < numberOfPrizes; i++) {
             var winningIndex = Math.floor((Math.random() * attendees.length));
             var winner: Attendee = attendees.splice(winningIndex, 1)[0];
-
             results.append(winner.getPrizeMessage(prizes[i]) + '<br/>');
         }
 

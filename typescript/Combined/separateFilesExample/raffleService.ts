@@ -9,9 +9,9 @@ module RaffleJS.Services {
         getPrizes(callback): void {
             setTimeout(function () {
                 callback([
-					new RaffleJS.Models.Prize('Water Bottle with Conference Logo'),
-					new RaffleJS.Models.Prize('Signed Anders Hejlsberg Photo'),
-					new RaffleJS.Models.Prize('Golden xBox 720 Ultimate RT Pro 8 Series - 64 bit')
+					new RaffleJS.Models.Prize('Free 14 day trial of Office 2013'),
+					new RaffleJS.Models.Prize('Pluralsight subscription'),
+					new RaffleJS.Models.Prize('Days of .NET ticket')
                 ]);
             }, 1000);
         }

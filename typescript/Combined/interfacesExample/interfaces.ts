@@ -28,7 +28,7 @@ class Attendee implements IAttendee {
 
 class RegularAttendee extends Attendee {
     getPrizeMessage(prize: Prize): string {
-        if (prize.name === 'Water Bottle with Conference Logo') {
+        if (prize.name === 'Free 14 day trial of Office 2013') {
             return 'Tough luck, ' + this.name + '! You won another ' + prize.name;
         } else {
             return super.getPrizeMessage(prize);
@@ -41,7 +41,7 @@ class RegularAttendee extends Attendee {
 
 class Organizer extends RegularAttendee {
     getPrizeMessage(prize: Prize): string {
-        if (prize.name === 'Golden xBox 720 Ultimate RT Pro 8 Series - 64 bit') {
+        if (prize.name === 'Days of .NET ticket') {
             return 'WTF?, ' + this.name + ', you won a ' + prize.name + '! This seems suspect.';
         } else {
             return super.getPrizeMessage(prize);
@@ -54,9 +54,9 @@ class Organizer extends RegularAttendee {
 
 function getPrizes(): Prize[] {
     return [
-        new Prize('Water Bottle with Conference Logo'),
-        new Prize('Signed Anders Hejlsberg Photo'),
-        new Prize('Golden xBox 720 Ultimate RT Pro 8 Series - 64 bit')
+        new Prize('Free 14 day trial of Office 2013'),
+        new Prize('Pluralsight subscription'),
+        new Prize('Days of .NET ticket')
     ]
 }
 

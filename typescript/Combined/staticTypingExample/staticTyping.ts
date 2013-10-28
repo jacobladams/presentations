@@ -8,9 +8,9 @@ raffleButton.addEventListener('click', function () {
     var numberOfPrizesField;
     numberOfPrizesField = document.getElementById('numberOfPrizes');
 
-    var numberOfAttendees = numberOfAttendeesField.value;
+    var numberOfAttendees:number = numberOfAttendeesField.value;
 
-    var numberOfPrizes = numberOfPrizesField.value;
+    var numberOfPrizes:number = numberOfPrizesField.value;
 
     var remainingAttendees = [];
 
