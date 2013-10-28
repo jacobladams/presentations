@@ -13,7 +13,7 @@ module RaffleJS.Services {
 					new RaffleJS.Models.Prize('Pluralsight subscription'),
 					new RaffleJS.Models.Prize('Days of .NET ticket')
                 ]);
-            }, 1000);
+            }, 2000);
         }
 
         getAttendees(callback): void {
@@ -22,10 +22,10 @@ module RaffleJS.Services {
 					new RaffleJS.Models.Attendee('Moe', 'moe@hotmail.com'),
 					new RaffleJS.Models.Attendee('Larry', 'larry@geocities.com'),
 					new RaffleJS.Models.Attendee('Curly', 'curly@altavista.com'),
-					new RaffleJS.Models.RegularAttendee('Jake', 'jake@gmail.com', 'Boulevard Tank 7'),
-					new RaffleJS.Models.Organizer('Jonathan', 'jonathan@github.com')
+                    new RaffleJS.Models.RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
+                    new RaffleJS.Models.Organizer('Scott', 'scott@ms.com'),
                 ]);
-            }, 1000);
+            }, 2000);
         }
 
         raffle() {

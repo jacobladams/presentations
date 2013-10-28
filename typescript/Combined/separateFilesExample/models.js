@@ -29,10 +29,9 @@ var RaffleJS;
 
         var RegularAttendee = (function (_super) {
             __extends(RegularAttendee, _super);
-            function RegularAttendee(name, email, favoriteBeer) {
+            function RegularAttendee(name, email, favoriteSoda) {
                 _super.call(this, name, email);
-                this.name = name;
-                this.favoriteBeer = favoriteBeer;
+                this.favoriteSoda = favoriteSoda;
             }
             RegularAttendee.prototype.getPrizeMessage = function (prize) {
                 if (prize.name === 'Free 14 day trial of Office 2013') {
@@ -47,9 +46,8 @@ var RaffleJS;
 
         var Organizer = (function (_super) {
             __extends(Organizer, _super);
-            function Organizer(name, email, favoriteBeer) {
-                _super.call(this, name, email, favoriteBeer);
-                this.name = name;
+            function Organizer(name, email, favoriteSoda) {
+                _super.call(this, name, email, favoriteSoda);
             }
             Organizer.prototype.getPrizeMessage = function (prize) {
                 if (prize.name === 'Days of .NET ticket') {
@@ -64,3 +62,4 @@ var RaffleJS;
     })(RaffleJS.Models || (RaffleJS.Models = {}));
     var Models = RaffleJS.Models;
 })(RaffleJS || (RaffleJS = {}));
+//# sourceMappingURL=models.js.map

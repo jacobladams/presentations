@@ -13,7 +13,7 @@ var RaffleJS;
                         new RaffleJS.Models.Prize('Pluralsight subscription'),
                         new RaffleJS.Models.Prize('Days of .NET ticket')
                     ]);
-                }, 1000);
+                }, 2000);
             };
 
             RaffleService.prototype.getAttendees = function (callback) {
@@ -22,10 +22,10 @@ var RaffleJS;
                         new RaffleJS.Models.Attendee('Moe', 'moe@hotmail.com'),
                         new RaffleJS.Models.Attendee('Larry', 'larry@geocities.com'),
                         new RaffleJS.Models.Attendee('Curly', 'curly@altavista.com'),
-                        new RaffleJS.Models.RegularAttendee('Jake', 'jake@gmail.com', 'Boulevard Tank 7'),
-                        new RaffleJS.Models.Organizer('Jonathan', 'jonathan@github.com')
+                        new RaffleJS.Models.RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
+                        new RaffleJS.Models.Organizer('Scott', 'scott@ms.com')
                     ]);
-                }, 1000);
+                }, 2000);
             };
 
             RaffleService.prototype.raffle = function () {
@@ -56,3 +56,4 @@ var RaffleJS;
     })(RaffleJS.Services || (RaffleJS.Services = {}));
     var Services = RaffleJS.Services;
 })(RaffleJS || (RaffleJS = {}));
+//# sourceMappingURL=raffleService.js.map
