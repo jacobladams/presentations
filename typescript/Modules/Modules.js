@@ -70,7 +70,7 @@ var JakesRaffleService;
                     new Prize('Pluralsight subscription'),
                     new Prize('Days of .NET ticket')
                 ]);
-            }, 1000);
+            }, 2000);
         };
 
         RaffleService.prototype.getAttendees = function (callback) {
@@ -82,7 +82,7 @@ var JakesRaffleService;
                     new RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
                     new Organizer('Scott', 'scott@ms.com')
                 ]);
-            }, 1000);
+            }, 2000);
         };
 
         RaffleService.prototype.raffle = function () {

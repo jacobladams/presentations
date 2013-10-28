@@ -61,6 +61,7 @@
     <Content Include="AutoRaffle.html" />
     <Content Include="jquery-2.0.3.min.js" />
     <Content Include="jquery.d.ts" />
+    <Content Include="modulesExample\modules.js" />
     <Content Include="RaffleForm.html" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -74,6 +75,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="modulesExample\modules.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
