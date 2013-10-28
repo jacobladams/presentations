@@ -1,0 +1,29 @@
+﻿html {
+    background: linear-gradient(to bottom, #7EC6F6 0%, #2290DB 100%);
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family:helvetica, arial, sans-serif;
+}
+body {
+    margin:2em;
+}
+h1 {
+    font-family: "brush script mt";
+    font-size: 5em;
+}
+#results {
+    font-size:2em;
+    margin-top:1em;
+}
+#raffleButton {
+    width: 10em;
+    height: 3em;
+    background-color: #ffffff;
+    color: #333333;
+    border-width: 0;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+#raffleButton:hover {
+    background-color: #dddddd;
+}
