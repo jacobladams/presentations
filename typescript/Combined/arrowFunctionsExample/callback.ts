@@ -16,7 +16,7 @@ class Attendee implements IAttendee {
     getPrizeMessage(prize: Prize): string {
         return 'Congrats, ' + this.name + '! You won a ' + prize.name;
     }
-    constructor(private name: string, public email: string) {
+    constructor(public name: string, private email: string) {
     }
 }
 
@@ -28,7 +28,7 @@ class RegularAttendee extends Attendee {
             return super.getPrizeMessage(prize);
         }
     }
-    constructor(private name: string, email: string, public favoriteBeer?: string) {
+    constructor(name: string, email: string, public favoriteSoda?: string) {
         super(name, email);
     }
 }
@@ -41,8 +41,8 @@ class Organizer extends RegularAttendee {
             return super.getPrizeMessage(prize);
         }
     }
-    constructor(private name: string, email: string, favoriteBeer?: string) {
-        super(name, email, favoriteBeer);
+    constructor(name: string, email: string, favoriteSoda?: string) {
+        super(name, email, favoriteSoda);
     }
 }
 
@@ -58,7 +58,7 @@ class RaffleService {
                 new Prize('Pluralsight subscription'),
                 new Prize('Days of .NET ticket')
             ]);
-        }, 1000);
+        }, 2000);
     }
 
     getAttendees(callback): void {
@@ -68,10 +68,10 @@ class RaffleService {
                 new Attendee('Moe', 'moe@hotmail.com'),
                 new Attendee('Larry', 'larry@geocities.com'),
                 new Attendee('Curly', 'curly@altavista.com'),
-                new RegularAttendee('Jake', 'jake@gmail.com', 'Boulevard Tank 7'),
-                new Organizer('Jonathan', 'jonathan@github.com')
+                new RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
+                new Organizer('Scott', 'scott@ms.com'),
             ]);
-        }, 1000);
+        }, 2000);
     }
 
     raffle() {

@@ -1,4 +1,4 @@
-///<reference path="../jquery.d.ts" />
+///<reference path="..\jquery.d.ts" />
 var Prize = (function () {
     function Prize(name) {
         this.name = name;
@@ -19,9 +19,9 @@ var Attendee = (function () {
 
 function getPrizes() {
     return [
-        new Prize('Free 14 day trial of Office 2013'),
-        new Prize('Pluralsight subscription'),
-        new Prize('Days of .NET ticket')
+        new Prize('Succeeding with Agile book'),
+        new Prize('Pluralsight Subscription'),
+        new Prize('KCDC Ticket')
     ];
 }
 
@@ -48,6 +48,7 @@ $(function () {
         for (var i = 0; i < numberOfPrizes; i++) {
             var winningIndex = Math.floor((Math.random() * attendees.length));
             var winner = attendees.splice(winningIndex, 1)[0];
+
             results.append(winner.getPrizeMessage(prizes[i]) + '<br/>');
         }
     });

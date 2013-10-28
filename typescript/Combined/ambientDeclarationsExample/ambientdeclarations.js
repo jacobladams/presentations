@@ -1,3 +1,5 @@
+///<reference path = "..\jquery.d.ts" / >
+//declare var $: any;
 $(function () {
     $('#raffleButton').click(function () {
         var numberOfAttendeesField = $('#numberOfAttendees');

@@ -58,7 +58,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Default.html" />
+    <Content Include="AutoRaffle.html" />
     <Content Include="jquery-2.0.3.min.js" />
     <Content Include="jquery.d.ts" />
     <Content Include="Web.config" />
@@ -67,7 +67,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="subclasses.ts" />
+    <TypeScriptCompile Include="classes.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

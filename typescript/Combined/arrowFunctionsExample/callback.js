@@ -67,7 +67,7 @@ var RaffleService = (function () {
                 new Prize('Pluralsight subscription'),
                 new Prize('Days of .NET ticket')
             ]);
-        }, 1000);
+        }, 2000);
     };
 
     RaffleService.prototype.getAttendees = function (callback) {
@@ -80,7 +80,7 @@ var RaffleService = (function () {
                 new RegularAttendee('Jake', 'jake@gmail.com', 'Boulevard Tank 7'),
                 new Organizer('Jonathan', 'jonathan@github.com')
             ]);
-        }, 1000);
+        }, 2000);
     };
 
     RaffleService.prototype.raffle = function () {

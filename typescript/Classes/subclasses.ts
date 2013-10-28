@@ -25,7 +25,7 @@ class RegularAttendee extends Attendee {
             return super.getPrizeMessage(prize);
         } 
     }
-    constructor(name: string, email: string, public favoriteBeer: string = 'bud light') {
+    constructor(name: string, email: string, public favoriteSoda: string = 'bud light') {
         super(name, email);
     }
 }
@@ -38,8 +38,8 @@ class Organizer extends RegularAttendee {
             return super.getPrizeMessage(prize);
         }
     }
-    constructor(name: string, email: string, favoriteBeer?: string) {
-        super(name, email, favoriteBeer);
+    constructor(name: string, email: string, favoriteSoda?: string) {
+        super(name, email, favoriteSoda);
     }
 }
 
@@ -56,8 +56,8 @@ function getAttendees(): Attendee[] {
         new Attendee('Moe', 'moe@hotmail.com'),
         new Attendee('Larry', 'larry@geocities.com'),
         new Attendee('Curly', 'curly@altavista.com'),
-        new RegularAttendee('Jake', 'jake@gmail.com', 'Left Hand Haystack'),
-        new Organizer('Nick', 'nick@github.com')
+        new RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
+        new Organizer('Scott', 'scott@ms.com')
     ]
 }
 

@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AutoRaffle.html" />
+    <Content Include="jquery-2.0.3.min.js" />
+    <Content Include="jquery.d.ts" />
     <Content Include="RaffleForm.html" />
     <Content Include="Web.config" />
   </ItemGroup>

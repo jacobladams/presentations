@@ -58,8 +58,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Script.ts" />
-    <Content Include="Default.html" />
+    <TypeScriptCompile Include="interfaces.ts" />
+    <Content Include="AutoRaffle.html" />
     <Content Include="jquery-2.0.3.min.js" />
     <Content Include="jquery.d.ts" />
     <Content Include="Web.config" />

@@ -13,11 +13,11 @@ interface IAttendee {
     getPrizeMessage(prize: Prize): string;
 }
 
-class MockAttendee {
-    getPrizeMessage(prize: Prize): string {
-        return 'Test Message with prize named: ' + prize.name + ' was passed in';
-    }
-}
+//class MockAttendee {
+//    getPrizeMessage(prize: Prize): string {
+//        return 'Test Message with prize named: ' + prize.name + ' was passed in';
+//    }
+//}
 
 class Attendee implements IAttendee {
     getPrizeMessage(prize: Prize): string {
@@ -35,7 +35,7 @@ class RegularAttendee extends Attendee {
             return super.getPrizeMessage(prize);
         }
     }
-    constructor(name: string, email: string, public favoriteBeer?: string) {
+    constructor(name: string, email: string, public favoriteSoda?: string) {
         super(name, email);
     }
 }
@@ -48,8 +48,8 @@ class Organizer extends RegularAttendee {
             return super.getPrizeMessage(prize);
         }
     }
-    constructor(name: string, email: string, favoriteBeer?: string) {
-        super(name, email, favoriteBeer);
+    constructor(name: string, email: string, favoriteSoda?: string) {
+        super(name, email, favoriteSoda);
     }
 }
 
@@ -66,9 +66,9 @@ function getAttendees(): IAttendee[] {
         new Attendee('Moe', 'moe@hotmail.com'),
         new Attendee('Larry', 'larry@geocities.com'),
         new Attendee('Curly', 'curly@altavista.com'),
-        new RegularAttendee('Jake', 'jake@gmail.com', 'Left Hand Haystack'),
-        new Organizer('Nick', 'nick@github.com'),
-        new MockAttendee()
+        new RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
+        new Organizer('Scott', 'scott@ms.com'),
+        //new MockAttendee()
     ]
 }
 

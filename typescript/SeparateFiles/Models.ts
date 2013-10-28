@@ -27,7 +27,7 @@ module RaffleJS.Models {
                 return super.getPrizeMessage(prize);
             }
         }
-        constructor(name: string, email: string, public favoriteBeer?: string) {
+        constructor(name: string, email: string, public favoriteSoda?: string) {
             super(name, email);
         }
     }
@@ -40,8 +40,8 @@ module RaffleJS.Models {
                 return super.getPrizeMessage(prize);
             }
         }
-        constructor(name: string, email: string, favoriteBeer?: string) {
-            super(name, email, favoriteBeer);
+        constructor(name: string, email: string, favoriteSoda?: string) {
+            super(name, email, favoriteSoda);
         }
     }
 
