@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+	
+	<div ng-app="angularDemo" ng-controller="angularDemoController">
+		1 + 2 is {{1 +2}}
+		<br />
+		My name is {{name}} <br/>
+		<input type="text" ng-model="name"/>
+	</div>
+
+	<script src="scripts/angular.js"></script>
+	<!--<script>
+		name = "jake";
+	</script>-->
+	<script>
+		var app = angular.module('angularDemo', []);
+		//app.run(function($rootScope) {
+		//	$rootScope.name = 'jake adams';
+		//});
+
+		app.controller('angularDemoController', function($scope) {
+			$scope.name = 'jake adams';
+		});
+	</script>
+</body>
+</html>
