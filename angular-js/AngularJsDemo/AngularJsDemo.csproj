@@ -97,6 +97,7 @@
     <Content Include="Global.asax" />
     <Content Include="HelloWorld.html" />
     <Content Include="Index.html" />
+    <Content Include="Scratch.html" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular-resource.js" />
     <Content Include="scripts\angular-resource.min.js" />

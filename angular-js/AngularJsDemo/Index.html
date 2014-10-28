@@ -1,37 +1,65 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="Content/Site.css"/>
+	<link rel="stylesheet" type="text/css" href="Content/Site.css" />
 </head>
 <body>
 
 	<div ng-app="personnelDirectory" ng-controller="personnelListController">
 		<h1>Galactic Empire Personnel Directory</h1>
-		
-		<div>
-			<img />
-			{{personnel.image}}
-			<img ng-src="{{personnel.image}}"/>
+
+		<div ng-repeat="personnel in personnelList">
+			<div ng-hide="personnel.isEditting">
+				<div>
+					<img ng-src="{{personnel.image}}" />
+				</div>
+				<div>
+					<strong>Name: </strong>
+					{{personnel.firstName}} {{personnel.lastName}}
+				</div>
+				<div>
+					<strong>Title:</strong>
+					{{personnel.title}}
+				</div>
+				<div>
+					<strong>Status:</strong>
+					{{personnel.status.name}}
+				</div>
+				<div>
+					<a href="{{personnel.detailsUrls}}">View Details</a>
+				</div>
+				<button ng-click="editPersonnel(personnel)">Edit</button>
+			</div>
+			
+			
+
+			<div ng-show="personnel.isEditting">
+				<div>
+					<img ng-src="{{personnel.image}}" />
+				</div>
+				<div>
+					<strong>First Name: </strong>
+					<input type="text" ng-model="personnel.firstName" />
+				</div>
+				<div>
+					<strong>Last Name: </strong>
+					<input type="text" ng-model="personnel.lastName" />
+				</div>
+				<div>
+					<strong>Title:</strong>
+					<input type="text" ng-model="personnel.title" />
+				</div>
+				<div>
+					<strong>Status:</strong>
+					<select ng-model="personnel.status" ng-options="status as status.name for status in statuses"></select>
+				</div>
+				<div>
+					<a href="{{personnetl.detailsUrls}}">View Details</a>
+				</div>
+				<button ng-click="savePersonnel(personnel)">Save</button>
+			</div>
 		</div>
-		<div>
-			<strong>Name: </strong> 
-			{{personnel.firstName}} {{personnel.lastName}}
-		</div>
-		<div>
-			<strong>Title:</strong>
-			{{personnel.title}}
-		</div>
-		<div>
-			<a>View Details</a>
-			<a href="{{personnetl.detailsUrls}}">View Details</a>
-			{{personnel.detailsUrl}}
-		</div>
-		
-		<!--<div>
-			<strong>First Name</strong>:
-			{{firstName}}
-		</div>-->
 	</div>
 
 	<script src="scripts/angular.js"></script>
@@ -39,15 +67,41 @@
 		angular.module('personnelDirectory', []);
 
 		angular.module('personnelDirectory').controller('personnelListController', ['$scope', function ($scope) {
-			var personnel = {
+			var statuses = [{
+				id: 1,
+				name: 'Active'
+			}, {
+				id: 2,
+				name: 'Inactive'
+			}];
+
+			var personnelList = [{
 				firstName: 'Darth',
 				lastName: 'Vader',
 				title: 'Sith Lord',
 				image: 'someurltoanimage',
-				detailsUrl: 'somelinktodetails'
-			};
+				detailsUrl: 'somelinktodetails',
+				status: statuses[0]
+			}, {
+				firstName: 'Something',
+				lastName: 'Ozel',
+				title: 'Admiral',
+				image: 'someurltoanimage',
+				detailsUrl: 'somelinktodetails',
+				status: statuses[0]
+			}];
 
-			$scope.personnel = personnel;
+			$scope.statuses = statuses;
+
+			$scope.personnelList = personnelList;
+
+			$scope.editPersonnel = function(personnel) {
+				personnel.isEditting = true;
+			}
+
+			$scope.savePersonnel = function (personnel) {
+				personnel.isEditting = false;
+			}
 
 		}]);
 
