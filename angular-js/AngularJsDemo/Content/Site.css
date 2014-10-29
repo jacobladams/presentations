@@ -1,3 +1,6 @@
 ﻿body {
 	font-family: Helvetica, Arial, sans-serif;
 }
+th {
+	text-align: left;
+}

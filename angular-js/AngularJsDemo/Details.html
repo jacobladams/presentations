@@ -1,0 +1,49 @@
+﻿<div ng-hide="personnel.isEditting">
+	<div>
+		<img ng-src="{{personnel.image}}" />
+	</div>
+	<div>
+		<strong>Name: </strong>
+		{{personnel.firstName}} {{personnel.lastName}}
+	</div>
+	<div>
+		<strong>Title:</strong>
+		{{personnel.title}}
+	</div>
+	<div>
+		<strong>Status:</strong>
+		{{personnel.status.name}}
+	</div>
+	<div>
+		<a href="{{personnel.detailsUrls}}">View Details</a>
+	</div>
+	<button ng-click="editPersonnel(personnel)">Edit</button>
+</div>
+
+
+
+<div ng-show="personnel.isEditting">
+	<div>
+		<img ng-src="{{personnel.image}}" />
+	</div>
+	<div>
+		<strong>First Name: </strong>
+		<input type="text" ng-model="personnel.firstName" />
+	</div>
+	<div>
+		<strong>Last Name: </strong>
+		<input type="text" ng-model="personnel.lastName" />
+	</div>
+	<div>
+		<strong>Title:</strong>
+		<input type="text" ng-model="personnel.title" />
+	</div>
+	<div>
+		<strong>Status:</strong>
+		<select ng-model="personnel.status" ng-options="status as status.name for status in statuses"></select>
+	</div>
+	<div>
+		<a href="{{personnetl.detailsUrls}}">View Details</a>
+	</div>
+	<button ng-click="savePersonnel(personnel)">Save</button>
+</div>

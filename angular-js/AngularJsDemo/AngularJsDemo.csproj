@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
+    <Content Include="Details.html" />
     <Content Include="Global.asax" />
     <Content Include="HelloWorld.html" />
     <Content Include="Index.html" />

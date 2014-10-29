@@ -94,3 +94,209 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+demo 2
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="Content/Site.css" />
+</head>
+<body>
+
+	<div ng-app="personnelDirectory" ng-controller="personnelListController">
+		<h1>Galactic Empire Personnel Directory</h1>
+
+		<div ng-repeat="personnel in personnelList">
+			<div ng-hide="personnel.isEditting">
+				<div>
+					<img ng-src="{{personnel.image}}" />
+				</div>
+				<div>
+					<strong>Name: </strong>
+					{{personnel.firstName}} {{personnel.lastName}}
+				</div>
+				<div>
+					<strong>Title:</strong>
+					{{personnel.title}}
+				</div>
+				<div>
+					<strong>Status:</strong>
+					{{personnel.status.name}}
+				</div>
+				<div>
+					<a href="{{personnel.detailsUrls}}">View Details</a>
+				</div>
+				<button ng-click="editPersonnel(personnel)">Edit</button>
+			</div>
+			
+			
+
+			<div ng-show="personnel.isEditting">
+				<div>
+					<img ng-src="{{personnel.image}}" />
+				</div>
+				<div>
+					<strong>First Name: </strong>
+					<input type="text" ng-model="personnel.firstName" />
+				</div>
+				<div>
+					<strong>Last Name: </strong>
+					<input type="text" ng-model="personnel.lastName" />
+				</div>
+				<div>
+					<strong>Title:</strong>
+					<input type="text" ng-model="personnel.title" />
+				</div>
+				<div>
+					<strong>Status:</strong>
+					<select ng-model="personnel.status" ng-options="status as status.name for status in statuses"></select>
+				</div>
+				<div>
+					<a href="{{personnetl.detailsUrls}}">View Details</a>
+				</div>
+				<button ng-click="savePersonnel(personnel)">Save</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="scripts/angular.js"></script>
+	<script>
+		angular.module('personnelDirectory', []);
+
+		angular.module('personnelDirectory').controller('personnelListController', ['$scope', function ($scope) {
+			var statuses = [{
+				id: 1,
+				name: 'Active'
+			}, {
+				id: 2,
+				name: 'Inactive'
+			}];
+
+			var personnelList = [{
+				firstName: 'Darth',
+				lastName: 'Vader',
+				title: 'Sith Lord',
+				image: 'someurltoanimage',
+				detailsUrl: 'somelinktodetails',
+				status: statuses[0]
+			}, {
+				firstName: 'Something',
+				lastName: 'Ozel',
+				title: 'Admiral',
+				image: 'someurltoanimage',
+				detailsUrl: 'somelinktodetails',
+				status: statuses[0]
+			}];
+
+			$scope.statuses = statuses;
+
+			$scope.personnelList = personnelList;
+
+			$scope.editPersonnel = function(personnel) {
+				personnel.isEditting = true;
+			}
+
+			$scope.savePersonnel = function (personnel) {
+				personnel.isEditting = false;
+			}
+
+		}]);
+
+	</script>
+</body>
+
+</html>
+
+
+
+
+start of route example
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="Content/Site.css" />
+</head>
+<body>
+
+	<div ng-app="personnelDirectory" ng-controller="personnelListController">
+		<h1>Galactic Empire Personnel Directory</h1>
+		<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th>Name</th>
+					<th>Title</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="personnel in personnelList">
+					<td><img ng-src="{{personnel.image}}" /></td>
+					<td><a ng-href="#/Personnel/{{personnel.id}}">{{personnel.firstName}} {{personnel.lastName}}</a></td>
+					<td>{{personnel.title}}</td>
+				</tr>
+			<tbody>
+		</table>
+	</div>
+	<script src="scripts/angular.js"></script>
+	<script>
+		angular.module('personnelDirectory', []);
+
+		angular.module('personnelDirectory').controller('personnelListController', ['$scope', function ($scope) {
+			var statuses = [{
+				id: 1,
+				name: 'Active'
+			}, {
+				id: 2,
+				name: 'Inactive'
+			}];
+
+			var personnelList = [{
+				id: 1,
+				firstName: 'Darth',
+				lastName: 'Vader',
+				title: 'Sith Lord',
+				image: 'someurltoanimage',
+				detailsUrl: 'somelinktodetails',
+				status: statuses[0]
+			}, {
+				id: 2,
+				firstName: 'Something',
+				lastName: 'Ozel',
+				title: 'Admiral',
+				image: 'someurltoanimage',
+				detailsUrl: 'somelinktodetails',
+				status: statuses[0]
+			}];
+
+			$scope.statuses = statuses;
+
+			$scope.personnelList = personnelList;
+
+			$scope.editPersonnel = function (personnel) {
+				personnel.isEditting = true;
+			}
+
+			$scope.savePersonnel = function (personnel) {
+				personnel.isEditting = false;
+			}
+
+		}]);
+
+	</script>
+</body>
+
+</html>
+
+
+
+
+
