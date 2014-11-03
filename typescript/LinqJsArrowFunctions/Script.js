@@ -1,4 +1,5 @@
-///<reference path="linq.d.ts" />
+﻿///<reference path="linq.d.ts" />
+
 var attendees = [
     {
         firstName: 'Jake',
@@ -47,9 +48,9 @@ var attendees = [
 var documentBody = document.getElementsByTagName('body')[0];
 
 //var registeredEmailAddresses = Enumerable.from(attendees)
-//	.where(function (a) {return a.isRegistered })
-//	.select(function (a) {return a.email });
-//registeredEmailAddresses.forEach(function (a) { document.write(a + '<br/>') });
+//	.where(function (a) { return a.isRegistered; })
+//	.select(function (a) { return a.email; });
+//registeredEmailAddresses.forEach(function (a) { document.write(a + '<br/>'); });
 var registeredEmailAddresses = Enumerable.from(attendees).where(function (a) {
     return a.isRegistered;
 }).select(function (a) {

@@ -60,13 +60,13 @@ class RaffleService {
     }
 
     getAttendees(): IAttendee[] {
-        return [
-            new Attendee('Moe', 'moe@hotmail.com'),
-            new Attendee('Larry', 'larry@geocities.com'),
-            new Attendee('Curly', 'curly@altavista.com'),
-            new RegularAttendee('Jake', 'jake@gmail.com', 'Left Hand Haystack'),
-            new Organizer('Nick', 'nick@github.com'),
-        ]
+	    return [
+		    new Attendee('Moe', 'moe@hotmail.com'),
+		    new Attendee('Larry', 'larry@geocities.com'),
+		    new Attendee('Curly', 'curly@altavista.com'),
+		    new RegularAttendee('Jake', 'jake@gmail.com', 'Left Hand Haystack'),
+		    new Organizer('Nick', 'nick@github.com'),
+	    ];
     }
 
     raffle() {

@@ -2,15 +2,15 @@
 var raffleButton = document.getElementById('raffleButton');
 raffleButton.addEventListener('click', function () {
 
-    var numberOfAttendeesField;
-    numberOfAttendeesField = document.getElementById('numberOfAttendees');
+	var numberOfAttendeesField;
+	numberOfAttendeesField = document.getElementById('numberOfAttendees');
 
     var numberOfPrizesField;
     numberOfPrizesField = document.getElementById('numberOfPrizes');
 
-    var numberOfAttendees:number = numberOfAttendeesField.value;
+    var numberOfAttendees = numberOfAttendeesField.value;
 
-    var numberOfPrizes:number = numberOfPrizesField.value;
+    var numberOfPrizes = numberOfPrizesField.value;
 
     var remainingAttendees = [];
 
@@ -22,7 +22,7 @@ raffleButton.addEventListener('click', function () {
     results.innerHTML = '';
     for (var i =0; i < numberOfPrizes; i++) {
         var remainingIndex = Math.floor((Math.random() * remainingAttendees.length));
-        var winner = remainingAttendees.splice(remainingIndex, 1)[0];
+        var winner = remainingAttendees.splice(remainingIndex, 1);
 
         results.innerHTML += "Attendee " + (winner + 1) + " wins prize " + (i + 1) + '<br/>';
     }

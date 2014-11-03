@@ -25,7 +25,7 @@ class RegularAttendee extends Attendee {
             return super.getPrizeMessage(prize);
         } 
     }
-    constructor(name: string, email: string, public favoriteSoda: string = 'bud light') {
+    constructor(name: string, email: string, public favoriteSoda: string = 'Pepsi') {
         super(name, email);
     }
 }

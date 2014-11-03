@@ -54,22 +54,22 @@ class Organizer extends RegularAttendee {
 }
 
 function getPrizes(): Prize[] {
-    return [
-        new Prize('Free 14 day trial of Office 2013'),
-        new Prize('Pluralsight subscription'),
-        new Prize('Days of .NET ticket')
-    ]
+	return [
+		new Prize('Free 14 day trial of Office 2013'),
+		new Prize('Pluralsight subscription'),
+		new Prize('Days of .NET ticket')
+	];
 }
 
 function getAttendees(): IAttendee[] {
-    return [
-        new Attendee('Moe', 'moe@hotmail.com'),
-        new Attendee('Larry', 'larry@geocities.com'),
-        new Attendee('Curly', 'curly@altavista.com'),
-        new RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
-        new Organizer('Scott', 'scott@ms.com'),
-        //new MockAttendee()
-    ]
+	return [
+		new Attendee('Moe', 'moe@hotmail.com'),
+		new Attendee('Larry', 'larry@geocities.com'),
+		new Attendee('Curly', 'curly@altavista.com'),
+		new RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
+		new Organizer('Scott', 'scott@ms.com'),
+		//new MockAttendee()
+	];
 }
 
 $(function () {

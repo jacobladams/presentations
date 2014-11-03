@@ -1,5 +1,4 @@
 ///<reference path="jquery.d.ts" />
-//declare var $: any;
 
 class Prize {
     name: string;
@@ -18,40 +17,40 @@ class Attendee {
 }
 
 function getPrizes(): Prize[] {
-    return [
-        new Prize('Succeeding with Agile book'),
-        new Prize('Pluralsight Subscription'),
-        new Prize('KCDC Ticket')
-    ]
+	return [
+		new Prize('Free 14 day trial of Office 2013'),
+		new Prize('Pluralsight subscription'),
+		new Prize('Days of .NET ticket')
+	];
 }
 
-function getAttendees(): Attendee[]{
-    return [
-        new Attendee('Moe', 'moe@hotmail.com'),
-        new Attendee('Larry', 'larry@geocities.com'),
-        new Attendee('Curly', 'curly@altavista.com')
-    ]
+function getAttendees(): Attendee[] {
+	return [
+		new Attendee('Moe', 'moe@hotmail.com'),
+		new Attendee('Larry', 'larry@geocities.com'),
+		new Attendee('Curly', 'curly@altavista.com')
+	];
 }
 
-$(function () {
-    $('#raffleButton').click(function () {
-        var attendees: Attendee[] = getAttendees();
+$(function() {
+	$('#raffleButton').click(function() {
+		var attendees: Attendee[] = getAttendees();
 
-        var prizes: Prize[] = getPrizes();
+		var prizes: Prize[] = getPrizes();
 
-        var numberOfAttendees = attendees.length;
+		var numberOfAttendees = attendees.length;
 
-        var numberOfPrizes = prizes.length;
+		var numberOfPrizes = prizes.length;
 
-        var results = $('#results');
-        results.html('');
-        for (var i = 0; i < numberOfPrizes; i++) {
-            var winningIndex = Math.floor((Math.random() * attendees.length));
-            var winner: Attendee = attendees.splice(winningIndex, 1)[0];
+		var results = $('#results');
+		results.html('');
+		for (var i = 0; i < numberOfPrizes; i++) {
+			var winningIndex = Math.floor((Math.random() * attendees.length));
+			var winner: Attendee = attendees.splice(winningIndex, 1)[0];
 
-            results.append(winner.getPrizeMessage(prizes[i]) + '<br/>');
-        }
+			results.append(winner.getPrizeMessage(prizes[i]) + '<br/>');
+		}
 
-    });
+	});
 });
 

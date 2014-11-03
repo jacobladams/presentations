@@ -20,7 +20,7 @@ raffleButton.addEventListener('click', function () {
     results.innerHTML = '';
     for (var i = 0; i < numberOfPrizes; i++) {
         var remainingIndex = Math.floor((Math.random() * remainingAttendees.length));
-        var winner = remainingAttendees.splice(remainingIndex, 1)[0];
+        var winner = remainingAttendees.splice(remainingIndex, 1);
 
         results.innerHTML += "Attendee " + (winner + 1) + " wins prize " + (i + 1) + '<br/>';
     }

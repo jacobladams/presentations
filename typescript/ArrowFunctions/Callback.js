@@ -1,4 +1,4 @@
-///<reference path="jquery.d.ts" />
+﻿///<reference path="jquery.d.ts" />
 //declare var $: any;
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
