@@ -1,7 +1,5 @@
 ///<reference path="jquery.d.ts" />
-define(["require", "exports", 'Models'], function(require, exports, __Models__) {
-    var Models = __Models__;
-
+define(["require", "exports", 'Models'], function(require, exports, Models) {
     var RaffleService = (function () {
         function RaffleService() {
         }

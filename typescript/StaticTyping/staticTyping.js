@@ -1,4 +1,4 @@
-var raffleButton = document.getElementById('raffleButton');
+﻿var raffleButton = document.getElementById('raffleButton');
 raffleButton.addEventListener('click', function () {
     var numberOfAttendeesField;
     numberOfAttendeesField = document.getElementById('numberOfAttendees');

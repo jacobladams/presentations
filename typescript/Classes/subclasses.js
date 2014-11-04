@@ -1,4 +1,4 @@
-///<reference path="jquery.d.ts" />
+﻿///<reference path="jquery.d.ts" />
 //declare var $: any;
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -26,10 +26,10 @@ var Attendee = (function () {
 
 var RegularAttendee = (function (_super) {
     __extends(RegularAttendee, _super);
-    function RegularAttendee(name, email, favoriteBeer) {
-        if (typeof favoriteBeer === "undefined") { favoriteBeer = 'bud light'; }
+    function RegularAttendee(name, email, favoriteSoda) {
+        if (typeof favoriteSoda === "undefined") { favoriteSoda = 'Pepsi'; }
         _super.call(this, name, email);
-        this.favoriteBeer = favoriteBeer;
+        this.favoriteSoda = favoriteSoda;
     }
     RegularAttendee.prototype.getPrizeMessage = function (prize) {
         if (prize.name === 'Free 14 day trial of Office 2013') {
@@ -43,8 +43,8 @@ var RegularAttendee = (function (_super) {
 
 var Organizer = (function (_super) {
     __extends(Organizer, _super);
-    function Organizer(name, email, favoriteBeer) {
-        _super.call(this, name, email, favoriteBeer);
+    function Organizer(name, email, favoriteSoda) {
+        _super.call(this, name, email, favoriteSoda);
     }
     Organizer.prototype.getPrizeMessage = function (prize) {
         if (prize.name === 'Days of .NET ticket') {
@@ -69,8 +69,8 @@ function getAttendees() {
         new Attendee('Moe', 'moe@hotmail.com'),
         new Attendee('Larry', 'larry@geocities.com'),
         new Attendee('Curly', 'curly@altavista.com'),
-        new RegularAttendee('Jake', 'jake@gmail.com', 'Left Hand Haystack'),
-        new Organizer('Nick', 'nick@github.com')
+        new RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
+        new Organizer('Scott', 'scott@ms.com')
     ];
 }
 

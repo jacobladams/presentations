@@ -1,4 +1,4 @@
-﻿///<reference path="linq.d.ts" />
+///<reference path="linq.d.ts" />
 
 var attendees = [
     {
