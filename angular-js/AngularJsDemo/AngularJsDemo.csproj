@@ -93,6 +93,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\app.js" />
+    <Content Include="app\controllers\personnelListController.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Details.html" />
     <Content Include="Global.asax" />
@@ -131,7 +133,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\" />
+    <Folder Include="app\directives\" />
+    <Folder Include="app\partials\" />
+    <Folder Include="app\services\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
