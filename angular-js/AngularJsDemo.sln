@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeAppDemo", "OfficeAppD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeAppDemoWeb", "OfficeAppDemoWeb\OfficeAppDemoWeb.csproj", "{FFD75E1C-E429-4071-93FB-57B9B1F98960}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{4889025C-D388-4039-8853-FBD447F909BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{FFD75E1C-E429-4071-93FB-57B9B1F98960}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFD75E1C-E429-4071-93FB-57B9B1F98960}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFD75E1C-E429-4071-93FB-57B9B1F98960}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4889025C-D388-4039-8853-FBD447F909BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4889025C-D388-4039-8853-FBD447F909BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4889025C-D388-4039-8853-FBD447F909BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4889025C-D388-4039-8853-FBD447F909BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

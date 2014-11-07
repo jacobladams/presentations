@@ -102,10 +102,6 @@
     <Content Include="Index.html" />
     <Content Include="Scratch.html" />
     <Content Include="scripts\angular-mocks.js" />
-    <Content Include="scripts\angular-resource.js" />
-    <Content Include="scripts\angular-resource.min.js" />
-    <Content Include="scripts\angular-route.js" />
-    <Content Include="scripts\angular-route.min.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
     <Content Include="Web.config" />
@@ -123,8 +119,6 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="scripts\angular.min.js.map" />
-    <Content Include="scripts\angular-resource.min.js.map" />
-    <Content Include="scripts\angular-route.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
