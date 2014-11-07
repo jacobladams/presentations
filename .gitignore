@@ -154,3 +154,5 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+/angular-js/packages/jQuery.1.9.1
+/angular-js/packages/Microsoft.Office.js.1.1.0
