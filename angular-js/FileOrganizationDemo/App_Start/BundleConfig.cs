@@ -14,6 +14,7 @@ namespace AngularDemo
 						"~/app/services/personnelDirectoryService.js",
 						"~/app/directives/personnelDetailsRead.js",
 						"~/app/directives/personnelDetailsEdit.js",
+						"~/app/directives/navbar.js",
 						"~/app/controllers/personnelListController.js",
 						"~/app/controllers/personnelDetailsController.js",
 						"~/app/controllers/helpController.js"));

@@ -38,3 +38,16 @@ th {
 .thumbnail {
 	height: 60px;
 }
+
+.navigation {
+	list-style: none;
+	display: block;
+	padding: 0;
+	margin: 0,0,20px,0;
+}
+
+.navigation li {
+	display: inline;
+	font-weight: 600;
+	margin-right: 10px;
+}

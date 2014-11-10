@@ -116,9 +116,11 @@
     <Content Include="app\controllers\helpController.js" />
     <Content Include="app\controllers\personnelDetailsController.js" />
     <Content Include="app\controllers\personnelListController.js" />
+    <Content Include="app\directives\navbar.js" />
     <Content Include="app\directives\personnelDetailsEdit.js" />
     <Content Include="app\directives\personnelDetailsRead.js" />
     <Content Include="app\partials\help.html" />
+    <Content Include="app\partials\navbar.html" />
     <Content Include="app\partials\personnel-details-edit.html" />
     <Content Include="app\partials\personnel-details-read.html" />
     <Content Include="app\partials\personnel-details.html" />
