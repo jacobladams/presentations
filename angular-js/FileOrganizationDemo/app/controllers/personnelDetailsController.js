@@ -1,8 +1,8 @@
-﻿angular.module('personnelDirectory').controller('personnelDetailsController', ['$scope', '$routeParams', '$http', '$resource', function ($scope, $routeParams, $http, $resource) {
+﻿angular.module('personnelDirectory').controller('personnelDetailsController', ['$scope', '$routeParams', '$resource', function ($scope, $routeParams, $resource) {
 	var personnelId = $routeParams.id;
 	var personnelDirectory = {};
 
-	var personnelResource = $resource('/api/Personnel/:id', { id: 'id' });
+	var personnelResource = $resource('/api/Personnel/:id', { id: '@id' });
 	var titleResource = $resource('/api/Title');
 
 	personnelDirectory.personnel = personnelResource.get({ id: personnelId });

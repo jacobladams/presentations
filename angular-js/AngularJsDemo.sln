@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJsDemo", "AngularJsDemo\AngularJsDemo.csproj", "{DFDD4291-B117-42F7-988B-B0D56B7A94AA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingDemo", "BindingDemo\BindingDemo.csproj", "{3BC7925E-B231-4383-B4B8-0023275D08B5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoutingDemo", "RoutingDemo\RoutingDemo.csproj", "{82069878-982F-4D88-9B96-E45EDC58773D}"
@@ -29,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DFDD4291-B117-42F7-988B-B0D56B7A94AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFDD4291-B117-42F7-988B-B0D56B7A94AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFDD4291-B117-42F7-988B-B0D56B7A94AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFDD4291-B117-42F7-988B-B0D56B7A94AA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3BC7925E-B231-4383-B4B8-0023275D08B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3BC7925E-B231-4383-B4B8-0023275D08B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BC7925E-B231-4383-B4B8-0023275D08B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
