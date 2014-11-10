@@ -84,14 +84,20 @@
 			</div>
 		
 		</script>
+		
+		<script type="text/ng-template" id="help">
+			Help Me Obi Wan Kenobi!
+		
+		</script>
 
-	</div>
+</div>
 
 	
 
 
 
-	<script src="scripts/angular.js"></script>
+	<script src="scripts/angular.js">
+	</script>
 	<script src="scripts/angular-route.js"></script>
 	<script>
 		angular.module('personnelDirectory', ['ngRoute']);
@@ -105,6 +111,10 @@
 				when('/personnel/:id', {
 					controller: 'personnelDetailsController',
 					templateUrl: 'personnel-details'
+				}).
+				when('/help', {
+					controller: 'helpController',
+					templateUrl: 'help'
 				}).
 				otherwise({
 					redirectTo: '/personnel'
@@ -173,6 +183,9 @@
 
 		}]);
 
+		angular.module('personnelDirectory').controller('helpController', [function($scope) {
+
+		}]);
 	</script>
 </body>
 
