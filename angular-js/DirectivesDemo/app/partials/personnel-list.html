@@ -1,0 +1,16 @@
+﻿<table>
+	<thead>
+		<tr>
+			<th></th>
+			<th>Name</th>
+			<th>Title</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="personnel in personnelDirectory.personnelList">
+			<td><img ng-src="{{personnel.image}}" class="thumbnail" /></td>
+			<td><a ng-href="#/personnel/{{personnel.id}}">{{personnel.firstName}} {{personnel.lastName}}</a></td>
+			<td>{{personnel.title}}</td>
+		</tr>
+	<tbody>
+</table>
