@@ -3,7 +3,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace HttpDemo
+namespace AngularDemo
 {
     public static class WebApiConfig
     {

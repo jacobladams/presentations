@@ -1,19 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 
+using AngularDemo;
+
 namespace HttpDemo.Controllers
 {
     public class TitleController : ApiController
     {
 	    public IEnumerable<string> Get()
 	    {
-		    return new List<string>
-					{
-						"Captain", 
-						"Admiral", 
-						"Sith Lord", 
-						"Grand Moff"
-					};
+		   return Global.PersonnelRepository.Titles;
 	    }
     }
 }

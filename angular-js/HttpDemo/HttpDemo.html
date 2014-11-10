@@ -8,7 +8,7 @@
 
 	<div ng-app="personnelDirectory" ng-controller="personnelListController">
 		<h1 class='title'><i class="empire-icon"></i> Galactic Empire Personnel Directory</h1>
-		<h2><a href="/help">Help</a></h2>
+		<h2><a href="#/help">Help</a></h2>
 		<ng-view></ng-view>
 
 		<script type="text/ng-template" id="personnel-list">
@@ -142,8 +142,7 @@
 			});
 
 			personnelDirectory.savePersonnel = function (personnel) {
-				$http.post('/api/Personnel/' + personnelId, personnel).success(function (personnel) {
-					personnelDirectory.personnel = personnel;
+				$http.post('/api/Personnel/' + personnelId, personnel).success(function (savedPersonnel) {
 					personnel.isEditting = false;
 				});
 			};
@@ -155,8 +154,8 @@
 			//personnelDirectory.titles = titleResource.query();
 
 			//personnelDirectory.savePersonnel = function (personnel) {
-			//	personnel.$save().$promise.then(function (personnel) {
-			//		personnelDirectory.personnel = personnel;
+			//	personnel.$save().then(function (savedPersonnel) {
+			//		personnelDirectory.personnel = savedPersonnel;
 			//		personnel.isEditting = false;
 			//	});
 			//};

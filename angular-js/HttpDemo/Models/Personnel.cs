@@ -1,5 +1,5 @@
 ﻿
-namespace HttpDemo.Models
+namespace AngularDemo.Models
 {
 	public class Personnel
 	{
