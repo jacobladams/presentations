@@ -154,4 +154,6 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
-/angular-js/packages
+angular-js/packages/
+
+
