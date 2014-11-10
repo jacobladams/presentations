@@ -34,3 +34,7 @@ th {
 .personnelItem {
 	margin-bottom: 30px;
 }
+
+.thumbnail {
+	height: 60px;
+}

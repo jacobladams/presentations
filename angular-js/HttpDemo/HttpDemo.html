@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title></title>
@@ -10,7 +10,7 @@
 		<h1 class='title'><i class="empire-icon"></i> Galactic Empire Personnel Directory</h1>
 		<h2><a href="/help">Help</a></h2>
 		<ng-view></ng-view>
-		
+
 		<script type="text/ng-template" id="personnel-list">
 			<table>
 				<thead>
@@ -80,18 +80,20 @@
 				</div>
 				<button ng-click="personnelDirectory.savePersonnel(personnelDirectory.personnel)">Save</button>
 			</div>
-		
+
 		</script>
-		
+
 		<script type="text/ng-template" id="help">
 			Help Me Obi Wan Kenobi!
 		</script>
-</div>
+	</div>
 
-	<script src="scripts/angular.js"></script>
+	<script src="scripts/angular.js">
+	</script>
 	<script src="scripts/angular-route.js"></script>
+	<script src="scripts/angular-resource.js"></script>
 	<script>
-		angular.module('personnelDirectory', ['ngRoute']);
+		angular.module('personnelDirectory', ['ngRoute', 'ngResource']);
 
 		angular.module('personnelDirectory').config(['$routeProvider', function ($routeProvider) {
 			$routeProvider.
@@ -112,118 +114,61 @@
 				});
 		}]);
 
-		angular.module('personnelDirectory').controller('personnelListController', ['$scope', function ($scope) {
-			var personnelDirectory = {
-				personnelList: [{
-					firstName: 'Lorth',
-					lastName: 'Needa',
-					title: 'Captain',
-					image: '/images/needa.jpg',
-					active: true,
-					id: 5,
-					detailsUrl: 'http://www.starwars.com/databank/captain-needa'
-				}, {
-					firstName: 'Darth',
-					lastName: 'Vader',
-					title: 'Sith Lord',
-					image: '/images/vader.jpg',
-					active: true,
-					id: 2,
-					detailsUrl: 'http://www.starwars.com/databank/darth-vader'
-				}, {
-					firstName: 'Kendal',
-					lastName: 'Ozzel',
-					title: 'Admiral',
-					image: '/images/ozzel.jpg',
-					active: true,
-					id: 3,
-					detailsUrl: 'http://www.starwars.com/databank/admiral-ozzel'
-				}, {
-					firstName: 'Firmus',
-					lastName: 'Piett',
-					title: 'Captain',
-					image: '/images/piett.jpg',
-					active: true,
-					id: 4,
-					detailsUrl: 'http://www.starwars.com/databank/admiral-piett'
-				}, {
-					firstName: 'Wilhuff',
-					lastName: 'Tarkin',
-					title: 'Grand Moff',
-					image: '/images/tarkin.jpg',
-					active: false,
-					id: 1,
-					detailsUrl: 'http://www.starwars.com/databank/tarkin'
-				}]
-			};
+		angular.module('personnelDirectory').controller('personnelListController', ['$scope', '$http', '$resource', function ($scope, $http, $resource) {
+			var personnelDirectory = {};
 
-			personnelDirectory.titles = ['Captain', 'Admiral', 'Sith Lord', 'Grand Moff'];
+			$http.get('/api/Personnel').success(function(personnelList) {
+				personnelDirectory.personnelList = personnelList;
+			});
+
+			//var personnelResource = $resource('/api/Personnel');
+
+			//personnelDirectory.personnelList = personnelResource.query();
 
 			$scope.personnelDirectory = personnelDirectory;
 		}]);
 
 
-		angular.module('personnelDirectory').controller('personnelDetailsController', ['$scope', '$routeParams', function ($scope, $routeParams) {
+		angular.module('personnelDirectory').controller('personnelDetailsController', ['$scope', '$routeParams', '$http', '$resource', function ($scope, $routeParams, $http, $resource) {
 			var personnelId = $routeParams.id;
-			var personnelDirectory = {
-				personnelList: [{
-					firstName: 'Lorth',
-					lastName: 'Needa',
-					title: 'Captain',
-					image: '/images/needa.jpg',
-					active: true,
-					id: 5,
-					detailsUrl: 'http://www.starwars.com/databank/captain-needa'
-				}, {
-					firstName: 'Darth',
-					lastName: 'Vader',
-					title: 'Sith Lord',
-					image: '/images/vader.jpg',
-					active: true,
-					id: 2,
-					detailsUrl: 'http://www.starwars.com/databank/darth-vader'
-				}, {
-					firstName: 'Kendal',
-					lastName: 'Ozzel',
-					title: 'Admiral',
-					image: '/images/ozzel.jpg',
-					active: true,
-					id: 3,
-					detailsUrl: 'http://www.starwars.com/databank/admiral-ozzel'
-				}, {
-					firstName: 'Firmus',
-					lastName: 'Piett',
-					title: 'Captain',
-					image: '/images/piett.jpg',
-					active: true,
-					id: 4,
-					detailsUrl: 'http://www.starwars.com/databank/admiral-piett'
-				}, {
-					firstName: 'Wilhuff',
-					lastName: 'Tarkin',
-					title: 'Grand Moff',
-					image: '/images/tarkin.jpg',
-					active: false,
-					id: 1,
-					detailsUrl: 'http://www.starwars.com/databank/tarkin'
-				}]
+			var personnelDirectory = {};
+
+			$http.get('/api/Personnel/' + personnelId).success(function (personnel) {
+				personnelDirectory.personnel = personnel;
+			});
+
+			$http.get('/api/Title').success(function (titles) {
+				personnelDirectory.titles = titles;
+			});
+
+			personnelDirectory.savePersonnel = function (personnel) {
+				$http.post('/api/Personnel/' + personnelId, personnel).success(function (personnel) {
+					personnelDirectory.personnel = personnel;
+					personnel.isEditting = false;
+				});
 			};
 
-			var personnel = personnelDirectory.personnelList.filter(function (p) {
-				return p.id == personnelId;
-			})[0];
+			//var personnelResource = $resource('/api/Personnel/:id', { id: 'id' });
+			//var titleResource = $resource('/api/Title');
 
-			personnelDirectory.titles = ['Captain', 'Admiral', 'Sith Lord', 'Grand Moff'];
+			//personnelDirectory.personnel = personnelResource.get({id: personnelId});
+			//personnelDirectory.titles = titleResource.query();
+
+			//personnelDirectory.savePersonnel = function (personnel) {
+			//	personnel.$save().$promise.then(function (personnel) {
+			//		personnelDirectory.personnel = personnel;
+			//		personnel.isEditting = false;
+			//	});
+			//};
+
 
 			personnelDirectory.editPersonnel = function (personnel) {
 				personnel.isEditting = true;
 			};
 
-			personnelDirectory.savePersonnel = function (personnel) {
-				personnel.isEditting = false;
-			};
+			
 
-			personnelDirectory.personnel = personnel;
+
 			$scope.personnelDirectory = personnelDirectory;
 
 		}]);

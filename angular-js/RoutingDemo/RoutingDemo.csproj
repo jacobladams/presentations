@@ -63,6 +63,8 @@
     <Content Include="Images\piett.jpg" />
     <Content Include="Images\tarkin.jpg" />
     <Content Include="Images\vader.jpg" />
+    <Content Include="Content\DistantGalaxyIcons.ttf" />
+    <Content Include="Content\Starjedi.ttf" />
     <Content Include="scripts\angular-route.js" />
     <Content Include="scripts\angular-route.min.js" />
     <Content Include="scripts\angular.js" />
@@ -70,8 +72,6 @@
     <Content Include="scripts\angular.min.js.map" />
     <Content Include="packages.config" />
     <Content Include="scripts\angular-route.min.js.map" />
-    <Content Include="Content\DistantGalaxyIcons.ttf" />
-    <Content Include="Content\Starjedi.ttf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
