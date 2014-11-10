@@ -57,37 +57,21 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\BindingDemo\Content\Site.css">
-      <Link>Content\Site.css</Link>
-    </Content>
-    <Content Include="..\BindingDemo\Images\needa.jpg">
-      <Link>Images\needa.jpg</Link>
-    </Content>
-    <Content Include="..\BindingDemo\Images\ozzel.jpg">
-      <Link>Images\ozzel.jpg</Link>
-    </Content>
-    <Content Include="..\BindingDemo\Images\piett.jpg">
-      <Link>Images\piett.jpg</Link>
-    </Content>
-    <Content Include="..\BindingDemo\Images\tarkin.jpg">
-      <Link>Images\tarkin.jpg</Link>
-    </Content>
-    <Content Include="..\BindingDemo\Images\vader.jpg">
-      <Link>Images\vader.jpg</Link>
-    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\needa.jpg" />
+    <Content Include="Images\ozzel.jpg" />
+    <Content Include="Images\piett.jpg" />
+    <Content Include="Images\tarkin.jpg" />
+    <Content Include="Images\vader.jpg" />
     <Content Include="scripts\angular-route.js" />
     <Content Include="scripts\angular-route.min.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\angular.min.js.map" />
     <Content Include="packages.config" />
-    <Content Include="..\BindingDemo\Content\DistantGalaxyIcons.ttf">
-      <Link>Content\DistantGalaxyIcons.ttf</Link>
-    </Content>
-    <Content Include="..\BindingDemo\Content\Starjedi.ttf">
-      <Link>Content\Starjedi.ttf</Link>
-    </Content>
     <Content Include="scripts\angular-route.min.js.map" />
+    <Content Include="Content\DistantGalaxyIcons.ttf" />
+    <Content Include="Content\Starjedi.ttf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -7,7 +7,7 @@
 <body>
 
 	<div ng-app="personnelDirectory" ng-controller="personnelListController">
-		<h1>Galactic Empire Personnel Directory</h1>
+		<h1 class='title'><i class="empire-icon"></i> Galactic Empire Personnel Directory</h1>
 		<ng-view></ng-view>
 		
 		<script type="text/ng-template" id="personnel-list">
@@ -21,7 +21,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="personnel in personnelList">
+					<tr ng-repeat="personnel in personnelDirectory.personnelList">
 						<td><img ng-src="{{personnel.image}}" /></td>
 						<td><a ng-href="#/Personnel/{{personnel.id}}">{{personnel.firstName}} {{personnel.lastName}}</a></td>
 						<td>{{personnel.title}}</td>
@@ -32,6 +32,7 @@
 		</script>
 
 		<script type="text/ng-template" id="personnel-details">
+			details
 			<div ng-hide="personnel.isEditting">
 				<div>
 					<img ng-src="{{personnel.image}}" />
@@ -81,6 +82,7 @@
 				</div>
 				<button ng-click="savePersonnel(personnel)">Save</button>
 			</div>
+		
 		</script>
 
 	</div>
@@ -103,55 +105,73 @@
 				when('/personnel/:id', {
 					controller: 'personnelDetailsController',
 					templateUrl: 'personnel-details'
+				}).
+				otherwise({
+					redirectTo: '/personnel'
 				});
 		}]);
 
 		angular.module('personnelDirectory').controller('personnelListController', ['$scope', function ($scope) {
-			var statuses = [{
-				id: 1,
-				name: 'Active'
-			}, {
-				id: 2,
-				name: 'Inactive'
-			}];
+			var personnelDirectory = {
+				personnelList: [{
+					firstName: 'Lorth',
+					lastName: 'Needa',
+					title: 'Captain',
+					image: '/images/needa.jpg',
+					active: true,
+					detailsUrl: 'http://www.starwars.com/databank/captain-needa'
+				}, {
+					firstName: 'Darth',
+					lastName: 'Vader',
+					title: 'Sith Lord',
+					image: '/images/vader.jpg',
+					active: true,
+					detailsUrl: 'http://www.starwars.com/databank/darth-vader'
+				}, {
+					firstName: 'Kendal',
+					lastName: 'Ozzel',
+					title: 'Admiral',
+					image: '/images/ozzel.jpg',
+					active: true,
+					detailsUrl: 'http://www.starwars.com/databank/admiral-ozzel'
+				}, {
+					firstName: 'Firmus',
+					lastName: 'Piett',
+					title: 'Captain',
+					image: '/images/piett.jpg',
+					active: true,
+					detailsUrl: 'http://www.starwars.com/databank/admiral-piett'
+				}, {
+					firstName: 'Wilhuff',
+					lastName: 'Tarkin',
+					title: 'Grand Moff',
+					image: '/images/tarkin.jpg',
+					active: false,
+					detailsUrl: 'http://www.starwars.com/databank/tarkin'
+				}]
+			};
 
-			var personnelList = [{
-				id: 1,
-				firstName: 'Darth',
-				lastName: 'Vader',
-				title: 'Sith Lord',
-				image: 'someurltoanimage',
-				detailsUrl: 'somelinktodetails',
-				status: statuses[0]
-			}, {
-				id: 2,
-				firstName: 'Something',
-				lastName: 'Ozel',
-				title: 'Admiral',
-				image: 'someurltoanimage',
-				detailsUrl: 'somelinktodetails',
-				status: statuses[0]
-			}];
+			personnelDirectory.titles = ['Captain', 'Admiral', 'Sith Lord', 'Grand Moff'];
 
-			$scope.statuses = statuses;
-
-			$scope.personnelList = personnelList;
-
-			$scope.editPersonnel = function (personnel) {
-				personnel.isEditting = true;
-			}
-
-			$scope.savePersonnel = function (personnel) {
-				personnel.isEditting = false;
-			}
-
+			$scope.personnelDirectory = personnelDirectory;
 		}]);
 
 
-		//angular.module('personnelDirectory').controller('personnelDetailsController', ['$scope', function ($scope) {
-			
+		angular.module('personnelDirectory').controller('personnelDetailsController', ['$scope', function ($scope) {
+			var personnelList = [
+				{
+					id: 1,
+					firstName: 'Darth',
+					lastName: 'Vader',
+					title: 'Sith Lord',
+					image: 'someurltoanimage',
+					detailsUrl: 'somelinktodetails',
+					status: statuses[0]
+				}
+			];
+			$scope.personnel = personnelList[0];
 
-		//}]);
+		}]);
 
 	</script>
 </body>
