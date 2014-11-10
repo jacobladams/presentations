@@ -30,12 +30,12 @@ angular.module('personnelDirectory').controller('personnelListController', ['$sc
 
 	$scope.personnelList = personnelList;
 
-	$scope.editPersonnel = function (personnel) {
+	$scope.editPersonnel = function(personnel) {
 		personnel.isEditting = true;
-	}
+	};
 
-	$scope.savePersonnel = function (personnel) {
+	$scope.savePersonnel = function(personnel) {
 		personnel.isEditting = false;
-	}
+	};
 
 }]);

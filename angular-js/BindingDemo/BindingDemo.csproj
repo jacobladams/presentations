@@ -57,10 +57,18 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\needa.jpg" />
+    <Content Include="Images\ozzel.jpg" />
+    <Content Include="Images\piett.jpg" />
+    <Content Include="Images\tarkin.jpg" />
+    <Content Include="Images\vader.jpg" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\angular.min.js.map" />
     <Content Include="packages.config" />
+    <Content Include="Content\DistantGalaxyIcons.ttf" />
+    <Content Include="Content\Starjedi.ttf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -69,13 +77,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Index.html" />
+    <Content Include="BindingDemo.html" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

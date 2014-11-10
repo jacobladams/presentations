@@ -67,7 +67,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Index.html" />
+    <Content Include="HelloWorld.html" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />

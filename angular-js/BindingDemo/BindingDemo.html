@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="Content/Site.css" />
+</head>
+<body>
+	<h1 class='title'><i class="empire-icon"></i> Galactic Empire Personnel Directory</h1>
+
+	<div ng-app="personnelDirectory" ng-controller="personnelListController">
+		<div ng-repeat="personnel in personnelDirectory.personnelList" class="personnelItem">
+			<div ng-hide="personnel.isEditting">
+				<div>
+					<img src="{{personnel.image}}" />
+				</div>
+				<div>
+					<strong>Name: </strong>
+					{{personnel.firstName}} {{personnel.lastName}}
+				</div>
+				<div>
+					<strong>Title:</strong>
+					{{personnel.title}}
+				</div>
+				<div>
+					<strong>Is Active:</strong>
+					{{personnel.active}}
+				</div>
+				<div>
+					<a ng-href="{{personnel.detailsUrl}}">View Details</a>
+				</div>
+				<button ng-click="personnelDirectory.editPersonnel(personnel)">Edit</button>
+			</div>
+
+			<div ng-show="personnel.isEditting">
+				<div>
+					<img ng-src="{{personnel.image}}" />
+				</div>
+				<div>
+					<strong>First Name: </strong>
+					<input type="text" ng-model="personnel.firstName" />
+				</div>
+				<div>
+					<strong>Last Name: </strong>
+					<input type="text" ng-model="personnel.lastName" />
+				</div>
+				<div>
+					<strong>Title:</strong>
+					<!--<input type="text" ng-model="personnel.title" />-->
+					<select ng-options="title for title in personnelDirectory.titles" ng-model="personnel.title"></select>
+				</div>
+				<div>
+					<strong>Is Active:</strong>
+					<input type="checkbox" ng-model="personnel.active" />
+				</div>
+				<div>
+					<a ng-href="{{personnel.detailsUrls}}">View Details</a>
+				</div>
+				<button ng-click="personnelDirectory.savePersonnel(personnel)">Save</button>
+			</div>
+			
+		</div>
+	</div>
+
+	<script src="scripts/angular.js"></script>
+	<script>
+		angular.module('personnelDirectory', []);
+
+		angular.module('personnelDirectory').controller('personnelListController', ['$scope', function ($scope) {
+			//var personnel = {
+			//	firstName: 'Darth',
+			//	lastName: 'Vader',
+			//	title: 'Sith Lord',
+			//	image: '/images/vader.jpg',
+			//	detailsUrl: 'http://www.starwars.com/databank/darth-vader'
+			//};
+			//$scope.personnel = personnel;
+			var personnelDirectory = {
+				personnelList: [{
+					firstName: 'Lorth',
+					lastName: 'Needa',
+					title: 'Captain',
+					image: '/images/needa.jpg',
+					active: true,
+					detailsUrl: 'http://www.starwars.com/databank/captain-needa'
+				}, {
+					firstName: 'Darth',
+					lastName: 'Vader',
+					title: 'Sith Lord',
+					image: '/images/vader.jpg',
+					active: true,
+					detailsUrl: 'http://www.starwars.com/databank/darth-vader'
+				}, {
+					firstName: 'Kendal',
+					lastName: 'Ozzel',
+					title: 'Admiral',
+					image: '/images/ozzel.jpg',
+					active: true,
+					detailsUrl: 'http://www.starwars.com/databank/admiral-ozzel'
+				}, {
+					firstName: 'Firmus',
+					lastName: 'Piett',
+					title: 'Captain',
+					image: '/images/piett.jpg',
+					active: true,
+					detailsUrl: 'http://www.starwars.com/databank/admiral-piett'
+				}, {
+					firstName: 'Wilhuff',
+					lastName: 'Tarkin',
+					title: 'Grand Moff',
+					image: '/images/tarkin.jpg',
+					active: false,
+					detailsUrl: 'http://www.starwars.com/databank/tarkin'
+				}]
+			};
+
+			personnelDirectory.titles = ['Captain', 'Admiral', 'Sith Lord', 'Grand Moff'];
+
+			personnelDirectory.editPersonnel = function(personnel) {
+				personnel.isEditting = true;
+			};
+
+			personnelDirectory.savePersonnel = function (personnel) {
+				personnel.isEditting = false;
+			};
+
+
+			$scope.personnelDirectory = personnelDirectory;
+
+
+		}]);
+	</script>
+</body>
+
+</html>
