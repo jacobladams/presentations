@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "El tipo de enlace especificado no es compatible con el elemento con nombre suministrado.";
-Strings.OfficeOM.L_EventHandlerNotExist = "El tipo de evento especificado no se admite en este objeto.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Thê spë©îfìêd ëvéñt hâñdlér wås ñøt fòµñd för thís Þïñdìñg.Ñ,¿ñÑ,¿ñÑ,¿ñ_";
 Strings.OfficeOM.L_UnknownBindingType = "El tipo de enlace no es compatible.";
 Strings.OfficeOM.L_InvalidNode = "Nodo no válido";
 Strings.OfficeOM.L_NotImplemented = "La función {0} no está implementada.";

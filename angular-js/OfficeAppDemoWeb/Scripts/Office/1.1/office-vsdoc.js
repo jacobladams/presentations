@@ -1,4 +1,4 @@
-/* Version: 16.0.2420.1000 */
+/* Version: 16.0.2815.1000 */
 /*
 	Copyright (c) Microsoft Corporation.  All rights reserved.
 */
@@ -2581,14 +2581,14 @@ Office._processItem(Office,
                 },
                 value: "compressed"
             },
-            PDF: {
+            Pdf: {
                 conditions: {
                     hosts: ["ppt", "word"],
                     reqs: ["set PdfFile GE 1.1"]
                 },
                 annotate: {
                     ///<field type="String">Returns the file in PDF format as a byte array</field>
-                    PDF: undefined
+                    Pdf: undefined
                 },
                 value: "pdf"
             },

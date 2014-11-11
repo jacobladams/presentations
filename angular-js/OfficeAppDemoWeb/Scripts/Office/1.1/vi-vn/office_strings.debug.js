@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Kiểu ghép nối đã xác định không tương thích với mục được đặt tên đã cung cấp.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Không hỗ trợ kiểu sự kiện đã xác định trên tượng này.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Thê spëçîƒïë₫ èvêñt hæñđlé® wås ñœt ƒœüñ₫ ƒ°® thîs bïñđîñg.ệôụộ_";
 Strings.OfficeOM.L_UnknownBindingType = "Kiểu ghép nối không được hỗ trợ.";
 Strings.OfficeOM.L_InvalidNode = "Nút Không hợp lệ";
 Strings.OfficeOM.L_NotImplemented = "Hàm {0} chưa được triển khai.";

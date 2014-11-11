@@ -1,5 +1,5 @@
 /* Excel specific API library */
-/* Version: 15.0.4582.1000 */
+/* Version: 15.0.4615.1000 */
 /*
 	Copyright (c) Microsoft Corporation.  All rights reserved.
 */
@@ -16,6 +16,7 @@ OSF.OUtil=(function () {
 	var _fragmentSeparator='#';
 	var _loadedScripts={};
 	var _defaultScriptLoadingTimeout=30000;
+	var _localStorageNotWorking=false;
 	function _random() {
 		return Math.floor(100000001 * Math.random()).toString();
 	};
@@ -344,6 +345,20 @@ OSF.OUtil=(function () {
 			} while (index < length);
 			return output.join("");
 		},
+		getLocalStorage: function OSF_Outil$getLocalStorage() {
+			var osfLocalStorage=null;
+			if (!_localStorageNotWorking) {
+				try {
+					if (window.localStorage) {
+						osfLocalStorage=window.localStorage;
+					}
+				}
+				catch (ex) {
+					_localStorageNotWorking=true;
+				}
+			}
+			return osfLocalStorage;
+		},
 		splitStringToList: function OSF_Outil$splitStringToList(input, spliter) {
 			var backslash=false;
 			var index=-1;
@@ -391,7 +406,7 @@ OSF.AgaveHostAction={
 OSF.SharedConstants={
 	"NotificationConversationIdSuffix": '_ntf'
 };
-OSF.OfficeAppContext=function OSF_OfficeAppContext(id, appName, appVersion, appUILocale, dataLocale, docUrl, clientMode, settings, reason, osfControlType, eToken) {
+OSF.OfficeAppContext=function OSF_OfficeAppContext(id, appName, appVersion, appUILocale, dataLocale, docUrl, clientMode, settings, reason, osfControlType, eToken, correlationId) {
 	this._id=id;
 	this._appName=appName;
 	this._appVersion=appVersion;
@@ -403,6 +418,7 @@ OSF.OfficeAppContext=function OSF_OfficeAppContext(id, appName, appVersion, appU
 	this._reason=reason;
 	this._osfControlType=osfControlType;
 	this._eToken=eToken;
+	this._correlationId=correlationId;
 	this.get_id=function get_id() { return this._id; };
 	this.get_appName=function get_appName() { return this._appName; };
 	this.get_appVersion=function get_appVersion() { return this._appVersion; };
@@ -415,6 +431,7 @@ OSF.OfficeAppContext=function OSF_OfficeAppContext(id, appName, appVersion, appU
 	this.get_reason=function get_reason() { return this._reason; };
 	this.get_osfControlType=function get_osfControlType() { return this._osfControlType; };
 	this.get_eToken=function get_eToken() { return this._eToken; };
+	this.get_correlationId=function get_correlationId() { return this._correlationId; };
 };
 OSF.AppName={
 	Unsupported: 0,
@@ -1650,7 +1667,9 @@ Microsoft.Office.Common.Invoker.prototype={
 		var customizedScriptPath=null;
 		if(!clientEndPoint) {
 			try{
-			   customizedScriptPath=window.external.getCustomizedScriptPath();
+				if (typeof window.external.getCustomizedScriptPath !=='undefined') {
+					customizedScriptPath=window.external.getCustomizedScriptPath();
+				}
 			} catch(ex) {
 				Sys.Debug.trace("no script override through window.external.");
 			}
@@ -2861,20 +2880,21 @@ Microsoft.Office.Common.Invoker.prototype={
 					 }
 				],
 				checkCallArgs : function(callArgs, theCaller, stateInfo) {
-					if(callArgs[Microsoft.Office.WebExtension.Parameters.StartRow]==0 &&
-						callArgs[Microsoft.Office.WebExtension.Parameters.StartColumn]==0 &&
-						callArgs[Microsoft.Office.WebExtension.Parameters.CellFormat]==[] &&
-						callArgs[Microsoft.Office.WebExtension.Parameters.TableOptions]==[] ) {
-							delete callArgs[Microsoft.Office.WebExtension.Parameters.StartRow];
-							delete callArgs[Microsoft.Office.WebExtension.Parameters.StartColumn];
-							delete callArgs[Microsoft.Office.WebExtension.Parameters.CellFormat];
-							delete callArgs[Microsoft.Office.WebExtension.Parameters.TableOptions];
+					var Parameters=Microsoft.Office.WebExtension.Parameters;
+					if (callArgs[Parameters.StartRow]==0 &&
+						callArgs[Parameters.StartColumn]==0 &&
+						OSF.OUtil.isArray(callArgs[Parameters.CellFormat]) && callArgs[Parameters.CellFormat].length===0 &&
+						OSF.OUtil.isArray(callArgs[Parameters.TableOptions]) && callArgs[Parameters.TableOptions].length===0) {
+							delete callArgs[Parameters.StartRow];
+							delete callArgs[Parameters.StartColumn];
+							delete callArgs[Parameters.CellFormat];
+							delete callArgs[Parameters.TableOptions];
 					}
-					if(callArgs[Microsoft.Office.WebExtension.Parameters.CoercionType] !=OSF.DDA.DataCoercion.getCoercionDefaultForBinding(theCaller.type) &&
-						((callArgs[Microsoft.Office.WebExtension.Parameters.StartRow] && callArgs[Microsoft.Office.WebExtension.Parameters.StartRow] !=0) ||
-						(callArgs[Microsoft.Office.WebExtension.Parameters.StartColumn] && callArgs[Microsoft.Office.WebExtension.Parameters.StartColumn] !=0) ||
-						callArgs[Microsoft.Office.WebExtension.Parameters.CellFormat] ||
-						callArgs[Microsoft.Office.WebExtension.Parameters.TableOptions])) {
+					if (callArgs[Parameters.CoercionType] !=OSF.DDA.DataCoercion.getCoercionDefaultForBinding(theCaller.type) &&
+						((callArgs[Parameters.StartRow] && callArgs[Parameters.StartRow] !=0) ||
+						(callArgs[Parameters.StartColumn] && callArgs[Parameters.StartColumn] !=0) ||
+						callArgs[Parameters.CellFormat] ||
+						callArgs[Parameters.TableOptions])) {
 						throw OSF.DDA.ErrorCodeManager.errorCodes.ooeCoercionTypeNotMatchBinding;
 					}
 					return callArgs;
@@ -4321,6 +4341,851 @@ OSF.O15HostSpecificFileVersion={
 		};
 	}
 };
+var __extends=this.__extends || function (d, b) {
+	function __() { this.constructor=d; }
+	__.prototype=b.prototype;
+	d.prototype=new __();
+};
+var OSFLog;
+(function (OSFLog) {
+	var BaseUsageData=(function () {
+		function BaseUsageData(table) {
+			this._table=table;
+			this._fields={
+			};
+		}
+		Object.defineProperty(BaseUsageData.prototype, "Fields", {
+			get: function () {
+				return this._fields;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(BaseUsageData.prototype, "Table", {
+			get: function () {
+				return this._table;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		BaseUsageData.prototype.SerializeFields=function () {
+		};
+		BaseUsageData.prototype.SetSerializedField=function (key, value) {
+			if(typeof (value) !=="undefined" && value !==null) {
+				this._serializedFields[key]=value.toString();
+			}
+		};
+		BaseUsageData.prototype.SerializeRow=function () {
+			this._serializedFields={
+			};
+			this.SetSerializedField("Table", this._table);
+			this.SerializeFields();
+			return JSON.stringify(this._serializedFields);
+		};
+		return BaseUsageData;
+	})();
+	OSFLog.BaseUsageData=BaseUsageData;
+	var AppLoadTimeUsageData=(function (_super) {
+		__extends(AppLoadTimeUsageData, _super);
+		function AppLoadTimeUsageData() {
+				_super.call(this, "AppLoadTime");
+		}
+		Object.defineProperty(AppLoadTimeUsageData.prototype, "AppInfo", {
+			get: function () {
+				return this.Fields["AppInfo"];
+			},
+			set: function (value) {
+				this.Fields["AppInfo"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppLoadTimeUsageData.prototype, "AssetId", {
+			get: function () {
+				return this.Fields["AssetId"];
+			},
+			set: function (value) {
+				this.Fields["AssetId"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppLoadTimeUsageData.prototype, "Stage1Time", {
+			get: function () {
+				return this.Fields["Stage1Time"];
+			},
+			set: function (value) {
+				this.Fields["Stage1Time"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppLoadTimeUsageData.prototype, "Stage2Time", {
+			get: function () {
+				return this.Fields["Stage2Time"];
+			},
+			set: function (value) {
+				this.Fields["Stage2Time"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppLoadTimeUsageData.prototype, "Stage3Time", {
+			get: function () {
+				return this.Fields["Stage3Time"];
+			},
+			set: function (value) {
+				this.Fields["Stage3Time"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppLoadTimeUsageData.prototype, "Stage4Time", {
+			get: function () {
+				return this.Fields["Stage4Time"];
+			},
+			set: function (value) {
+				this.Fields["Stage4Time"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppLoadTimeUsageData.prototype, "Stage5Time", {
+			get: function () {
+				return this.Fields["Stage5Time"];
+			},
+			set: function (value) {
+				this.Fields["Stage5Time"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppLoadTimeUsageData.prototype, "Stage6Time", {
+			get: function () {
+				return this.Fields["Stage6Time"];
+			},
+			set: function (value) {
+				this.Fields["Stage6Time"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppLoadTimeUsageData.prototype, "Stage7Time", {
+			get: function () {
+				return this.Fields["Stage7Time"];
+			},
+			set: function (value) {
+				this.Fields["Stage7Time"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppLoadTimeUsageData.prototype, "ErrorResult", {
+			get: function () {
+				return this.Fields["ErrorResult"];
+			},
+			set: function (value) {
+				this.Fields["ErrorResult"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		AppLoadTimeUsageData.prototype.SerializeFields=function () {
+			this.SetSerializedField("AppInfo", this.AppInfo);
+			this.SetSerializedField("AssetId", this.AssetId);
+			this.SetSerializedField("Stage1Time", this.Stage1Time);
+			this.SetSerializedField("Stage2Time", this.Stage2Time);
+			this.SetSerializedField("Stage3Time", this.Stage3Time);
+			this.SetSerializedField("Stage4Time", this.Stage4Time);
+			this.SetSerializedField("Stage5Time", this.Stage5Time);
+			this.SetSerializedField("Stage6Time", this.Stage6Time);
+			this.SetSerializedField("Stage7Time", this.Stage7Time);
+			this.SetSerializedField("ErrorResult", this.ErrorResult);
+		};
+		return AppLoadTimeUsageData;
+	})(BaseUsageData);
+	OSFLog.AppLoadTimeUsageData=AppLoadTimeUsageData;
+	var AppActivatedUsageData=(function (_super) {
+		__extends(AppActivatedUsageData, _super);
+		function AppActivatedUsageData() {
+				_super.call(this, "AppActivated");
+		}
+		Object.defineProperty(AppActivatedUsageData.prototype, "CorrelationId", {
+			get: function () {
+				return this.Fields["CorrelationId"];
+			},
+			set: function (value) {
+				this.Fields["CorrelationId"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppActivatedUsageData.prototype, "SessionId", {
+			get: function () {
+				return this.Fields["SessionId"];
+			},
+			set: function (value) {
+				this.Fields["SessionId"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppActivatedUsageData.prototype, "AppId", {
+			get: function () {
+				return this.Fields["AppId"];
+			},
+			set: function (value) {
+				this.Fields["AppId"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppActivatedUsageData.prototype, "AppURL", {
+			get: function () {
+				return this.Fields["AppURL"];
+			},
+			set: function (value) {
+				this.Fields["AppURL"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppActivatedUsageData.prototype, "AssetId", {
+			get: function () {
+				return this.Fields["AssetId"];
+			},
+			set: function (value) {
+				this.Fields["AssetId"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppActivatedUsageData.prototype, "Browser", {
+			get: function () {
+				return this.Fields["Browser"];
+			},
+			set: function (value) {
+				this.Fields["Browser"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppActivatedUsageData.prototype, "UserId", {
+			get: function () {
+				return this.Fields["UserId"];
+			},
+			set: function (value) {
+				this.Fields["UserId"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppActivatedUsageData.prototype, "Host", {
+			get: function () {
+				return this.Fields["Host"];
+			},
+			set: function (value) {
+				this.Fields["Host"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppActivatedUsageData.prototype, "HostVersion", {
+			get: function () {
+				return this.Fields["HostVersion"];
+			},
+			set: function (value) {
+				this.Fields["HostVersion"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppActivatedUsageData.prototype, "ClientId", {
+			get: function () {
+				return this.Fields["ClientId"];
+			},
+			set: function (value) {
+				this.Fields["ClientId"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppActivatedUsageData.prototype, "AppSizeWidth", {
+			get: function () {
+				return this.Fields["AppSizeWidth"];
+			},
+			set: function (value) {
+				this.Fields["AppSizeWidth"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppActivatedUsageData.prototype, "AppSizeHeight", {
+			get: function () {
+				return this.Fields["AppSizeHeight"];
+			},
+			set: function (value) {
+				this.Fields["AppSizeHeight"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		AppActivatedUsageData.prototype.SerializeFields=function () {
+			this.SetSerializedField("CorrelationId", this.CorrelationId);
+			this.SetSerializedField("SessionId", this.SessionId);
+			this.SetSerializedField("AppId", this.AppId);
+			this.SetSerializedField("AppURL", this.AppURL);
+			this.SetSerializedField("AssetId", this.AssetId);
+			this.SetSerializedField("Browser", this.Browser);
+			this.SetSerializedField("UserId", this.UserId);
+			this.SetSerializedField("Host", this.Host);
+			this.SetSerializedField("HostVersion", this.HostVersion);
+			this.SetSerializedField("ClientId", this.ClientId);
+			this.SetSerializedField("AppSizeWidth", this.AppSizeWidth);
+			this.SetSerializedField("AppSizeHeight", this.AppSizeHeight);
+		};
+		return AppActivatedUsageData;
+	})(BaseUsageData);
+	OSFLog.AppActivatedUsageData=AppActivatedUsageData;
+	var AppClosedUsageData=(function (_super) {
+		__extends(AppClosedUsageData, _super);
+		function AppClosedUsageData() {
+				_super.call(this, "AppClosed");
+		}
+		Object.defineProperty(AppClosedUsageData.prototype, "SessionId", {
+			get: function () {
+				return this.Fields["SessionId"];
+			},
+			set: function (value) {
+				this.Fields["SessionId"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppClosedUsageData.prototype, "FocusTime", {
+			get: function () {
+				return this.Fields["FocusTime"];
+			},
+			set: function (value) {
+				this.Fields["FocusTime"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppClosedUsageData.prototype, "AppSizeFinalWidth", {
+			get: function () {
+				return this.Fields["AppSizeFinalWidth"];
+			},
+			set: function (value) {
+				this.Fields["AppSizeFinalWidth"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppClosedUsageData.prototype, "AppSizeFinalHeight", {
+			get: function () {
+				return this.Fields["AppSizeFinalHeight"];
+			},
+			set: function (value) {
+				this.Fields["AppSizeFinalHeight"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppClosedUsageData.prototype, "OpenTime", {
+			get: function () {
+				return this.Fields["OpenTime"];
+			},
+			set: function (value) {
+				this.Fields["OpenTime"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(AppClosedUsageData.prototype, "CloseMethod", {
+			get: function () {
+				return this.Fields["CloseMethod"];
+			},
+			set: function (value) {
+				this.Fields["CloseMethod"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		AppClosedUsageData.prototype.SerializeFields=function () {
+			this.SetSerializedField("SessionId", this.SessionId);
+			this.SetSerializedField("FocusTime", this.FocusTime);
+			this.SetSerializedField("AppSizeFinalWidth", this.AppSizeFinalWidth);
+			this.SetSerializedField("AppSizeFinalHeight", this.AppSizeFinalHeight);
+			this.SetSerializedField("OpenTime", this.OpenTime);
+			this.SetSerializedField("CloseMethod", this.CloseMethod);
+		};
+		return AppClosedUsageData;
+	})(BaseUsageData);
+	OSFLog.AppClosedUsageData=AppClosedUsageData;
+	var APIUsageUsageData=(function (_super) {
+		__extends(APIUsageUsageData, _super);
+		function APIUsageUsageData() {
+				_super.call(this, "APIUsage");
+		}
+		Object.defineProperty(APIUsageUsageData.prototype, "SessionId", {
+			get: function () {
+				return this.Fields["SessionId"];
+			},
+			set: function (value) {
+				this.Fields["SessionId"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(APIUsageUsageData.prototype, "APIType", {
+			get: function () {
+				return this.Fields["APIType"];
+			},
+			set: function (value) {
+				this.Fields["APIType"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(APIUsageUsageData.prototype, "APIID", {
+			get: function () {
+				return this.Fields["APIID"];
+			},
+			set: function (value) {
+				this.Fields["APIID"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(APIUsageUsageData.prototype, "Parameters", {
+			get: function () {
+				return this.Fields["Parameters"];
+			},
+			set: function (value) {
+				this.Fields["Parameters"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(APIUsageUsageData.prototype, "ResponseTime", {
+			get: function () {
+				return this.Fields["ResponseTime"];
+			},
+			set: function (value) {
+				this.Fields["ResponseTime"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		Object.defineProperty(APIUsageUsageData.prototype, "ErrorType", {
+			get: function () {
+				return this.Fields["ErrorType"];
+			},
+			set: function (value) {
+				this.Fields["ErrorType"]=value;
+			},
+			enumerable: true,
+			configurable: true
+		});
+		APIUsageUsageData.prototype.SerializeFields=function () {
+			this.SetSerializedField("SessionId", this.SessionId);
+			this.SetSerializedField("APIType", this.APIType);
+			this.SetSerializedField("APIID", this.APIID);
+			this.SetSerializedField("Parameters", this.Parameters);
+			this.SetSerializedField("ResponseTime", this.ResponseTime);
+			this.SetSerializedField("ErrorType", this.ErrorType);
+		};
+		return APIUsageUsageData;
+	})(BaseUsageData);
+	OSFLog.APIUsageUsageData=APIUsageUsageData;
+})(OSFLog || (OSFLog={}));
+var Logger;
+(function (Logger) {
+	"use strict";
+	(function (TraceLevel) {
+		TraceLevel._map=[];
+		TraceLevel._map[0]="info";
+		TraceLevel.info=0;
+		TraceLevel._map[1]="warning";
+		TraceLevel.warning=1;
+		TraceLevel._map[2]="error";
+		TraceLevel.error=2;
+	})(Logger.TraceLevel || (Logger.TraceLevel={}));
+	var TraceLevel=Logger.TraceLevel;
+	(function (SendFlag) {
+		SendFlag._map=[];
+		SendFlag._map[0]="none";
+		SendFlag.none=0;
+		SendFlag._map[1]="flush";
+		SendFlag.flush=1;
+	})(Logger.SendFlag || (Logger.SendFlag={}));
+	var SendFlag=Logger.SendFlag;
+	function sendLog(traceLevel, message, flag) {
+		if(OSF.Logger && OSF.Logger.ulsEndpoint) {
+			var jsonObj={
+				traceLevel: traceLevel,
+				message: message,
+				flag: flag,
+				internalLog: true
+			};
+			var logs=JSON.stringify(jsonObj);
+			OSF.Logger.ulsEndpoint.writeLog(logs);
+		}
+	}
+	Logger.sendLog=sendLog;
+	function creatULSEndpoint() {
+		try  {
+			return new ULSEndpointProxy();
+		} catch (e) {
+			return null;
+		}
+	}
+	var ULSEndpointProxy=(function () {
+		function ULSEndpointProxy() {
+			var _this=this;
+			this.telemetryEndPoint="https://telemetryservice.firstpartyapps.oaspapps.com/telemetryservice/telemetryproxy.html";
+			this.buffer=[];
+			this.proxyFrameReady=false;
+			OSF.OUtil.addEventListener(window, "message", function (e) {
+				return _this.tellProxyFrameReady(e);
+			});
+			this.loadProxyFrame();
+		}
+		ULSEndpointProxy.prototype.writeLog=function (log) {
+			if(this.proxyFrameReady===true) {
+				this.proxyFrame.contentWindow.postMessage(log, "*");
+			} else {
+				if(this.buffer.length < 128) {
+					this.buffer.push(log);
+				}
+			}
+		};
+		ULSEndpointProxy.prototype.tellProxyFrameReady=function (e) {
+			var _this=this;
+			if(e.data==="ProxyFrameReadyToLog") {
+				this.proxyFrameReady=true;
+				for(var i=0; i < this.buffer.length; i++) {
+					this.writeLog(this.buffer[i]);
+				}
+				this.buffer.length=0;
+				OSF.OUtil.removeEventListener(window, "message", function (e) {
+					return _this.tellProxyFrameReady(e);
+				});
+			} else if(e.data==="ProxyFrameReadyToInit") {
+				var initJson={
+					appName: "Office APPs",
+					sessionId: Logger.Guid.generateNew()
+				};
+				var initStr=JSON.stringify(initJson);
+				this.proxyFrame.contentWindow.postMessage(initStr, "*");
+			}
+		};
+		ULSEndpointProxy.prototype.loadProxyFrame=function () {
+			this.proxyFrame=document.createElement("iframe");
+			this.proxyFrame.setAttribute("style", "display:none");
+			this.proxyFrame.setAttribute("src", this.telemetryEndPoint);
+			document.head.appendChild(this.proxyFrame);
+		};
+		return ULSEndpointProxy;
+	})();
+	(function (Guid) {
+		var hexCode=[
+			"0",
+			"1",
+			"2",
+			"3",
+			"4",
+			"5",
+			"6",
+			"7",
+			"8",
+			"9",
+			"a",
+			"b",
+			"c",
+			"d",
+			"e",
+			"f"
+		];
+		function generateNew() {
+			var result="";
+			var tick=(new Date()).getTime();
+			var index=0;
+			for(; index < 32 && tick > 0; index++) {
+				if(index==8 || index==12 || index==16 || index==20) {
+					result+="-";
+				}
+				result+=hexCode[tick % 16];
+				tick=Math.floor(tick / 16);
+			}
+			for(; index < 32; index++) {
+				if(index==8 || index==12 || index==16 || index==20) {
+					result+="-";
+				}
+				result+=hexCode[Math.floor(Math.random() * 16)];
+			}
+			return result;
+		}
+		Guid.generateNew=generateNew;
+	})(Logger.Guid || (Logger.Guid={}));
+	var Guid=Logger.Guid;
+	if(!OSF.Logger) {
+		OSF.Logger=Logger;
+	}
+	Logger.ulsEndpoint=creatULSEndpoint();
+})(Logger || (Logger={}));
+var OSFAppTelemetry;
+(function (OSFAppTelemetry) {
+	"use strict";
+	var appInfo;
+	;
+	var AppInfo=(function () {
+		function AppInfo() { }
+		return AppInfo;
+	})();
+	var Event=(function () {
+		function Event(name, handler) {
+			this.name=name;
+			this.handler=handler;
+		}
+		return Event;
+	})();
+	var AppStorage=(function () {
+		function AppStorage() {
+			this.clientIDKey="Office API client";
+			this.logIdSetKey="Office App Log Id Set";
+		}
+		AppStorage.prototype.getClientId=function () {
+			var clientId=this.getValue(this.clientIDKey);
+			if(!clientId || clientId.length <=0 || clientId.length > 40) {
+				clientId=OSF.Logger.Guid.generateNew();
+				this.setValue(this.clientIDKey, clientId);
+			}
+			return clientId;
+		};
+		AppStorage.prototype.saveLog=function (logId, log) {
+			var logIdSet=this.getValue(this.logIdSetKey);
+			logIdSet=((logIdSet && logIdSet.length > 0) ? (logIdSet+";") : "")+logId;
+			this.setValue(this.logIdSetKey, logIdSet);
+			this.setValue(logId, log);
+		};
+		AppStorage.prototype.enumerateLog=function (callback, clean) {
+			var logIdSet=this.getValue(this.logIdSetKey);
+			if(logIdSet) {
+				var ids=logIdSet.split(";");
+				for(var id in ids) {
+					var logId=ids[id];
+					var log=this.getValue(logId);
+					if(log) {
+						if(callback) {
+							callback(logId, log);
+						}
+						if(clean) {
+							this.remove(logId);
+						}
+					}
+				}
+				if(clean) {
+					this.remove(this.logIdSetKey);
+				}
+			}
+		};
+		AppStorage.prototype.getValue=function (key) {
+			var osfLocalStorage=OSF.OUtil.getLocalStorage();
+			var value="";
+			if(osfLocalStorage) {
+				value=osfLocalStorage.getItem(key);
+			}
+			return value;
+		};
+		AppStorage.prototype.setValue=function (key, value) {
+			var osfLocalStorage=OSF.OUtil.getLocalStorage();
+			if(osfLocalStorage) {
+				osfLocalStorage.setItem(key, value);
+			}
+		};
+		AppStorage.prototype.remove=function (key) {
+			var osfLocalStorage=OSF.OUtil.getLocalStorage();
+			if(osfLocalStorage) {
+				try  {
+					osfLocalStorage.removeItem(key);
+				} catch (ex) {
+				}
+			}
+		};
+		return AppStorage;
+	})();
+	var AppLogger=(function () {
+		function AppLogger() { }
+		AppLogger.prototype.LogData=function (data) {
+			if(!OSF.Logger) {
+				return;
+			}
+			OSF.Logger.sendLog(OSF.Logger.TraceLevel.info, data.SerializeRow(), OSF.Logger.SendFlag.none);
+		};
+		AppLogger.prototype.LogRawData=function (log) {
+			if(!OSF.Logger) {
+				return;
+			}
+			OSF.Logger.sendLog(OSF.Logger.TraceLevel.info, log, OSF.Logger.SendFlag.none);
+		};
+		return AppLogger;
+	})();
+	function initialize(context) {
+		if(!OSF.Logger) {
+			return;
+		}
+		if(appInfo) {
+			return;
+		}
+		appInfo=new AppInfo();
+		appInfo.sessionId=OSF.Logger.Guid.generateNew();
+		appInfo.hostVersion=context.get_appVersion();
+		appInfo.appId=context.get_id();
+		appInfo.host=context.get_appName();
+		appInfo.browser=window.navigator.userAgent;
+		appInfo.correlationId=context.get_correlationId();
+		appInfo.clientId=(new AppStorage()).getClientId();
+		var index=location.href.indexOf("?");
+		appInfo.appURL=(index==-1) ? location.href : location.href.substring(0, index);
+		(function getUserIdAndAssetIdFromToken(token, appInfo) {
+			var xmlContent;
+			var parser;
+			var xmlDoc;
+			appInfo.assetId="";
+			appInfo.userId="";
+			try  {
+				xmlContent=decodeURIComponent(token);
+				parser=new DOMParser();
+				xmlDoc=parser.parseFromString(xmlContent, "text/xml");
+				appInfo.userId=xmlDoc.getElementsByTagName("t")[0].attributes.getNamedItem("cid").nodeValue;
+				appInfo.assetId=xmlDoc.getElementsByTagName("t")[0].attributes.getNamedItem("aid").nodeValue;
+			} catch (e) {
+			}finally {
+				xmlContent=null;
+				xmlDoc=null;
+				parser=null;
+			}
+		})(context.get_eToken(), appInfo);
+		(function handleLifeclycle() {
+			var startTime=new Date();
+			var lastFocus=new Date();
+			var focusTime=0;
+			var finished=false;
+			var eventList=[];
+			eventList.push(new Event("focus", function () {
+				lastFocus=new Date();
+			}));
+			eventList.push(new Event("blur", function () {
+				if(lastFocus) {
+					focusTime+=Math.abs((new Date()).getTime() - lastFocus.getTime());
+					lastFocus=null;
+				}
+			}));
+			var exitFunction=function () {
+				for(var i=0; i < eventList.length; i++) {
+					OSF.OUtil.removeEventListener(window, eventList[i].name, eventList[i].handler);
+				}
+				eventList.length=0;
+				if(!finished) {
+					OSFAppTelemetry.onAppClosed(Math.abs((new Date()).getTime() - startTime.getTime()), focusTime);
+					finished=true;
+				}
+			};
+			eventList.push(new Event("beforeunload", exitFunction));
+			eventList.push(new Event("unload", exitFunction));
+			for(var i=0; i < eventList.length; i++) {
+				OSF.OUtil.addEventListener(window, eventList[i].name, eventList[i].handler);
+			}
+		})();
+		OSFAppTelemetry.onAppActivated();
+	}
+	OSFAppTelemetry.initialize=initialize;
+	function onAppActivated() {
+		if(!appInfo) {
+			return;
+		}
+		(new AppStorage()).enumerateLog(function (id, log) {
+			return (new AppLogger()).LogRawData(log);
+		}, true);
+		var data=new OSFLog.AppActivatedUsageData();
+		data.SessionId=appInfo.sessionId;
+		data.AppId=appInfo.appId;
+		data.AssetId=appInfo.assetId;
+		data.AppURL=appInfo.appURL;
+		data.UserId=appInfo.userId;
+		data.ClientId=appInfo.clientId;
+		data.Browser=appInfo.browser;
+		data.Host=appInfo.host;
+		data.HostVersion=appInfo.hostVersion;
+		data.CorrelationId=appInfo.correlationId;
+		data.AppSizeWidth=window.innerWidth;
+		data.AppSizeHeight=window.innerHeight;
+		(new AppLogger()).LogData(data);
+	}
+	OSFAppTelemetry.onAppActivated=onAppActivated;
+	function onCallDone(apiType, id, parameters, msResponseTime, errorType) {
+		if(!appInfo) {
+			return;
+		}
+		var data=new OSFLog.APIUsageUsageData();
+		data.SessionId=appInfo.sessionId;
+		data.APIType=apiType;
+		data.APIID=id;
+		data.Parameters=parameters;
+		data.ResponseTime=msResponseTime;
+		data.ErrorType=errorType;
+		(new AppLogger()).LogData(data);
+	}
+	OSFAppTelemetry.onCallDone=onCallDone;
+	;
+	function onMethodDone(id, args, msResponseTime, errorType) {
+		var parameters=null;
+		if(args) {
+			if(typeof args=="number") {
+				parameters=String(args);
+			} else if(typeof args==="object") {
+				for(var index in args) {
+					if(parameters !==null) {
+						parameters+=",";
+					} else {
+						parameters="";
+					}
+					if(typeof args[index]=="number") {
+						parameters+=String(args[index]);
+					}
+				}
+			} else {
+				parameters="";
+			}
+		}
+		OSF.AppTelemetry.onCallDone("method", id, parameters, msResponseTime, errorType);
+	}
+	OSFAppTelemetry.onMethodDone=onMethodDone;
+	function onEventDone(id, errorType) {
+		OSF.AppTelemetry.onCallDone("event", id, null, 0, errorType);
+	}
+	OSFAppTelemetry.onEventDone=onEventDone;
+	function onRegisterDone(register, id, msResponseTime, errorType) {
+		OSF.AppTelemetry.onCallDone(register ? "registerevent" : "unregisterevent", id, null, msResponseTime, errorType);
+	}
+	OSFAppTelemetry.onRegisterDone=onRegisterDone;
+	function onAppClosed(openTime, focusTime) {
+		if(!appInfo) {
+			return;
+		}
+		var data=new OSFLog.AppClosedUsageData();
+		data.SessionId=appInfo.sessionId;
+		data.FocusTime=focusTime;
+		data.OpenTime=openTime;
+		data.AppSizeFinalWidth=window.innerWidth;
+		data.AppSizeFinalHeight=window.innerHeight;
+		(new AppStorage()).saveLog(appInfo.sessionId, data.SerializeRow());
+	}
+	OSFAppTelemetry.onAppClosed=onAppClosed;
+	OSF.AppTelemetry=OSFAppTelemetry;
+})(OSFAppTelemetry || (OSFAppTelemetry={}));
 OSF.InitializationHelper=function OSF_InitializationHelper(hostInfo, webAppState, context, settings, hostFacade) {
 	this._hostInfo=hostInfo;
 	this._webAppState=webAppState;
@@ -4364,9 +5229,16 @@ OSF.InitializationHelper.prototype.getAppContext=function OSF_InitializationHelp
 			eToken=context.GetSolutionToken();
 		} catch (ex) {
 		}
+		var correlationId;
+		if (typeof context.GetCorrelationId !=="undefined") {
+			correlationId=context.GetCorrelationId();
+		}
 		eToken=eToken ? eToken.toString() : "";
-		returnedContext=new OSF.OfficeAppContext(id, appType, version, UILocale, dataLocale, docUrl, clientMode, settings, reason, osfControlType, eToken);
+		returnedContext=new OSF.OfficeAppContext(id, appType, version, UILocale, dataLocale, docUrl, clientMode, settings, reason, osfControlType, eToken, correlationId);
 		gotAppContext(returnedContext);
+		if (OSF.AppTelemetry) {
+			OSF.AppTelemetry.initialize(returnedContext);
+		}
 	} else {
 		var getInvocationCallbackWebApp=function OSF__OfficeAppFactory_getAppContextAsync$getInvocationCallbackWebApp(errorCode, appContext) {
 			var settings;
@@ -4383,8 +5255,11 @@ OSF.InitializationHelper.prototype.getAppContext=function OSF_InitializationHelp
 			}
 			if (errorCode===0 && appContext._id !=undefined && appContext._appName !=undefined && appContext._appVersion !=undefined && appContext._appUILocale !=undefined && appContext._dataLocale !=undefined &&
 				appContext._docUrl !=undefined && appContext._clientMode !=undefined && appContext._settings !=undefined && appContext._reason !=undefined) {
-				var returnedContext=new OSF.OfficeAppContext(appContext._id, appContext._appName, appContext._appVersion, appContext._appUILocale, appContext._dataLocale, appContext._docUrl, appContext._clientMode, settings, appContext._reason, appContext._osfControlType, appContext._eToken);
+				var returnedContext=new OSF.OfficeAppContext(appContext._id, appContext._appName, appContext._appVersion, appContext._appUILocale, appContext._dataLocale, appContext._docUrl, appContext._clientMode, settings, appContext._reason, appContext._osfControlType, appContext._eToken, appContext._correlationId);
 				gotAppContext(returnedContext);
+				if (OSF.AppTelemetry) {
+					OSF.AppTelemetry.initialize(returnedContext);
+				}
 			} else {
 				throw "Function ContextActivationManager_getAppContextAsync call failed. ErrorCode is "+errorCode;
 			}

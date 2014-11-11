@@ -1,5 +1,5 @@
 /* Office JavaScript API library */
-/* Version: 16.0.2420.1000 */
+/* Version: 16.0.2815.1000 */
 /*
 	Copyright (c) Microsoft Corporation.  All rights reserved.
 */
@@ -70,6 +70,7 @@ OSF._OfficeAppFactory = (function OSF__OfficeAppFactory() {
     };
     var _initializationHelper = {
     };
+    var _solutionRefId = null;
     var _parseHostInfo = function OSF__OfficeAppFactory$_parseHostInfo() {
         var hostInfoValue;
         var hostInfo = "_host_Info=";
@@ -224,6 +225,7 @@ OSF._OfficeAppFactory = (function OSF__OfficeAppFactory() {
                 _initializationHelper = new OSF.InitializationHelper(_hostInfo, _WebAppState, _context, _settings, _hostFacade);
                 _initializationHelper.setAgaveHostCommunication();
                 getAppContextAsync(_WebAppState.wnd, function (appContext) {
+                    _solutionRefId = appContext._id;
                     var postLoadLocaleStringInitialization = function OSF__OfficeAppFactory_initialize$postLoadLocaleStringInitialization() {
                         var retryNumber = 100;
                         var t;
@@ -311,7 +313,7 @@ OSF._OfficeAppFactory = (function OSF__OfficeAppFactory() {
             return _initializationHelper;
         },
         getCachedSessionSettingsKey: function OSF__OfficeAppFactory$getCachedSessionSettingsKey() {
-            return _WebAppState.conversationID != null ? _WebAppState.conversationID + "CachedSessionSettings" : "NoConversationIdCachedSessionSettings";
+            return (_WebAppState.conversationID != null ? _WebAppState.conversationID : _solutionRefId) + "CachedSessionSettings";
         }
     };
 })();

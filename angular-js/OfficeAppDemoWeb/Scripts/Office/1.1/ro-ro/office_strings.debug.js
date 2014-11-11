@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Tipul specificat de legare nu este compatibil cu elementul denumit furnizat.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Tipul de eveniment specificat nu este acceptat pe acest obiect.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Ťhě śpëćîfîęď ęvęńť hăňđĺěř wâś ňöţ főűňď főŕ ţhíş bîňďíńg.ȘȚșțĂîȘȚș_";
 Strings.OfficeOM.L_UnknownBindingType = "Tipul de legare nu este acceptat.";
 Strings.OfficeOM.L_InvalidNode = "Nod nevalid";
 Strings.OfficeOM.L_NotImplemented = "Funcția {0} nu este implementată.";

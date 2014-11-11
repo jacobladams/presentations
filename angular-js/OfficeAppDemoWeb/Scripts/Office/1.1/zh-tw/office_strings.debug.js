@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "指定的繫結類型與提供的命名項目不相容。";
-Strings.OfficeOM.L_EventHandlerNotExist = "此物件中不支援指定的事件類型。";
+Strings.OfficeOM.L_EventHandlerNotExist = "［The specified event handler was not found for this binding.丙氶略箤丙氶］";
 Strings.OfficeOM.L_UnknownBindingType = "不支援此繫結類型。";
 Strings.OfficeOM.L_InvalidNode = "無效的節點";
 Strings.OfficeOM.L_NotImplemented = "函數 {0} 未實作。";

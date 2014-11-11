@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Het opgegeven bindingstype is niet compatibel met het opgegeven benoemde item.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Het opgegeven gebeurtenistype wordt niet ondersteund voor dit object.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Thê spëçîfìêð êvèñt hæñðlér wás ñõt fôüñð fõr thïs þíñðîñg.ïërïërïërïë_";
 Strings.OfficeOM.L_UnknownBindingType = "Het bindingstype wordt niet ondersteund.";
 Strings.OfficeOM.L_InvalidNode = "Ongeldige knooppunt";
 Strings.OfficeOM.L_NotImplemented = "Functie {0} is niet geïmplementeerd.";

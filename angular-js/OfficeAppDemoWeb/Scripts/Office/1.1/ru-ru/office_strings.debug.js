@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Указанный тип привязки несовместим с заданным именованным элементом.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Указанный тип события не поддерживается для этого объекта.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Tнэ spэcїfїєd эvёлт ндпdlёя шдs лбт fбцлd fфя тнїs ьїиdїйg.ЧЫю:рф_";
 Strings.OfficeOM.L_UnknownBindingType = "Тип привязки не поддерживается.";
 Strings.OfficeOM.L_InvalidNode = "Недопустимый узел";
 Strings.OfficeOM.L_NotImplemented = "Функция {0} не реализована.";

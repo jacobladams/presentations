@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Den angitte bindingstypen er ikke kompatibel med angitt navngitt element.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Den angitte hendelsestypen støttes ikke for dette objektet.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Thê spëçîfìêð êvèñt hæñðlér wás ñõt fôüñð fõr thïs þíñðîñg.åæøå_";
 Strings.OfficeOM.L_UnknownBindingType = "Bindingstypen støttes ikke.";
 Strings.OfficeOM.L_InvalidNode = "Ugyldig node";
 Strings.OfficeOM.L_NotImplemented = "Funksjonen {0} er ikke implementert.";

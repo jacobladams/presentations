@@ -1,3 +1,13 @@
+/* Outlook web application specific API library */
+/* Version: 15.0.4420.1017 Build Time: 03/31/2014 */
+/*
+	Copyright (c) Microsoft Corporation.  All rights reserved.
+*/
+
+/*
+	Your use of this file is governed by the Microsoft Services Agreement http://go.microsoft.com/fwlink/?LinkId=266419.
+*/
+
 /*
 	Copyright (c) Microsoft Corporation.  All rights reserved.
 */

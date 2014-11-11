@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Określony typ powiązania jest niezgodny z określonym elementem nazwanym.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Określony typ zdarzenia nie jest obsługiwany dla tego obiektu.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Ťhě śpëćîfîęď ęvęńť hăňđĺěř wâś ňöţ főűňď főŕ ţhíş bîňďíńg.żśąłóńćżś_";
 Strings.OfficeOM.L_UnknownBindingType = "Typ powiązania nie jest obsługiwany.";
 Strings.OfficeOM.L_InvalidNode = "Nieprawidłowy węzeł";
 Strings.OfficeOM.L_NotImplemented = "Funkcja {0} nie jest zaimplementowana.";

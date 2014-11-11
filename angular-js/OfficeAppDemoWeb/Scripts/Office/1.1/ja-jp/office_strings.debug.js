@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "指定したバインド タイプは、指定した名前付きアイテムと互換性がありません。";
-Strings.OfficeOM.L_EventHandlerNotExist = "指定したイベント タイプは、このオブジェクトではサポートされていません。";
+Strings.OfficeOM.L_EventHandlerNotExist = "［The specified event handler was not found for this binding.瑞滌雲額医迎］";
 Strings.OfficeOM.L_UnknownBindingType = "このバインド タイプはサポートされていません。";
 Strings.OfficeOM.L_InvalidNode = "無効なノード";
 Strings.OfficeOM.L_NotImplemented = "関数 {0} は実装されていません。";

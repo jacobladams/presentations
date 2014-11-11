@@ -1,5 +1,5 @@
 /* Excel web application specific API library */
-/* Version: 15.0.4514.1000 */
+/* Version: 15.0.4420.1017 Build Time: 03/31/2014 */
 /*
 	Copyright (c) Microsoft Corporation.  All rights reserved.
 */
@@ -401,6 +401,7 @@ OSF.DDA.XLS.Delegate.executeAsync=function OSF_DDA_XLS_Delegate$executeAsync(arg
 	if(args.onCalling) {
 		args.onCalling();
 	}
+	var startTime=(new Date()).getTime();
 	OSF._OfficeAppFactory.getClientEndPoint().invoke(
 		"executeMethod",
 		function OSF_DDA_XLS_Delegate$OMFacade$OnResponse(xdmStatus, payload) {
@@ -424,9 +425,39 @@ OSF.DDA.XLS.Delegate.executeAsync=function OSF_DDA_XLS_Delegate$executeAsync(arg
 			if (args.onComplete) {
 				args.onComplete(error, payload);
 			}
+			if (OSF.AppTelemetry) {
+				OSF.AppTelemetry.onMethodDone(args.dispId, null, Math.abs((new Date()).getTime() -  startTime), error);
+			}
 		},
 		args.hostCallArgs
 	);
+};
+OSF.DDA.XLS.Delegate._getOnAfterRegisterEvent=function OSF_DDA_XLS_Delegate$GetOnAfterRegisterEvent(register, args) {
+	var startTime=(new Date()).getTime();
+	return function OSF_DDA_XLS_Delegate$OnAfterRegisterEvent(xdmStatus, succeeded) {
+		if (args.onReceiving) {
+				args.onReceiving();
+			}
+		var status;
+		if (xdmStatus !=Microsoft.Office.Common.InvokeResultCode.noError) {
+			switch (xdmStatus) {
+				case Microsoft.Office.Common.InvokeResultCode.errorHandlingRequestAccessDenied:
+					status=OSF.DDA.ErrorCodeManager.errorCodes.ooeNoCapability;
+					break;
+				default:
+					status=OSF.DDA.ErrorCodeManager.errorCodes.ooeInternalError;
+					break;
+			}
+		} else {
+			status=succeeded ? OSF.DDA.ErrorCodeManager.errorCodes.ooeSuccess : OSF.DDA.ErrorCodeManager.errorCodes.ooeInternalError;
+		}
+		if (args.onComplete) {
+			args.onComplete(status);
+		}
+		if (OSF.AppTelemetry) {
+			OSF.AppTelemetry.onRegisterDone(register, args.dispId, Math.abs((new Date()).getTime() -  startTime), status);
+		}
+	}
 };
 OSF.DDA.XLS.Delegate.registerEventAsync=function OSF_DDA_XLS_Delegate$RegisterEventAsync(args) {
 	if (args.onCalling) {
@@ -438,28 +469,11 @@ OSF.DDA.XLS.Delegate.registerEventAsync=function OSF_DDA_XLS_Delegate$RegisterEv
 			if (args.onEvent) {
 				args.onEvent(payload);
 			}
-		},
-		function OSF_DDA_XLSOMFacade$OnRegisterEvent(xdmStatus, succeeded) {
-			if (args.onReceiving) {
-				args.onReceiving();
-			}
-			var status;
-			if (xdmStatus !=Microsoft.Office.Common.InvokeResultCode.noError) {
-				switch (xdmStatus) {
-					case Microsoft.Office.Common.InvokeResultCode.errorHandlingRequestAccessDenied:
-						status=OSF.DDA.ErrorCodeManager.errorCodes.ooeNoCapability;
-						break;
-					default:
-						status=OSF.DDA.ErrorCodeManager.errorCodes.ooeInternalError;
-						break;
-				}
-			} else {
-				status=succeeded ? OSF.DDA.ErrorCodeManager.errorCodes.ooeSuccess : OSF.DDA.ErrorCodeManager.errorCodes.ooeInternalError;
-			}
-			if (args.onComplete) {
-				args.onComplete(status);
+			if (OSF.AppTelemetry) {
+				OSF.AppTelemetry.onEventDone(args.dispId);
 			}
 		},
+		OSF.DDA.XLS.Delegate._getOnAfterRegisterEvent(true, args),
 		{
 			"controlId": OSF._OfficeAppFactory.getId(),
 			"eventDispId": args.dispId,
@@ -473,27 +487,7 @@ OSF.DDA.XLS.Delegate.unregisterEventAsync=function OSF_DDA_XLS_Delegate$Unregist
 	}
 	OSF._OfficeAppFactory.getClientEndPoint().unregisterForEvent(
 		OSF.DDA.getXdmEventName(args.targetId, args.eventType),
-		function OSF_DDA_XLSOMFacade$OnUnregisterEvent(xdmStatus, succeeded) {
-			if (args.onReceiving) {
-				args.onReceiving();
-			}
-			var status;
-			if (xdmStatus !=Microsoft.Office.Common.InvokeResultCode.noError) {
-				switch (xdmStatus) {
-					case Microsoft.Office.Common.InvokeResultCode.errorHandlingRequestAccessDenied:
-						status=OSF.DDA.ErrorCodeManager.errorCodes.ooeNoCapability;
-						break;
-					default:
-						status=OSF.DDA.ErrorCodeManager.errorCodes.ooeInternalError;
-						break;
-				}
-			} else {
-				status=succeeded ? OSF.DDA.ErrorCodeManager.errorCodes.ooeSuccess : OSF.DDA.ErrorCodeManager.errorCodes.ooeInternalError;
-			}
-			if (args.onComplete) {
-				args.onComplete(status);
-			}
-		},
+		OSF.DDA.XLS.Delegate._getOnAfterRegisterEvent(false, args),
 		{
 			"controlId": OSF._OfficeAppFactory.getId(),
 			"eventDispId": args.dispId,

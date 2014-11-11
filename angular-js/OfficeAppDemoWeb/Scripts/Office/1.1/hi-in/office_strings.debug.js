@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "दिए गए नामित आइटम के साथ निर्दिष्ट बाइंडिंग प्रकार संगत नहीं है.";
-Strings.OfficeOM.L_EventHandlerNotExist = "निर्दिष्ट इवेंट प्रकार इस ऑब्जेक्ट पर समर्थित नहीं है.";
+Strings.OfficeOM.L_EventHandlerNotExist = "म्दिं९ The specified event handler was not found for this binding.विकहनैं ७त्रृँ";
 Strings.OfficeOM.L_UnknownBindingType = "बाइंडिंग प्रकार समर्थित नहीं है.";
 Strings.OfficeOM.L_InvalidNode = "अमान्य नोड";
 Strings.OfficeOM.L_NotImplemented = "फ़ंक्शन {0} लागू नहीं किया गया है.";
