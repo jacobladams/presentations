@@ -1,0 +1,53 @@
+﻿@font-face {
+    font-family: StarJedi;
+    src: url(Starjedi.ttf);
+}
+
+@font-face {
+    font-family: DistantGalaxyIcons;
+    src: url(DistantGalaxyIcons.ttf);
+}
+
+body {
+	font-family:  Helvetica, Arial, sans-serif;
+	background: #bbbbbb
+}
+
+th {
+	text-align: left;
+}
+
+.title {
+	font-family: StarJedi;
+}
+
+.empire-icon{
+	font-family: DistantGalaxyIcons;
+	font-style: normal;
+	font-size: 2em;
+}
+
+.empire-icon:before {
+	content: "#";
+}
+
+.personnelItem {
+	margin-bottom: 30px;
+}
+
+.thumbnail {
+	height: 60px;
+}
+
+.navigation {
+	list-style: none;
+	display: block;
+	padding: 0;
+	margin: 0,0,20px,0;
+}
+
+.navigation li {
+	display: inline;
+	font-weight: 600;
+	margin-right: 10px;
+}

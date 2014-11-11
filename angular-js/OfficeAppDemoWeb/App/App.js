@@ -1,33 +1,20 @@
-﻿/* Common app functionality */
+﻿angular.module('personnelDirectory', ['ngRoute']);
 
-var app = (function () {
-    "use strict";
-
-    var app = {};
-
-    // Common initialization function (to be called from each page)
-    app.initialize = function () {
-        $('body').append(
-            '<div id="notification-message">' +
-                '<div class="padding">' +
-                    '<div id="notification-message-close"></div>' +
-                    '<div id="notification-message-header"></div>' +
-                    '<div id="notification-message-body"></div>' +
-                '</div>' +
-            '</div>');
-
-        $('#notification-message-close').click(function () {
-            $('#notification-message').hide();
-        });
-
-
-        // After initialization, expose a common notification function
-        app.showNotification = function (header, text) {
-            $('#notification-message-header').text(header);
-            $('#notification-message-body').text(text);
-            $('#notification-message').slideDown('fast');
-        };
-    };
-
-    return app;
-})();
+angular.module('personnelDirectory').config(['$routeProvider', function ($routeProvider) {
+	$routeProvider.
+		when('/personnel', {
+			controller: 'personnelListController',
+			templateUrl: '/app/partials/personnel-list.html'
+		}).
+		when('/personnel/:id', {
+			controller: 'personnelDetailsController',
+			templateUrl: '/app/partials/personnel-details.html'
+		}).
+		when('/help', {
+			controller: 'helpController',
+			templateUrl: '/app/partials/help.html'
+		}).
+		otherwise({
+			redirectTo: '/personnel'
+		});
+}]);

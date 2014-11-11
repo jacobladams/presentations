@@ -1,0 +1,24 @@
+﻿<div>
+	<img ng-src="{{personnelDirectory.personnel.image}}" />
+</div>
+<div>
+	<strong>First Name: </strong>
+	<input type="text" ng-model="personnelDirectory.personnel.firstName" />
+</div>
+<div>
+	<strong>Last Name: </strong>
+	<input type="text" ng-model="personnelDirectory.personnel.lastName" />
+</div>
+<div>
+	<strong>Title:</strong>
+	<!--<input type="text" ng-model="personnel.title" />-->
+	<select ng-options="title for title in personnelDirectory.titles" ng-model="personnelDirectory.personnel.title"></select>
+</div>
+<div>
+	<strong>Is Active:</strong>
+	<input type="checkbox" ng-model="personnelDirectory.personnel.active" />
+</div>
+<div>
+	<a ng-href="{{personnelDirectory.personnel.detailsUrls}}">View Details</a>
+</div>
+<button ng-click="personnelDirectory.savePersonnel(personnelDirectory.personnel)">Save</button>

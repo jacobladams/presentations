@@ -58,6 +58,21 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\partials\personnel-details.html" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\needa.jpg" />
+    <Content Include="Images\ozzel.jpg" />
+    <Content Include="Images\piett.jpg" />
+    <Content Include="Images\tarkin.jpg" />
+    <Content Include="Images\vader.jpg" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Content\DistantGalaxyIcons.ttf" />
+    <Content Include="Content\Starjedi.ttf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -66,15 +81,30 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\App.css" />
-    <Content Include="App\App.js" />
-    <Content Include="App\Home\Home.css" />
-    <Content Include="App\Home\Home.html" />
-    <Content Include="App\Home\Home.js" />
-    <Content Include="Content\Office.css" />
-    <Content Include="Images\Close.png" />
+    <Content Include="app\app.js" />
+    <Content Include="app\controllers\helpController.js" />
+    <Content Include="app\controllers\personnelDetailsController.js" />
+    <Content Include="app\controllers\personnelListController.js" />
+    <Content Include="app\directives\navbar.js" />
+    <Content Include="app\directives\personnelDetailsEdit.js" />
+    <Content Include="app\directives\personnelDetailsRead.js" />
+    <Content Include="app\partials\help.html" />
+    <Content Include="app\partials\navbar.html" />
+    <Content Include="app\partials\personnel-details-edit.html" />
+    <Content Include="app\partials\personnel-details-read.html" />
+    <Content Include="app\partials\personnel-list.html" />
+    <Content Include="app\services\personnelDirectoryService.js" />
+    <Content Include="App_old\App.css" />
+    <Content Include="App_old\App.js" />
+    <Content Include="App_old\Home\Home.css" />
+    <Content Include="App_old\Home\Home.html" />
+    <Content Include="App_old\Home\Home.js" />
+    <Content Include="Content_old\Office.css" />
+    <Content Include="OfficeAppDemo.html" />
+    <Content Include="Images_old\Close.png" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
