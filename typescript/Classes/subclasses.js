@@ -70,7 +70,7 @@ function getAttendees() {
         new Attendee('Larry', 'larry@geocities.com'),
         new Attendee('Curly', 'curly@altavista.com'),
         new RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
-        new Organizer('Scott', 'scott@ms.com')
+        new Organizer('Jeff', 'Jeff@ms.com')
     ];
 }
 

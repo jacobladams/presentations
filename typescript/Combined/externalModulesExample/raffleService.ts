@@ -23,7 +23,7 @@ export class RaffleService {
 				new Models.Attendee('Larry', 'larry@geocities.com'),
 				new Models.Attendee('Curly', 'curly@altavista.com'),
                 new Models.RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
-                new Models.Organizer('Scott', 'scott@ms.com'),
+                new Models.Organizer('Jeff', 'Jeff@ms.com'),
             ]);
         }, 1000);
     }

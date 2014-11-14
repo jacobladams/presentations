@@ -23,7 +23,7 @@ module RaffleJS.Services {
                     new RaffleJS.Models.Attendee('Larry', 'larry@geocities.com'),
                     new RaffleJS.Models.Attendee('Curly', 'curly@altavista.com'),
                     new RaffleJS.Models.RegularAttendee('Jake', 'jake@gmail.com', 'Dr. Pepper'),
-                    new RaffleJS.Models.Organizer('Scott', 'scott@ms.com'),
+                    new RaffleJS.Models.Organizer('Jeff', 'Jeff@ms.com'),
                 ]);
             }, 1000);
         }
