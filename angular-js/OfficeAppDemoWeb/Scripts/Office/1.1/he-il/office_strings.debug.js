@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "סוג האיגוד שצוין אינו תואם לפריט בעל השם שסופק.";
-Strings.OfficeOM.L_EventHandlerNotExist = "סוג האירוע שצוין אינו נתמך באובייקט זה.";
+Strings.OfficeOM.L_EventHandlerNotExist = "ף The specified event handler was not found for this binding.אפָישו שלך";
 Strings.OfficeOM.L_UnknownBindingType = "סוג האיגוד אינו נתמך.";
 Strings.OfficeOM.L_InvalidNode = "צומת לא חוקי";
 Strings.OfficeOM.L_NotImplemented = "הפונקציה {0} אינה מיושמת.";

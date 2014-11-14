@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Көрсетілген байлыныстыру түрі қамтамасыз етілген элемент атымен сыйыспайды.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Берілген әрекет түрі осы нысанда жоқ.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Ћћз spє©їfїєd зvєлт ћдйdlёг шдs лбт fбцйd fбя тћїs Бїйdїиg.Ұщйфд_";
 Strings.OfficeOM.L_UnknownBindingType = "Біріктіру түріне ағымдағы бағдарламада қолдау көрсетілмеді.";
 Strings.OfficeOM.L_InvalidNode = "Жарамсыз түйін";
 Strings.OfficeOM.L_NotImplemented = "{0} функциясы орындалған жоқ.";

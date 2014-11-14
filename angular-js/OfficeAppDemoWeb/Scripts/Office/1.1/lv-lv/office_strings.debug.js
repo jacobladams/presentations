@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Norādītais saistīšanas tips nav saderīgs ar norādīto nosaukto vienumu.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Norādītais notikuma tips šajā objektā netiek atbalstīts.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Thė §pēćīfįęd ėvēņt hæņdļéŗ wāš ń°t f¤ūņd føŗ thī§ ßįņdįńģ.ĀēģĢĪ_";
 Strings.OfficeOM.L_UnknownBindingType = "Šis saistīšanas tips netiek atbalstīts.";
 Strings.OfficeOM.L_InvalidNode = "Nederīgs mezgls";
 Strings.OfficeOM.L_NotImplemented = "Funkcija {0} nav ieviesta.";

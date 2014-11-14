@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "A megadott kötési típus nem kompatibilis a megadott névvel ellátott elemmel.";
-Strings.OfficeOM.L_EventHandlerNotExist = "A megadott eseménytípus nem támogatott ezen az objektumon.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Ťhě şpëćîfîëđ ëvěňť hăńđľęř wąś ňöť fôµňď föř ţhíš bíńđîńg.öíőüáűö_";
 Strings.OfficeOM.L_UnknownBindingType = "A kötési típus nem támogatott.";
 Strings.OfficeOM.L_InvalidNode = "Érvénytelen csomópont";
 Strings.OfficeOM.L_NotImplemented = "A(z) {0} függvény nincs implementálva.";

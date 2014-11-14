@@ -3,7 +3,7 @@ Strings.OfficeOM=function Strings_OfficeOM() {
 }
 Strings.OfficeOM.registerClass('Strings.OfficeOM');
 Strings.OfficeOM.L_InvalidNamedItemForBindingType='The specified binding type is not compatible with the supplied named item.';
-Strings.OfficeOM.L_EventHandlerNotExist='The specified event type is not supported on this object.';
+Strings.OfficeOM.L_EventHandlerNotExist='The specified event handler was not found for this binding.';
 Strings.OfficeOM.L_UnknownBindingType='The binding type is not supported.';
 Strings.OfficeOM.L_InvalidNode='Invalid Node';
 Strings.OfficeOM.L_NotImplemented='Function {0} is not implemented.';

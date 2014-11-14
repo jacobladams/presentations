@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "نوع الربط المحدد غير متوافق مع العنصر المسمى الموفر.";
-Strings.OfficeOM.L_EventHandlerNotExist = "نوع الحدث المحدد غير معتمد على هذا الكائن.";
+Strings.OfficeOM.L_EventHandlerNotExist = "لإ The specified event handler was not found for this binding.هقشؤصه أبعَد2؟";
 Strings.OfficeOM.L_UnknownBindingType = "نوع الربط غير معتمد.";
 Strings.OfficeOM.L_InvalidNode = "العقدة غير صالحة";
 Strings.OfficeOM.L_NotImplemented = "لم يتم تنفيذ الدالة {0}.";

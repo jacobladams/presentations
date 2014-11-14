@@ -1,5 +1,5 @@
 /* Word specific JavaScript API library */
-/* Version: 15.0.4448.1000 */
+/* Version: 15.0.4420.1017 Build Time: 03/31/2014 */
 /*
 	Copyright (c) Microsoft Corporation.  All rights reserved.
 */
@@ -997,6 +997,7 @@ OSF.DDA.SafeArray.Delegate.executeAsync=function OSF_DDA_SafeArray_Delegate$Exec
 			}
 			return arrArgs;
 		}
+		var startTime=(new Date()).getTime();
 		window.external.Execute(
 			args.dispId,
 			toArray(args.hostCallArgs),
@@ -1004,9 +1005,9 @@ OSF.DDA.SafeArray.Delegate.executeAsync=function OSF_DDA_SafeArray_Delegate$Exec
 				if (args.onReceiving) {
 					args.onReceiving();
 				}
+				var result=hostResponseArgs.toArray();
+				var status=result[OSF.DDA.SafeArray.Response.Status];
 				if (args.onComplete) {
-					var result=hostResponseArgs.toArray();
-					var status=result[OSF.DDA.SafeArray.Response.Status];
 					var payload;
 					if (status==OSF.DDA.ErrorCodeManager.errorCodes.ooeSuccess) {
 						if (result.length > 2) {
@@ -1023,6 +1024,9 @@ OSF.DDA.SafeArray.Delegate.executeAsync=function OSF_DDA_SafeArray_Delegate$Exec
 					}
 					args.onComplete(status, payload);
 				}
+				if (OSF.AppTelemetry) {
+					OSF.AppTelemetry.onMethodDone(args.dispId, args.hostCallArgs, Math.abs((new Date()).getTime() -  startTime), status);
+				}
 			}
 		);
 	}
@@ -1030,14 +1034,18 @@ OSF.DDA.SafeArray.Delegate.executeAsync=function OSF_DDA_SafeArray_Delegate$Exec
 		OSF.DDA.SafeArray.Delegate._onException(ex, args);
 	}
 };
-OSF.DDA.SafeArray.Delegate._getOnAfterRegisterEvent=function OSF_DDA_SafeArrayDelegate$GetOnAfterRegisterEvent(args) {
+OSF.DDA.SafeArray.Delegate._getOnAfterRegisterEvent=function OSF_DDA_SafeArrayDelegate$GetOnAfterRegisterEvent(register, args) {
+	var startTime=(new Date()).getTime();
 	return function OSF_DDA_SafeArrayDelegate$OnAfterRegisterEvent(hostResponseArgs) {
 		if (args.onReceiving) {
 			args.onReceiving();
 		}
+		var status=hostResponseArgs.toArray ? hostResponseArgs.toArray()[OSF.DDA.SafeArray.Response.Status] : hostResponseArgs;
 		if (args.onComplete) {
-			var status=hostResponseArgs.toArray ? hostResponseArgs.toArray()[OSF.DDA.SafeArray.Response.Status] : hostResponseArgs;
 			args.onComplete(status)
+		}
+		if (OSF.AppTelemetry) {
+			OSF.AppTelemetry.onRegisterDone(register, args.dispId, Math.abs((new Date()).getTime() - startTime), status);
 		}
 	}
 }
@@ -1045,7 +1053,7 @@ OSF.DDA.SafeArray.Delegate.registerEventAsync=function OSF_DDA_SafeArray_Delegat
 	if (args.onCalling) {
 		args.onCalling();
 	}
-	var callback=OSF.DDA.SafeArray.Delegate._getOnAfterRegisterEvent(args);
+	var callback=OSF.DDA.SafeArray.Delegate._getOnAfterRegisterEvent(true, args);
 	try {
 		window.external.RegisterEvent(
 			args.dispId,
@@ -1053,6 +1061,9 @@ OSF.DDA.SafeArray.Delegate.registerEventAsync=function OSF_DDA_SafeArray_Delegat
 			function OSF_DDA_SafeArrayDelegate$RegisterEventAsync_OnEvent(eventDispId, payload) {
 				if (args.onEvent) {
 					args.onEvent(payload);
+				}
+				if (OSF.AppTelemetry) {
+					OSF.AppTelemetry.onEventDone(args.dispId);
 				}
 			},
 			callback
@@ -1066,7 +1077,7 @@ OSF.DDA.SafeArray.Delegate.unregisterEventAsync=function OSF_DDA_SafeArray_Deleg
 	if (args.onCalling) {
 		args.onCalling();
 	}
-	var callback=OSF.DDA.SafeArray.Delegate._getOnAfterRegisterEvent(args);
+	var callback=OSF.DDA.SafeArray.Delegate._getOnAfterRegisterEvent(false, args);
 	try {
 		window.external.UnregisterEvent(
 			args.dispId,

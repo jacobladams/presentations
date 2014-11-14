@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Navedena vrsta povezivanja nije kompatibilna s priloženom imenovanom stavkom.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Navedena vrsta događaja nije podržana na tom objektu.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Ťhě śpëćîfîęď ęvęńť hăňđĺěř wâś ňöţ főűňď főŕ ţhíş bîňďíńg.čžšđč_";
 Strings.OfficeOM.L_UnknownBindingType = "Ta vrsta povezivanja nije podržana.";
 Strings.OfficeOM.L_InvalidNode = "Čvor nije valjan";
 Strings.OfficeOM.L_NotImplemented = "Funkcija {0} nije implementirana.";

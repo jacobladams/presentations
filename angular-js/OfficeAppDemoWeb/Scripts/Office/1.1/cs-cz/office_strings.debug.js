@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Zadaný typ vazby není kompatibilní se zadanou pojmenovanou položkou.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Zadaný typ události není pro tento objekt podporovaný.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Ťhě şpëćîfîëđ ëvěňť hăńđľęř wąś ňöť fôµňď föř ţhíš bíńđîńg.ů§čř_";
 Strings.OfficeOM.L_UnknownBindingType = "Tento typ vazby není podporovaný.";
 Strings.OfficeOM.L_InvalidNode = "Neplatný uzel";
 Strings.OfficeOM.L_NotImplemented = "Funkce {0} není implementovaná.";

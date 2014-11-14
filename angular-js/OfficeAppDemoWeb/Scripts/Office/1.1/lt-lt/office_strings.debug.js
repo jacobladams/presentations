@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Nurodytas susiejimo tipas nesuderinamas su pateiktu įvardytuoju elementu.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Nurodyto tipo įvykis šiame objekte nepalaikomas.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Thė §pēćīfįęd ėvēņt hæņdļéŗ wāš ń°t f¤ūņd føŗ thī§ ßįņdįńģ.ąžčęįū_";
 Strings.OfficeOM.L_UnknownBindingType = "Susiejimo tipas nepalaikomas.";
 Strings.OfficeOM.L_InvalidNode = "Neleistinas mazgas";
 Strings.OfficeOM.L_NotImplemented = "Funkcija {0} neįgyvendinta.";

@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Jenis pengikatan yang ditentukan tidak serasi dengan item dinamakan yang dibekalkan.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Jenis acara yang ditentukan tidak disokong pada objek ini.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Thê spëçîfìêð êvèñt hæñðlér wás ñõt fôüñð fõr thïs þíñðîñg.aiya_";
 Strings.OfficeOM.L_UnknownBindingType = "Jenis pengikatan tidak disokong.";
 Strings.OfficeOM.L_InvalidNode = "Nod Tidak Sah";
 Strings.OfficeOM.L_NotImplemented = "Fungsi {0} tidak dilaksanakan.";

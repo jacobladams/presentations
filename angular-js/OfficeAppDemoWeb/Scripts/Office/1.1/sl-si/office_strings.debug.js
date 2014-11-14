@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Navedena vrsta vpenjanja ni združljiva s podanim imenovanim elementom.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Navedena vrsta dogodka ni podprta za ta predmet.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Ťhě şpëćîfîëđ ëvěňť hăńđľęř wąś ňöť fôµňď föř ţhíš bíńđîńg.Đđčšž_";
 Strings.OfficeOM.L_UnknownBindingType = "Vrsta vpenjanja ni podprta.";
 Strings.OfficeOM.L_InvalidNode = "Neveljavno vozlišče";
 Strings.OfficeOM.L_NotImplemented = "Funkcija {0} ni izvedena.";

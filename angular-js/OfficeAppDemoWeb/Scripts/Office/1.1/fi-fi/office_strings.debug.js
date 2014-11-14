@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Määritetty sidontatyyppi ei ole yhteensopiva annetun nimetyn kohteen kanssa.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Määritettyä tapahtumatyyppiä ei tueta tässä objektissa.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Thê spëçîfìêð êvèñt hæñðlér wás ñõt fôüñð fõr thïs þíñðîñg.å¨äöå_";
 Strings.OfficeOM.L_UnknownBindingType = "Sidontatyyppiä ei tueta.";
 Strings.OfficeOM.L_InvalidNode = "Virheellinen solmu";
 Strings.OfficeOM.L_NotImplemented = "Toimintoa {0} ei ole toteutettu.";

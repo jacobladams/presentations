@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Määratud sidumistüüp ei ühildu esitatud nimelise üksusega.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Määratud sündmusetüüpi ei toetata selles objektis.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Thė §pēćīfįęd ėvēņt hæņdļéŗ wāš ń°t f¤ūņd føŗ thī§ ßįņdįńģ.šä_";
 Strings.OfficeOM.L_UnknownBindingType = "Sidumistüüpi ei toetata.";
 Strings.OfficeOM.L_InvalidNode = "Sobimatu sõlm";
 Strings.OfficeOM.L_NotImplemented = "Funktsioon {0} pole juurutatud.";

@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "ชนิดการผูกที่ระบุเข้ากันไม่ได้กับรายการที่มีชื่อที่ให้มา";
-Strings.OfficeOM.L_EventHandlerNotExist = "ไม่สนับสนุนชนิดเหตุการณ์ที่ระบุบนวัตถุนี้";
+Strings.OfficeOM.L_EventHandlerNotExist = "น้ำThe specified event handler was not found for this binding.ชํ๗ะฬํท้ายสุด";
 Strings.OfficeOM.L_UnknownBindingType = "ไม่สนับสนุนชนิดการผูกนี้";
 Strings.OfficeOM.L_InvalidNode = "โหนดไม่ถูกต้อง";
 Strings.OfficeOM.L_NotImplemented = "ฟังก์ชัน {0} ยังไม่ถูกนำมาใช้งาน";

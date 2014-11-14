@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "지정한 바인딩 유형이 제공된 명명된 항목과 호환되지 않습니다.";
-Strings.OfficeOM.L_EventHandlerNotExist = "지정한 이벤트 종류가 이 개체에서 지원되지 않습니다.";
+Strings.OfficeOM.L_EventHandlerNotExist = "［The specified event handler was not found for this binding.틀렸액세스할］";
 Strings.OfficeOM.L_UnknownBindingType = "지원되지 않는 바인딩 유형입니다.";
 Strings.OfficeOM.L_InvalidNode = "잘못된 노드";
 Strings.OfficeOM.L_NotImplemented = "함수 {0}이(가) 구현되지 않았습니다.";

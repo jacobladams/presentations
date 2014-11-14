@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Belirtilen bağlama türü sağlanan adlandırılmış öğe ile uyumlu değil.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Belirtilen olay türü bu nesne üzerinde desteklenmiyor.";
+Strings.OfficeOM.L_EventHandlerNotExist = "İThê şpë©ìƒïéd ëvéñt hãñdlér wæš ñøt ƒòüñd ƒœr thîş bïñdîñğ.Iğıi";
 Strings.OfficeOM.L_UnknownBindingType = "Bağlama türü desteklenmiyor.";
 Strings.OfficeOM.L_InvalidNode = "Geçersiz Düğüm";
 Strings.OfficeOM.L_NotImplemented = "{0} işlevi uygulanmadı.";

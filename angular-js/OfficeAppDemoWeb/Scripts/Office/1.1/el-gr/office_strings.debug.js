@@ -5,7 +5,7 @@ Strings.OfficeOM = function()
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
 Strings.OfficeOM.L_InvalidNamedItemForBindingType = "Ο καθορισμένος τύπος σύνδεσης δεν είναι συμβατός με το καθορισμένο στοιχείο που δόθηκε.";
-Strings.OfficeOM.L_EventHandlerNotExist = "Ο καθορισμένος τύπος συμβάντος δεν υποστηρίζεται σε αυτό το αντικείμενο.";
+Strings.OfficeOM.L_EventHandlerNotExist = "_Thε spεςιfίεd ενεήτ hάηdlέr ώάs ηότ fσύηd fόr τhϊs bιηdϊηg.θλρωβθλρωβθλρωβθλρ_";
 Strings.OfficeOM.L_UnknownBindingType = "Ο τύπος σύνδεσης δεν υποστηρίζεται.";
 Strings.OfficeOM.L_InvalidNode = "Μη έγκυρος κόμβος";
 Strings.OfficeOM.L_NotImplemented = "Η λειτουργία {0} δεν έχει υλοποιηθεί.";
