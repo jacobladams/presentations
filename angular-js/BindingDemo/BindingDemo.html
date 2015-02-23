@@ -8,8 +8,8 @@
 	<h1 class='title'><i class="empire-icon"></i> Galactic Empire Personnel Directory</h1>
 
 	<div ng-app="personnelDirectory" ng-controller="personnelListController">
-		<!--<div ng-repeat="personnel in personnelDirectory.personnelList" class="personnelItem">-->
-			<div ng-hide="personnel.isEditting">
+		<!--<div ng-repeat="personnel in personnelDirectory.personnelList" class="personnelItem">
+			<div ng-hide="personnel.isEditting">-->
 				<div>
 					<img src="{{personnel.image}}" />
 				</div>
@@ -28,7 +28,7 @@
 				<div>
 					<a ng-href="{{personnel.detailsUrl}}">View Details</a>
 				</div>
-				<button ng-click="personnelDirectory.editPersonnel(personnel)">Edit</button>
+				<!--<button ng-click="personnelDirectory.editPersonnel(personnel)">Edit</button>
 			</div>
 
 			<div ng-show="personnel.isEditting">
@@ -45,7 +45,6 @@
 				</div>
 				<div>
 					<strong>Title:</strong>
-					<!--<input type="text" ng-model="personnel.title" />-->
 					<select ng-options="title for title in personnelDirectory.titles" ng-model="personnel.title"></select>
 				</div>
 				<div>
@@ -58,7 +57,7 @@
 				<button ng-click="personnelDirectory.savePersonnel(personnel)">Save</button>
 			</div>
 			
-		<!--</div>-->
+		</div>-->
 	</div>
 
 	<script src="scripts/angular.js"></script>
