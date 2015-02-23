@@ -8,7 +8,7 @@
 	<h1 class='title'><i class="empire-icon"></i> Galactic Empire Personnel Directory</h1>
 
 	<div ng-app="personnelDirectory" ng-controller="personnelListController">
-		<div ng-repeat="personnel in personnelDirectory.personnelList" class="personnelItem">
+		<!--<div ng-repeat="personnel in personnelDirectory.personnelList" class="personnelItem">-->
 			<div ng-hide="personnel.isEditting">
 				<div>
 					<img src="{{personnel.image}}" />
@@ -58,7 +58,7 @@
 				<button ng-click="personnelDirectory.savePersonnel(personnel)">Save</button>
 			</div>
 			
-		</div>
+		<!--</div>-->
 	</div>
 
 	<script src="scripts/angular.js"></script>
@@ -66,70 +66,72 @@
 		angular.module('personnelDirectory', []);
 
 		angular.module('personnelDirectory').controller('personnelListController', ['$scope', function ($scope) {
-			//var personnel = {
-			//	firstName: 'Darth',
-			//	lastName: 'Vader',
-			//	title: 'Sith Lord',
-			//	image: '/images/vader.jpg',
-			//	detailsUrl: 'http://www.starwars.com/databank/darth-vader'
+			var personnel = {
+				firstName: 'Darth',
+				lastName: 'Vader',
+				title: 'Sith Lord',
+				image: '/images/vader.jpg',
+				detailsUrl: 'http://www.starwars.com/databank/darth-vader'
+			};
+			$scope.personnel = personnel;
+
+
+			//var personnelDirectory = {
+			//	personnelList: [{
+			//		firstName: 'Lorth',
+			//		lastName: 'Needa',
+			//		title: 'Captain',
+			//		image: '/images/needa.jpg',
+			//		active: true,
+			//		id: 5,
+			//		detailsUrl: 'http://www.starwars.com/databank/captain-needa'
+			//	}, {
+			//		firstName: 'Darth',
+			//		lastName: 'Vader',
+			//		title: 'Sith Lord',
+			//		image: '/images/vader.jpg',
+			//		active: true,
+			//		id: 2,
+			//		detailsUrl: 'http://www.starwars.com/databank/darth-vader'
+			//	}, {
+			//		firstName: 'Kendal',
+			//		lastName: 'Ozzel',
+			//		title: 'Admiral',
+			//		image: '/images/ozzel.jpg',
+			//		active: true,
+			//		id: 3,
+			//		detailsUrl: 'http://www.starwars.com/databank/admiral-ozzel'
+			//	}, {
+			//		firstName: 'Firmus',
+			//		lastName: 'Piett',
+			//		title: 'Captain',
+			//		image: '/images/piett.jpg',
+			//		active: true,
+			//		id: 4,
+			//		detailsUrl: 'http://www.starwars.com/databank/admiral-piett'
+			//	}, {
+			//		firstName: 'Wilhuff',
+			//		lastName: 'Tarkin',
+			//		title: 'Grand Moff',
+			//		image: '/images/tarkin.jpg',
+			//		active: false,
+			//		id: 1,
+			//		detailsUrl: 'http://www.starwars.com/databank/tarkin'
+			//	}]
 			//};
-			//$scope.personnel = personnel;
-			var personnelDirectory = {
-				personnelList: [{
-					firstName: 'Lorth',
-					lastName: 'Needa',
-					title: 'Captain',
-					image: '/images/needa.jpg',
-					active: true,
-					id: 5,
-					detailsUrl: 'http://www.starwars.com/databank/captain-needa'
-				}, {
-					firstName: 'Darth',
-					lastName: 'Vader',
-					title: 'Sith Lord',
-					image: '/images/vader.jpg',
-					active: true,
-					id: 2,
-					detailsUrl: 'http://www.starwars.com/databank/darth-vader'
-				}, {
-					firstName: 'Kendal',
-					lastName: 'Ozzel',
-					title: 'Admiral',
-					image: '/images/ozzel.jpg',
-					active: true,
-					id: 3,
-					detailsUrl: 'http://www.starwars.com/databank/admiral-ozzel'
-				}, {
-					firstName: 'Firmus',
-					lastName: 'Piett',
-					title: 'Captain',
-					image: '/images/piett.jpg',
-					active: true,
-					id: 4,
-					detailsUrl: 'http://www.starwars.com/databank/admiral-piett'
-				}, {
-					firstName: 'Wilhuff',
-					lastName: 'Tarkin',
-					title: 'Grand Moff',
-					image: '/images/tarkin.jpg',
-					active: false,
-					id: 1,
-					detailsUrl: 'http://www.starwars.com/databank/tarkin'
-				}]
-			};
 
-			personnelDirectory.titles = ['Captain', 'Admiral', 'Sith Lord', 'Grand Moff'];
+			//personnelDirectory.titles = ['Captain', 'Admiral', 'Sith Lord', 'Grand Moff'];
 
-			personnelDirectory.editPersonnel = function(personnel) {
-				personnel.isEditting = true;
-			};
+			//personnelDirectory.editPersonnel = function(personnel) {
+			//	personnel.isEditting = true;
+			//};
 
-			personnelDirectory.savePersonnel = function (personnel) {
-				personnel.isEditting = false;
-			};
+			//personnelDirectory.savePersonnel = function (personnel) {
+			//	personnel.isEditting = false;
+			//};
 
 
-			$scope.personnelDirectory = personnelDirectory;
+			//$scope.personnelDirectory = personnelDirectory;
 
 
 		}]);
